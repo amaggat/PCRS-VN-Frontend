@@ -1,0 +1,55 @@
+.footer {
+    padding: 0.5rem;
+    background-color: rgb(18, 19, 30);
+}
+
+.top-footer {
+    padding-bottom: 2rem;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.123);
+}
+
+.white {
+    background-color: transparent;
+    background-clip: unset;
+    color: white;
+}
+
+.footer-title {
+    padding-bottom: .5rem;
+    border-bottom: solid 2px white ;
+}
+
+.icon {
+    font-size: 24px;
+    color: white;
+    padding: 1rem 1.5rem 0rem 1.5rem;
+}
+
+.logo {
+    display: block;
+    height: 100px;
+}
+
+.icon:hover {
+    color: #3c99db;
+    text-decoration: none;
+}
+
+
+
+.copyright {
+    color: white;
+    font-family: 'Arial';
+    font-size: 0.75rem;
+    padding-top: 1rem;
+}
+
+.footer .card {
+    color: white;
+    background-color: transparent;
+    background-clip: unset;
+}
+
+.footer list {
+    list-style-type: none;
+}

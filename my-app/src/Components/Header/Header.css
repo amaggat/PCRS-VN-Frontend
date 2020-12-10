@@ -1,0 +1,33 @@
+.nav {
+    background-color: rgb(18, 19, 30);
+}
+
+.navbar {
+    background-color: #191b2b;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.logo {
+    height: 60px;
+}
+
+.dropdown {
+    position: static;
+}
+
+.hide {
+    display: none;
+}
+
+.system-builder-dropdown {
+   transition-duration: 5s;
+   background-color: rgba(44, 133, 197, 0.4)
+}
+

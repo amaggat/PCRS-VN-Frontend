@@ -1,0 +1,10 @@
+.banner {
+    background-color: blueviolet;
+    padding: 2.5rem 0rem 2rem 0rem;
+    margin-bottom: 2.5rem;
+    color: white;
+}
+
+.fa-plus {
+    padding-right: 0.5rem;
+}

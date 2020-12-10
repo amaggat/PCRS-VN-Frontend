@@ -1,0 +1,32 @@
+.color-dark {
+    color: #000;
+    font-size: 23px;
+}
+
+.tab-menu {
+    height: 100%;
+    align-items: center;
+}
+
+.info img {
+    width: 25px;
+    border-radius: 50%;
+    height: 25px;
+}
+
+.info {
+    background: #000;
+    padding: 10px;
+}
+
+.info > span {
+    color: #fff;
+    height: 25px;
+    line-height: 25px;
+}
+
+.item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}

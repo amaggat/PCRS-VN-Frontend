@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url(htttps://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300&display=swap);
+    font-weight: bold;
+  }
+
+.carouselImg {
+    height: 80vh;
+    width: 100vw;
+}
+
+.card {
+    background-color: transparent;
+    border: none;
+    padding: 0rem 2rem 0rem 2rem;
+
+}
+
+.carouselCaption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.viewMoreBtn {
+    width: 80%;
+}
+
+.guildGroup {
+    background-color: orange;
+    padding: 0px;
+    
+}
+
+.guildGroup:hover {
+    outline-style: solid;
+    outline-width: 4px;
+    outline-color: black;
+}
+
+.BGpaddingfull {
+    padding: .75rem;
+    margin: 0;
+}
+
+.BGpadding2d {
+    padding: 0rem 1rem 0rem 1rem;
+    margin: 0;
+}
+
+.BGdetail {
+    font-size: 14px;
+    font-family: 'Noto Sans JP', sans-serif;
+
+}
+
+.BGtitle {
+    font-size: 24px;
+    color: white;
+}
+
+.BGMainTitle {
+    font-size: 52px;
+    font-weight: bold;
+    padding: 1rem 0rem;
+}
+
+.BGMainDescription {
+    font-size: 20px;
+    font-family: 'Noto Sans JP', sans-serif;
+    padding: 0rem 0rem 1rem 0rem;
+}
+
+.BGprice {
+    font-size: 18px;
+    color: white;
+}
+
+.cardTitle {
+
+}
+
+.greyBack {
+    height: 80vh;
+    width: 100vw;
+    background-image: radial-gradient(rgb(180, 180, 180), rgb(140, 140, 140));;
+}
+
+.sectionTitle {
+    border-bottom: 1px solid black;
+}
+
+.buildGuild {
+    padding: 5rem 0rem 5rem 0rem;
+    /* height: 80vh; */
+}
+
+.productBrowsing {
+    padding: 3rem 0rem 1.5rem 0rem;;
+}

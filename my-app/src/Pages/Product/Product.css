@@ -1,0 +1,14 @@
+.product-banner {
+    background-color: rgb(80, 95, 161);
+    padding: 2.5rem 0rem 2rem 0rem;
+    margin-bottom: 2.5rem;
+    color: white;
+}
+
+.star-activate {
+    color: yellowgreen;
+}
+
+.preview img {
+    width: 50px;
+}

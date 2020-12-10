@@ -1,6 +1,6 @@
 import './App.css';
 import Page from "./Pages/Page"
-import {BrowserRouter as Router} from "react-route-dom"
+import {BrowserRouter as Router} from "react-router-dom"
 
 function App() {
   return (
@@ -10,6 +10,6 @@ function App() {
       </Router>
     </div>
   );
-}
+} 
 
 export default App;
