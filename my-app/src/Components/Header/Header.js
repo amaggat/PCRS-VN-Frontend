@@ -21,15 +21,16 @@ class Header extends Component {
     }
     render() {
         const {dropdown} = this.state;
-        const dropdownElement = (<div className={`system-builder-dropdown ${dropdown ? "" : "hide"}`}>
-        <Link className="dropdown-item" to="/products/cpu">CPU</Link>
-        <Link className="dropdown-item" to="/products">Mother board</Link>
-        <Link className="dropdown-item" to="/products">Memory</Link>
-        <Link className="dropdown-item" to="#">Storge</Link>
-        <Link className="dropdown-item" to="#">Video Card</Link>
-        <Link className="dropdown-item" to="#">Power Supply</Link>
-        <Link className="dropdown-item" to="#">Case</Link>
-    </div>);
+        const dropdownElement = (
+        <div className={`system-builder-dropdown ${dropdown ? "" : "hide"}`}>
+            <Link className="dropdown-item" to="/products/cpu">CPU</Link>
+            <Link className="dropdown-item" to="/products">Mother board</Link>
+            <Link className="dropdown-item" to="/products">Memory</Link>
+            <Link className="dropdown-item" to="#">Storge</Link>
+            <Link className="dropdown-item" to="#">Video Card</Link>
+            <Link className="dropdown-item" to="#">Power Supply</Link>
+            <Link className="dropdown-item" to="#">Case</Link>
+        </div>);
 
         return (
             <div className="header">
