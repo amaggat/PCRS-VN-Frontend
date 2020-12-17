@@ -1,9 +1,9 @@
 import { React, Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class TopNav extends Component {
+class SubNav extends Component {
     render() {
-    const {handleDropdown} = this.props;
+    const {handleDropdownFocus, handleDropdownBlur} = this.props;
         return (
             <>
             <nav className="collapse navbar-collapse" id="navbarNavDropdown">
@@ -15,7 +15,7 @@ class TopNav extends Component {
                         <Link className="nav-link" to="/builds">Completed Builds</Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link className="nav-link dropdown-toggle" role="button" onClick={handleDropdown}>Browse Products</Link>
+                        <Link className="nav-link dropdown-toggle" role="button" onBlur={handleDropdownBlur} onFocus={handleDropdownFocus}>Browse Products</Link>
                     </li>
                 </ul>
             </nav>
@@ -24,4 +24,4 @@ class TopNav extends Component {
     }
 }
 
-export default TopNav;
+export default SubNav;

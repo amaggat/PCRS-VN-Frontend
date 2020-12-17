@@ -13,24 +13,27 @@ class Header extends Component {
         }
     }
 
-    handleDropdown = () => {
-        const {dropdown} = this.state;
+    handleDropdownFocus = () => {
         this.setState({
-            dropdown: !dropdown,
+            dropdown: true,
+        })
+    }
+    handleDropdownBlur = () => {
+        this.setState({
+            dropdown: false,
         })
     }
     render() {
         const {dropdown} = this.state;
-        const dropdownElement = (
-        <div className={`system-builder-dropdown ${dropdown ? "" : "hide"}`}>
-            <Link className="dropdown-item" to="/products/cpu">CPU</Link>
-            <Link className="dropdown-item" to="/products">Mother board</Link>
-            <Link className="dropdown-item" to="/products">Memory</Link>
-            <Link className="dropdown-item" to="#">Storge</Link>
-            <Link className="dropdown-item" to="#">Video Card</Link>
-            <Link className="dropdown-item" to="#">Power Supply</Link>
-            <Link className="dropdown-item" to="#">Case</Link>
-        </div>);
+        const dropdownElement = (<div className={`system-builder-dropdown ${dropdown ? "" : "hide"}`}>
+        <Link className="dropdown-item" to="/products/cpu">CPU</Link>
+        <Link className="dropdown-item" to="/products">Mother board</Link>
+        <Link className="dropdown-item" to="/products">Memory</Link>
+        <Link className="dropdown-item" to="#">Storge</Link>
+        <Link className="dropdown-item" to="#">Video Card</Link>
+        <Link className="dropdown-item" to="#">Power Supply</Link>
+        <Link className="dropdown-item" to="#">Case</Link>
+    </div>);
 
         return (
             <div className="header">
@@ -38,7 +41,7 @@ class Header extends Component {
 
                 <nav className="navbar navbar-expand-lg sticky-top">
                     <div className="container-fluid">
-                        <SubNav handleDropdown={this.handleDropdown} />
+                        <SubNav handleDropdownFocus={this.handleDropdownFocus} handleDropdownBlur={this.handleDropdownBlur} />
                         <div className="btn-search">
                             <form className="form-inline">
                                 <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>

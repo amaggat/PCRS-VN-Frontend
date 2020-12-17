@@ -4,9 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 
-import Register from "../Pages/Account/Register";
-import Login from "../Pages/Account/Login";
-
 import Home from "./Home/Home"
 import About from "./About/About"
 import Help from "./Help/Help"
@@ -29,31 +26,11 @@ const NotFound = ()=> <h1>404</h1>
 
 class Page extends Component {
     render() {
-        var pathname = window.location.pathname;
-        console.log(pathname);
-
-        if (pathname === "/login" || pathname === "/register"){
-            return (
-                <div className="App">
-                    <div className="page-body">
-                    <Switch>
-                        {/* Login and Register Page */}
-                        <Route path="/login"  component={Login}/>
-                        <Route path="/register" component={Register} />
-                    </Switch>
-                    </div>
-                </div>
-            )
-        }
-
         return (
-            <div className="App">   
-                <Header/>
+            <div className="App">
+                <Header />
                 <div className="page-body">
                     <Switch>
-                        {/* Login and Register Page */}
-                        <Route path="/login"  component={Login}/>
-                        <Route path="/register" component={Register} />
                         {/* Basic Page */}
                         <Route exact path="/" component={Home} />
                         <Route path="/about" component={About} />
@@ -74,7 +51,7 @@ class Page extends Component {
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         );
     }
