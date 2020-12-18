@@ -6,10 +6,10 @@ class Info extends Component {
     render() {
         return (
             <div className="col">
-                <div className="card white">
+                <div className="card white-text">
                     <div className="card-body">
                         <p className="card-text">
-                            <ul className="card-title white">
+                            <ul className="card-title white-text">
                                 <li>
                                     <h5 className="footer-title">PROJECT TEAM</h5> 
                                 </li>

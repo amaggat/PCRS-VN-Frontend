@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import Header from "../../Components/Header/Header";
+import Footer from '../../Components/Footer/Footer';
 import './Product.css'
 
 class Product extends Component {
     render (){
         return(
             <div className="products-menu">
+                <Header />
                 <div className="banner">
                     <h1 className="text-center">Products Categories</h1>
                 </div>
@@ -61,6 +64,7 @@ class Product extends Component {
                         </ul>
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }

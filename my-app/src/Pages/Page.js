@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
+import ReturnHeader from "../Components/Header/ReturnHeader";
+import NotFound from "./NotFound";
 
 import Register from "../Pages/Account/Register";
 import Login from "../Pages/Account/Login";
@@ -25,34 +27,27 @@ import CPU from "./Product/Part/CPU"
 
 import './Page.css'
 
-const NotFound = ()=> <h1>404</h1>
-
 class Page extends Component {
-    render() {
-        var pathname = window.location.pathname;
-        console.log(pathname);
-
-        if (pathname === "/login" || pathname === "/register"){
-            return (
-                <div className="App">
-                    <div className="page-body">
-                    <Switch>
-                        {/* Login and Register Page */}
-                        <Route path="/login"  component={Login}/>
-                        <Route path="/register" component={Register} />
-                    </Switch>
-                    </div>
-                </div>
-            )
+    constructor (props){
+        super(props);
+        this.state = {
+            hide: false,
         }
+    }
 
+    setHide() {
+        this.setState({
+            hide: !this.state.hide,
+        })
+    }
+
+    render() {
         return (
             <div className="App">   
-                <Header/>
                 <div className="page-body">
                     <Switch>
                         {/* Login and Register Page */}
-                        <Route path="/login"  component={Login}/>
+                        <Route path="/login" component={Login}/>
                         <Route path="/register" component={Register} />
                         {/* Basic Page */}
                         <Route exact path="/" component={Home} />
@@ -74,7 +69,6 @@ class Page extends Component {
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
-                <Footer/>
             </div>
         );
     }

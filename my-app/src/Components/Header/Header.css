@@ -1,24 +1,24 @@
-.nav {
+.header .nav {
     background-color: rgb(18, 19, 30);
 }
 
-.navbar {
+.header .navbar {
     background-color: #191b2b;
 }
 
-.nav-link {
+.header .nav-link {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.nav-link:hover {
+.header .nav-link:hover {
     color: rgba(255, 255, 255, 1);
 }
 
-.logo {
+.header .logo {
     height: 60px;
 }
 
-.dropdown {
+.header .dropdown {
     position: static;
 }
 
@@ -31,3 +31,19 @@
    background-color: rgba(44, 133, 197, 0.4)
 }
 
+.return-header {
+    background-color: black;
+    height: 70px;
+    padding-top: 22px;
+    padding-left: 50px;
+}
+
+.arrow {
+    font-size: 21px;
+    color: white;
+}
+
+.arrow:hover {
+    color: #3c99db;
+    text-decoration: none;
+}

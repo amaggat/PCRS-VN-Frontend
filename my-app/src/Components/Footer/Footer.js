@@ -10,7 +10,7 @@ class Footer extends Component {
     render (){
         return (
             <div className="footer">
-                <div className="container-md">
+                <div className="w-container">
                     <div className="row top-footer">
                         <Sologan />
                         <Categories />
@@ -23,7 +23,7 @@ class Footer extends Component {
 
                     <div className="row text-center">
                         <div className="col">
-                            <p className="copyright">©2020 NMD CUK DINK. All rights reserved.</p>
+                            <p className="copyright">©2020 INT3306 21. All rights reserved.</p>
                         </div>
                     </div>
                 </div>
