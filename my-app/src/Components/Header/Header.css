@@ -32,18 +32,19 @@
 }
 
 .return-header {
-    background-color: black;
-    height: 70px;
-    padding-top: 22px;
+    background-color: #12131e;
+    height: 60px;
+    padding-top: 20px;
     padding-left: 50px;
 }
 
 .arrow {
-    font-size: 21px;
+    font-size: 20px;
     color: white;
 }
 
 .arrow:hover {
     color: #3c99db;
     text-decoration: none;
+    transition: 0.25s;
 }

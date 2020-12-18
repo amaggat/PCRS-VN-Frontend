@@ -22,18 +22,18 @@ class BuildGuild extends Component {
                                 <p className="card-text text-wrap BGpadding2d BGdetail">AMD Ryzen 3 3100</p>
                                 <p className="card-text text-wrap BGpadding2d BGdetail ">Parametric Video Card (Chipset: GeForce GTX 1650 SUPER)</p>
                                 <p className="card-text text-wrap BGpadding2d BGdetail">Cougar MX330 ATX MIid Tower</p>
-                                <p className="card-title BGprice BGpaddingfull">$565.93</p>
+                                <p className="card-title price-tag BGpaddingfull">$565.93</p>
                                 <img src={completed1} className="card-img-top BGpaddingfull" alt="completed-build" />
                             </div>
                         </div>
 
                         <div className="col-md-6 card">
-                            <div className="card-body guild-group">
+                            <div className="card-body guild-group"> 
                                 <h5 className="card-title text-wrap BGtitle BGpaddingfull">Entry Level AMD Gaming Build</h5>
                                 <p className="card-text text-wrap BGpadding2d BGdetail">AMD Ryzen 3 3100</p>
                                 <p className="card-text text-wrap BGpadding2d BGdetail">Parametric Video Card (Chipset: GeForce GTX 1650 SUPER)</p>
                                 <p className="card-text text-wrap BGpadding2d BGdetail">Cougar MX330 ATX MIid Tower</p>
-                                <p className="card-title text-wrap BGprice BGpaddingfull">$565.93</p>
+                                <p className="card-title text-wrap price-tag BGpaddingfull">$565.93</p>
                                 <img src={completed2} className="card-img-top BGpaddingfull" alt="completed-build" />
                             </div>
                         </div>

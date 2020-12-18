@@ -40,6 +40,7 @@
     outline-style: solid;
     outline-width: 4px;
     outline-color: black;
+    transition: 0.1s;
 }
 
 .BGpaddingfull {
@@ -75,7 +76,7 @@
     padding: 0rem 0rem 1rem 0rem;
 }
 
-.BGprice {
+.price-tag {
     font-size: 18px;
     color: white;
 }
@@ -92,7 +93,6 @@
 
 .buildGuild {
     padding: 5rem 0rem 5rem 0rem;
-    /* height: 80vh; */
 }
 
 .productBrowsing {
