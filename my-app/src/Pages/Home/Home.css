@@ -2,21 +2,25 @@
     font-family: 'Noto Sans JP';
     src: url(htttps://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300&display=swap);
     font-weight: bold;
-  }
+}
 
-.carouselImg {
+.home .white-back {
+    background-color: white;
+}
+
+.home .carouselImg {
     height: 80vh;
     width: 100vw;
 }
 
-.card {
+.home .card {
     background-color: transparent;
     border: none;
     padding: 0rem 2rem 0rem 2rem;
 
 }
 
-.carouselCaption {
+.home .carouselCaption {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -26,16 +30,17 @@
     width: 80%;
 }
 
-.guildGroup {
+.guild-group {
     background-color: orange;
     padding: 0px;
     
 }
 
-.guildGroup:hover {
+.guild-group:hover {
     outline-style: solid;
     outline-width: 4px;
     outline-color: black;
+    transition: 0.1s;
 }
 
 .BGpaddingfull {
@@ -71,16 +76,12 @@
     padding: 0rem 0rem 1rem 0rem;
 }
 
-.BGprice {
+.price-tag {
     font-size: 18px;
     color: white;
 }
 
-.cardTitle {
-
-}
-
-.greyBack {
+.home .grey-back {
     height: 80vh;
     width: 100vw;
     background-image: radial-gradient(rgb(180, 180, 180), rgb(140, 140, 140));;
@@ -92,7 +93,6 @@
 
 .buildGuild {
     padding: 5rem 0rem 5rem 0rem;
-    /* height: 80vh; */
 }
 
 .productBrowsing {

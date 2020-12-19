@@ -6,7 +6,7 @@ class Sologan extends Component {
     render() {
         return (
             <div className="col">
-                <div className="card white">
+                <div className="card white-text">
                     <div className="card-body">
                         <img src={logo} class="logo" alt="PC-Builder" />
                         <h4 className="card-title">PICK PARTS.</h4>

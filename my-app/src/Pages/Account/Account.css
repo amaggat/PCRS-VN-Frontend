@@ -1,4 +1,48 @@
 .account {
-    background-color: #191b2b;
+    height: 100%;
+    background-color: #26293c;
+    padding-bottom: 22vh;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.account .acc-banner {
     color: white;
+    padding: 30px 0px 25px 0px;
+}
+
+.shadow {
+    box-shadow: 0px 2px 8px hsl(0, 0%, 0%);
+}
+
+.account .border-bottom {
+    padding-bottom: 5px;
+    border-bottom: solid 1px black !important;
+}
+
+.account .border-top {
+    padding-bottom: 5px;
+    border-top: solid 1px black !important;
+}
+
+.account .btn {
+    width: 100%;
+}
+
+.account .reset-password {
+    font-size: 12px;
+
+}
+
+.account .form-label-group {
+    padding: 10px 0px;
+}
+
+.account .block {
+    margin: 20px;
+}
+
+.account .note {
+    padding: 10px 0px;
+    font-size: 10px;
+    font-family: 'Rubik', sans-serif;
 }

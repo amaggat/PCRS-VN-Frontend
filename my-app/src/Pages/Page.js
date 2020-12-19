@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
+import ReturnHeader from "../Components/Header/ReturnHeader";
+import NotFound from "./NotFound";
 
 import Home from "./Home/Home"
 import About from "./About/About"
@@ -22,15 +24,15 @@ import CPU from "./Product/Part/CPU"
 
 import './Page.css'
 
-const NotFound = ()=> <h1>404</h1>
-
 class Page extends Component {
     render() {
         return (
-            <div className="App">
-                <Header />
+            <div className="App">   
                 <div className="page-body">
                     <Switch>
+                        {/* Login and Register Page */}
+                        <Route path="/login" component={Login}/>
+                        <Route path="/register" component={Register} />
                         {/* Basic Page */}
                         <Route exact path="/" component={Home} />
                         <Route path="/about" component={About} />
@@ -51,7 +53,6 @@ class Page extends Component {
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
-                <Footer />
             </div>
         );
     }

@@ -1,31 +1,28 @@
-.nav {
+.nav { 
 }
 
 .header {
     position: relative;
-}
-
-.header .nav {
     background-color: rgb(18, 19, 30);
 }
 
-.navbar {
+.header .navbar {
     background-color: #191b2b;
 }
 
-.nav-link {
+.header .nav-link {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.nav-link:hover {
+.header .nav-link:hover {
     color: rgba(255, 255, 255, 1);
 }
 
-.logo {
+.header .logo {
     height: 60px;
 }
 
-.dropdown {
+.header .dropdown {
     position: static;
 }
 
@@ -71,3 +68,20 @@
     font-size: 12px;
 }
 
+.return-header {
+    background-color: #12131e;
+    height: 60px;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+.arrow {
+    font-size: 20px;
+    color: white;
+}
+
+.arrow:hover {
+    color: #3c99db;
+    text-decoration: none;
+    transition: 0.25s;
+}

@@ -12,7 +12,7 @@ import "./Home.css";
 class ProductBrowsing extends Component {
     render () {
         return (
-            <div className="card-group container-md productBrowsing">
+            <div className="card-group w-container productBrowsing">
                 <div className="col">
                     <div className="row">
                         <div className="col-sm card">

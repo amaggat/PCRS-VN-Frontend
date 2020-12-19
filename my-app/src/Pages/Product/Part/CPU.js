@@ -4,16 +4,19 @@ import TopFunctionProduct from './TopFunctionProduct';
 import ProductCart from './ProductCard';
 import PageNav from '../../../Components/Page/PageNav'; 
 import '../Product.css'
+import Header from '../../../Components/Header/Header';
+import Footer from '../../../Components/Footer/Footer';
 
 class CPU extends Component {
     render() {
         return ( 
-            <div className="product cpu">
+            <div className="product cpu white-back">
+                <Header />
                 <div className="product-banner">
                     <h1 className="text-center">Choose A CPU</h1>
                 </div>
 
-                <div class="tab-pane container-xl" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div class="tab-pane w-container" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <div class="row ">
                         <div class="col-2">
                             <ProductFilter/>
@@ -55,6 +58,7 @@ class CPU extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }
