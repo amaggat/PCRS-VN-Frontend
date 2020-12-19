@@ -42,7 +42,42 @@ class Header extends Component {
                                     <span className="product-category__item-title">CPU</span>
                                 </Link>
                             </div>
-                            
+                            <div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/cpu">
+                                    <img className="product-category__item-img" src="https://via.placeholder.com/100"></img>
+                                    <span className="product-category__item-title">CPU</span>
+                                </Link>
+                            </div><div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/cpu">
+                                    <img className="product-category__item-img" src="https://via.placeholder.com/100"></img>
+                                    <span className="product-category__item-title">CPU</span>
+                                </Link>
+                            </div><div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/cpu">
+                                    <img className="product-category__item-img" src="https://via.placeholder.com/100"></img>
+                                    <span className="product-category__item-title">CPU</span>
+                                </Link>
+                            </div><div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/cpu">
+                                    <img className="product-category__item-img" src="https://via.placeholder.com/100"></img>
+                                    <span className="product-category__item-title">CPU</span>
+                                </Link>
+                            </div><div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/cpu">
+                                    <img className="product-category__item-img" src="https://via.placeholder.com/100"></img>
+                                    <span className="product-category__item-title">CPU</span>
+                                </Link>
+                            </div><div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/cpu">
+                                    <img className="product-category__item-img" src="https://via.placeholder.com/100"></img>
+                                    <span className="product-category__item-title">CPU</span>
+                                </Link>
+                            </div><div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/cpu">
+                                    <img className="product-category__item-img" src="https://via.placeholder.com/100"></img>
+                                    <span className="product-category__item-title">CPU</span>
+                                </Link>
+                            </div>
                             {/* <Link className="col-3 product-category__item" to="/products">Mother board</Link>
                             <Link className="col-3 product-category__item" to="/products">Memory</Link>
                             <Link className="col-3 product-category__item" to="#">Storge</Link>
