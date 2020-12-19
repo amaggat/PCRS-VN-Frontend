@@ -6,9 +6,6 @@ import Footer from "../Components/Footer/Footer";
 import ReturnHeader from "../Components/Header/ReturnHeader";
 import NotFound from "./NotFound";
 
-import Register from "../Pages/Account/Register";
-import Login from "../Pages/Account/Login";
-
 import Home from "./Home/Home"
 import About from "./About/About"
 import Help from "./Help/Help"
@@ -28,19 +25,6 @@ import CPU from "./Product/Part/CPU"
 import './Page.css'
 
 class Page extends Component {
-    constructor (props){
-        super(props);
-        this.state = {
-            hide: false,
-        }
-    }
-
-    setHide() {
-        this.setState({
-            hide: !this.state.hide,
-        })
-    }
-
     render() {
         return (
             <div className="App">   

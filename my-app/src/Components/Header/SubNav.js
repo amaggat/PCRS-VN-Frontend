@@ -1,7 +1,7 @@
 import { React, Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class TopNav extends Component {
+class SubNav extends Component {
     render() {
     const {handleDropdown} = this.props;
         return (
@@ -15,7 +15,7 @@ class TopNav extends Component {
                         <Link className="nav-link" to="/builds">Completed Builds</Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link className="nav-link dropdown-toggle" role="button" onClick={handleDropdown}>Browse Products</Link>
+                        <Link className="nav-link dropdown-toggle" role="button" onFocus={()=>handleDropdown('focus')} onBlur={()=>handleDropdown('blur')}>Browse Products</Link>
                     </li>
                 </ul>
             </nav>
@@ -24,4 +24,4 @@ class TopNav extends Component {
     }
 }
 
-export default TopNav;
+export default SubNav;
