@@ -6,6 +6,9 @@ import Footer from "../Components/Footer/Footer";
 import ReturnHeader from "../Components/Header/ReturnHeader";
 import NotFound from "./NotFound";
 
+import Login from "./Account/Login";
+import Register from "./Account/Register";
+
 import Home from "./Home/Home"
 import About from "./About/About"
 import Help from "./Help/Help"
@@ -15,12 +18,13 @@ import Build from "./Build/Build"
 import Products from './Product/Product'
 
 import CPU from "./Product/Part/CPU"
-// import MotherBoard from './Product/Part/MotherBoard'
-// import Memory from './Product/Part/Memory'
-// import Storage from './Product/Part/Storage'
-// import VideoCard from './Product/Part/VideoCard'
-// import Power from './Product/Part/Power'
-// import Case from './Product/Part/Case'
+import CCooler from './Product/Part/CCooler'
+import MotherBoard from './Product/Part/MotherBoard'
+import Memory from './Product/Part/Memory'
+import Storage from './Product/Part/Storage'
+import VideoCard from './Product/Part/VideoCard'
+import Power from './Product/Part/Power'
+import Case from './Product/Part/Case'
 
 import './Page.css'
 
@@ -43,12 +47,13 @@ class Page extends Component {
                         <Route exact path="/products" component={Products} />
                         {/* Browse Product subpages */}
                         <Route path="/products/cpu" component={CPU} />
-                        {/* <Route path="/products/mother-board" component={MotherBoard} />
+                        <Route path="/products/cpu-cooler" component={CCooler} />
+                        <Route path="/products/mother-board" component={MotherBoard} />
                         <Route path="/products/memory" component={Memory} />
                         <Route path="/products/storage" component={Storage} />
                         <Route path="/products/video-card" component={VideoCard} />
                         <Route path="/products/power" component={Power} />
-                        <Route path="/products/case" component={Case} /> */}
+                        <Route path="/products/case" component={Case} />
                         {/* 404 */}
                         <Route component={NotFound}/>
                     </Switch>
