@@ -13,27 +13,51 @@ class Header extends Component {
         }
     }
 
-    handleDropdownFocus = () => {
+    handleDropdown = (event) => {
+        let {dropdown} = this.state;
+        if(event === 'focus') {
+            dropdown = true;
+        }
+        if(event === 'blur') {
+            dropdown = false; //fucking shit
+        }
         this.setState({
-            dropdown: true,
-        })
-    }
-    handleDropdownBlur = () => {
-        this.setState({
-            dropdown: false,
+            dropdown,
         })
     }
     render() {
         const {dropdown} = this.state;
-        const dropdownElement = (<div className={`system-builder-dropdown ${dropdown ? "" : "hide"}`}>
-        <Link className="dropdown-item" to="/products/cpu">CPU</Link>
-        <Link className="dropdown-item" to="/products">Mother board</Link>
-        <Link className="dropdown-item" to="/products">Memory</Link>
-        <Link className="dropdown-item" to="#">Storge</Link>
-        <Link className="dropdown-item" to="#">Video Card</Link>
-        <Link className="dropdown-item" to="#">Power Supply</Link>
-        <Link className="dropdown-item" to="#">Case</Link>
-    </div>);
+        const dropdownElement = (
+        <div>
+
+            <div className={`system-builder-dropdown ${dropdown ? "" : "hide"}`}>   
+                <div className="row">
+                    <div className="col-6">
+                        
+                        <div className="row">
+
+                            <div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/cpu">
+                                    <img className="product-category__item-img" src="https://via.placeholder.com/100"></img>
+                                    <span className="product-category__item-title">CPU</span>
+                                </Link>
+                            </div>
+                            
+                            {/* <Link className="col-3 product-category__item" to="/products">Mother board</Link>
+                            <Link className="col-3 product-category__item" to="/products">Memory</Link>
+                            <Link className="col-3 product-category__item" to="#">Storge</Link>
+                            <Link className="col-3 product-category__item" to="#">Video Card</Link>
+                            <Link className="col-3 product-category__item" to="#">Power Supply</Link>
+                            <Link className="col-3 product-category__item" to="#">Case</Link> */}
+                        </div>
+                    </div>
+                    <div className="col-6">
+                        right
+                    </div>
+                </div> 
+            </div>
+        </div>
+        );
 
         return (
             <div className="header">
@@ -41,7 +65,7 @@ class Header extends Component {
 
                 <nav className="navbar navbar-expand-lg sticky-top">
                     <div className="container-fluid">
-                        <SubNav handleDropdownFocus={this.handleDropdownFocus} handleDropdownBlur={this.handleDropdownBlur} />
+                        <SubNav handleDropdown={this.handleDropdown} />
                         <div className="btn-search">
                             <form className="form-inline">
                                 <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
