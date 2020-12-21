@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
+import CaseCard from './Part/CaseCard';
+import CCCCard from './Part/CCCard';
+import CPUCard from './Part/CPUCard';
+import MemoryCard from './Part/MemoryCard';
+import MotherBoardCard from './Part/MotherBoardCard';
+import PowerCard from './Part/PowerCard';
 import ProductCard from './Part/ProductCard';
+import StorageCard from './Part/StorageCard';
+import GPUCard from './Part/VideoCard';
 
 class Table extends Component {
     render() {
@@ -18,17 +26,14 @@ class Table extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    <CPUCard />
+                    <CCCCard />
+                    <MotherBoardCard />
+                    <MemoryCard />
+                    <StorageCard />
+                    <GPUCard />
+                    <CaseCard />
+                    <PowerCard />
                 </tbody>
             </table>
         )

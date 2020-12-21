@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProductFilter from './ProductFilter';
 import TopFunctionProduct from './TopFunctionProduct';
-import ProductCart from './ProductCard';
+import ProductCard from './ProductCard';
 import PageNav from '../../../Components/Page/PageNav'; 
 import '../Product.css'
 import Header from '../../../Components/Header/Header';
@@ -40,18 +40,19 @@ class CPU extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <ProductCart/>
-                                    <ProductCart/>
-                                    <ProductCart/>
-                                    <ProductCart/>
-                                    <ProductCart/>
-                                    <ProductCart/>
-                                    <ProductCart/>
-                                    <ProductCart/>
-                                    <ProductCart/>
-                                    <ProductCart/>
-                                    <ProductCart/>
-                                    <ProductCart/>
+                                    {/* TODO: each row is a cpu */}
+                                    <ProductCard/>
+                                    <ProductCard/>
+                                    <ProductCard/>
+                                    <ProductCard/>
+                                    <ProductCard/>
+                                    <ProductCard/>
+                                    <ProductCard/>
+                                    <ProductCard/>
+                                    <ProductCard/>
+                                    <ProductCard/>
+                                    <ProductCard/>
+                                    <ProductCard/>
                                 </tbody>
                             </table>
                             <PageNav/>
