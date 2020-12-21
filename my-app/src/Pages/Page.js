@@ -29,8 +29,6 @@ import Case from './Product/Part/Case'
 import ProductSample from './Product/Part/Sample/ProductSample';
 
 import './Page.css'
-import Login from './Account/Login';
-import Register from './Account/Register'
 
 class Page extends Component {
     render() {
