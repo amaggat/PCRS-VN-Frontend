@@ -1,0 +1,91 @@
+.detail-img {
+    position: block;
+    width: 100%;
+    z-index: 0;
+    border: solid 1px black;
+}
+
+.product-detail .block {
+    margin-bottom: 30px;
+}
+
+.product-detail .left, .product-detail .right {
+    padding: 0;
+}
+
+.product-detail .left {
+    margin-right: 25px;
+}
+
+.product-detail .detail-title {
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    border-bottom: solid 0.6px black;
+}
+
+.product-detail .detail-price {
+    font-size: 18px !important;
+}
+
+.product-detail .detail-text p{
+    font-family: 'Rubik', sans-serif; 
+    font-size: 14px;
+}
+
+
+
+.product-detail .detail-block .body {
+    margin-bottom: 5px;
+}
+
+.product-detail .detail-block .title {
+    font-size: 18;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.form-group .btn {
+    background-color: #2c85c5;
+}
+
+.form-group .btn:hover {
+    background-color: rgb(30, 91, 134);
+}
+
+.product-detail .action {
+    margin: 0;
+    border: solid 0.6px black;
+    border-top: none;
+    background-color: #f9f5e9;
+}
+
+.product-detail .action-function {
+    text-align: center;
+    padding: 10px 3px !important;
+}
+
+.product-detail .form-title {
+    margin: 0;
+}
+
+.product-detail .img {
+    margin: 0;
+}
+
+.product-detail .banner {
+    background-color: #505fa1;
+}
+
+.banner .banner-title {
+    color: #8fa2cd;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.banner .banner-name {
+    font-size: 36px;
+    margin-bottom: 0px;
+}
