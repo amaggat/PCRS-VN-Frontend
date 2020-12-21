@@ -22,8 +22,8 @@ class Build extends Component {
                         </div>
                         <div className="col-10">
                             <TopFunction/>
-                            <div class="row mt-3">
-                                <div class="col-3 mb-4">
+                            <div className="row mt-3">
+                                <div className="col-3 mb-4">
                                     <BuildTag/>
                                 </div>
                                 <div className="col-3 mb-4">

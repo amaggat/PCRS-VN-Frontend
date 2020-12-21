@@ -8,7 +8,7 @@ class Info extends Component {
             <div className="col">
                 <div className="card white-text">
                     <div className="card-body">
-                        <p className="card-text">
+                        <div className="card-text">
                             <ul className="card-title white-text">
                                 <li>
                                     <h5 className="footer-title">PROJECT TEAM</h5> 
@@ -29,7 +29,7 @@ class Info extends Component {
                                     <Link to="">Privacy Policy</Link>
                                 </li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>

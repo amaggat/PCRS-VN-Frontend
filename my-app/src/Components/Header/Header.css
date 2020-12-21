@@ -27,16 +27,18 @@
 }
 
 .hide {
-    display: none;
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s;
 }
 
 .system-builder-dropdown {
     position: absolute;
     z-index: 100;
     width: 100%;
-   transition-duration: 5s;
-   background-color: #26293c;
-   padding: 2rem 4rem;
+    background-color: #26293c;
+    padding: 2rem 4rem;
 }
 
 .prodcut-catrgory {

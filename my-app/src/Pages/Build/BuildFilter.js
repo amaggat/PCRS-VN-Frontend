@@ -28,15 +28,15 @@ class BuildFilter extends Component {
                     <div className="form-group border-top pt-2">
                         <label>Featured Build</label>
                         <div className="custom-control"> 
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">All</label>
                             </div>                                    
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">Yes</label>
                             </div>                                    
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">No</label>
                             </div>
@@ -46,23 +46,23 @@ class BuildFilter extends Component {
                     <div className="form-group border-top pt-2">
                         <label>CPU</label>
                         <div className="custom-control"> 
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">All</label>
                             </div>                                    
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">AMD Ryzen 5 2600</label>
                             </div>                                    
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">AMD Ryzen 5 3600</label>
                             </div>
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">AMD Ryzen 5 3600X</label>
                             </div>                                    
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">AMD Ryzen 5 3700X</label>
                             </div>
@@ -72,15 +72,15 @@ class BuildFilter extends Component {
                     <div className="form-group border-top pt-2">
                         <label>CPU Overclocked</label>
                         <div className="custom-control"> 
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">All</label>
                             </div>                                    
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">Yes</label>
                             </div>                                    
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">No</label>
                             </div>
@@ -90,23 +90,23 @@ class BuildFilter extends Component {
                     <div className="form-group border-top pt-2">
                         <label>CPU Socket</label>
                         <div className="custom-control"> 
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">All</label>
                             </div>                                    
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">AM4</label>
                             </div>                                    
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">LGA1150</label>
                             </div>
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">LGA1151</label>
                             </div>
-                            <div classNameName="form-check">
+                            <div className="form-check">
                                 <input type="checkbox" className="form-check-input" id="featured-build"/>
                                 <label className="form-check-label" for="featured-build">LGA1155</label>
                             </div>

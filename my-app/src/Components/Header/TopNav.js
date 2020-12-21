@@ -6,7 +6,7 @@ import './Header.css';
 class TopNav extends Component {
     render() {
         return (
-            <div classNames="top-nav">
+            <div className="top-nav">
                 
                 <ul className="nav justify-content-end">
                     {/* <li className="nav-item">

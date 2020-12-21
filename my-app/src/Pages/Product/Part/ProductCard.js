@@ -17,10 +17,10 @@ class ProductCard extends Component {
                 <td>63 CFM</td>
                 <td>36 dB</td>
                 <td>Yes</td>
-                <td>5 <i class="fa fa-star star-activate" ></i></td>
+                <td>5 <i className="fa fa-star star-activate" ></i></td>
                 <td>$89.98</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm">
+                    <button type="button" className="btn btn-primary btn-sm">
                         Add
                     </button>
                 </td>

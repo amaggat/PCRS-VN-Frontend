@@ -15,7 +15,7 @@ class SubNav extends Component {
                         <Link className="nav-link" to="/builds">Completed Builds</Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link className="nav-link dropdown-toggle" role="button" onFocus={()=>handleDropdown('focus')} onBlur={()=>handleDropdown('blur')}>Browse Products</Link>
+                        <Link to="#" className="nav-link dropdown-toggle" role="button" onFocus={()=>handleDropdown('focus')} onBlur={()=>handleDropdown('blur')}>Browse Products</Link>
                     </li>
                 </ul>
             </nav>
