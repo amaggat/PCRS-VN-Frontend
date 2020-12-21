@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import "./List.css"
-import ProductCard from './Table'; 
+import Table from './Table'; 
 
 class List extends Component {
     render () {
@@ -15,7 +15,7 @@ class List extends Component {
 
                 <div className="tab-content sb-table w-container" id="pills-tabContent">
                     <div className="tab-pane fade show active" id="pills-system" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <ProductCard /> 
+                        <Table /> 
                     </div>
                 </div>
                 <Footer/>

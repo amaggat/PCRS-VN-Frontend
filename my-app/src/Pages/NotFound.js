@@ -8,7 +8,7 @@ class NotFound extends Component {
         return (
             <div className="notfound white-back">
                 <Header />
-                <dir className="card-body">
+                <dir className="body card-body">
                     <div className="card-title main-text text-center">
                         <h1>Oops!</h1>
                     </div>

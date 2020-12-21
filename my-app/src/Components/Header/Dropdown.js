@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import { Link } from 'react-router-dom';
+
 import Case from './img/nav-case.png'
 import CPU from './img/nav-cpu.png'
 import CC from './img/nav-cpucooler.png'
@@ -17,7 +18,7 @@ class Dropdown extends Component {
                     <div className="col-6">
                         <div className="row">
                             <div className="col-3 prodcut-catrgory">
-                                <Link className="product-category__item"  to="/products/case" >
+                                <Link className="product-category__item" to="/products/case">
                                     <img className="product-category__item-img" alt="case" src={Case}/>
                                     <span className="product-category__item-title">Case</span>
                                 </Link>

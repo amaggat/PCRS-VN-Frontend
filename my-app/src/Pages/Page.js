@@ -6,6 +6,9 @@ import Footer from "../Components/Footer/Footer";
 import ReturnHeader from "../Components/Header/ReturnHeader";
 import NotFound from "./NotFound";
 
+import Login from "./Account/Login";
+import Register from "./Account/Register";
+
 import Home from "./Home/Home"
 import About from "./About/About"
 import Help from "./Help/Help"
@@ -15,13 +18,15 @@ import Build from "./Build/Build"
 import Products from './Product/Product'
 
 import CPU from "./Product/Part/CPU"
+import CCooler from './Product/Part/CCooler'
 import MotherBoard from './Product/Part/MotherBoard'
 import Memory from './Product/Part/Memory'
 import Storage from './Product/Part/Storage'
 import VideoCard from './Product/Part/VideoCard'
 import Power from './Product/Part/Power'
 import Case from './Product/Part/Case'
-import CCooler from './Product/Part/CCooler'
+
+import ProductSample from './Product/Part/Sample/ProductSample';
 
 import './Page.css'
 import Login from './Account/Login';
@@ -38,22 +43,25 @@ class Page extends Component {
                         <Route path="/register" component={Register} />
                         {/* Basic Page */}
                         <Route exact path="/" component={Home} />
-                        <Route path="/about" component={About} />
-                        <Route path="/help" component={Help} />
+                        <Route exact path="/about" component={About} />
+                        <Route exact path="/help" component={Help} />
                         {/* Functional Page */}
-                        <Route path="/list" component={List} />
-                        <Route path="/builds" component={Build} />
+                        <Route exact path="/list" component={List} />
+                        <Route exact path="/builds" component={Build} />
                         <Route exact path="/products" component={Products} />
                         {/* Browse Product subpages */}
-                        <Route path="/products/cpu" component={CPU} />
-                        <Route path="/products/CC" component={CCooler} />
-                        <Route path="/products/mother-board" component={MotherBoard} />
-                        <Route path="/products/memory" component={Memory} />
-                        <Route path="/products/storage" component={Storage} />
-                        <Route path="/products/video-card" component={VideoCard} />
-                        <Route path="/products/power" component={Power} />
-                        <Route path="/products/case" component={Case} />
+                        <Route exact path="/products/cpu" component={CPU} />
+                        <Route exact path="/products/cpu-cooler" component={CCooler} />
+                        <Route exact path="/products/mother-board" component={MotherBoard} />
+                        <Route exact path="/products/memory" component={Memory} />
+                        <Route exact path="/products/storage" component={Storage} />
+                        <Route exact path="/products/video-card" component={VideoCard} />
+                        <Route exact path="/products/power" component={Power} />
+                        <Route exact path="/products/case" component={Case} />
+                        
+                        <Route exact path="/products/cpu/sample" component={ProductSample} />
                         {/* 404 */}
+
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
