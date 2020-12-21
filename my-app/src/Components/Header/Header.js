@@ -20,7 +20,7 @@ class Header extends Component {
             dropdown = true;
         }
         if(event === 'blur') {
-            dropdown = false; //fucking shit
+            dropdown = false;
         }
         this.setState({
             dropdown,

@@ -16,27 +16,27 @@ class CPU extends Component {
                     <h1 className="text-center">Choose A CPU</h1>
                 </div>
 
-                <div class="tab-pane w-container" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">
-                    <div class="row ">
-                        <div class="col-2">
+                <div className="tab-pane w-container" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div className="row ">
+                        <div className="col-2">
                             <ProductFilter/>
                         </div>
                         <div className="col-10">
                             <TopFunctionProduct/>
-                            <table class="table">
+                            <table className="table">
                                 <thead>
-                                    <tr class="font-weight-bold">
-                                        <th scope="col" class="font-weight-bold"><input type="checkbox" value=""/></th>
-                                        <th scope="col" class="font-weight-bold">Name</th>
-                                        <th scope="col" class="font-weight-bold">Size</th>
-                                        <th scope="col" class="font-weight-bold">Color</th>
-                                        <th scope="col" class="font-weight-bold">RPM</th>
-                                        <th scope="col" class="font-weight-bold">AirFlow</th>
-                                        <th scope="col" class="font-weight-bold">Noise Level</th>
-                                        <th scope="col" class="font-weight-bold">PWM</th>
-                                        <th scope="col" class="font-weight-bold">Rating</th>
-                                        <th scope="col" class="font-weight-bold">Price</th>
-                                        <th scope="col" class="font-weight-bold">Action</th>
+                                    <tr className="font-weight-bold">
+                                        <th scope="col" className="font-weight-bold"><input type="checkbox" value=""/></th>
+                                        <th scope="col" className="font-weight-bold">Name</th>
+                                        <th scope="col" className="font-weight-bold">Size</th>
+                                        <th scope="col" className="font-weight-bold">Color</th>
+                                        <th scope="col" className="font-weight-bold">RPM</th>
+                                        <th scope="col" className="font-weight-bold">AirFlow</th>
+                                        <th scope="col" className="font-weight-bold">Noise Level</th>
+                                        <th scope="col" className="font-weight-bold">PWM</th>
+                                        <th scope="col" className="font-weight-bold">Rating</th>
+                                        <th scope="col" className="font-weight-bold">Price</th>
+                                        <th scope="col" className="font-weight-bold">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

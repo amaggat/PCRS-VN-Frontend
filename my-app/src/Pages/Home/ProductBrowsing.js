@@ -9,11 +9,11 @@ import ssd_icon from './img/nav-ssd.png';
 
 import "./Home.css";
 
-class ProductBrowsing extends Component {
+class ProductBrowsing_ extends Component {
     render () {
         return (
             <div className="card-group w-container productBrowsing">
-                <div className="col">
+                <div className="col-6">
                     <div className="row">
                         <div className="col-sm card">
                             <div className="card-body">
@@ -65,7 +65,7 @@ class ProductBrowsing extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col">
+                <div className="col-6">
                     <div className="card-body">
                         <h2 className="card-title">Abcdefghiklm</h2>
                         <p className="card-text">Looking for PC part?</p>
@@ -76,4 +76,43 @@ class ProductBrowsing extends Component {
     }
 }
 
-export default ProductBrowsing;
+// export default ProductBrowsing;
+
+function ProductItem({img,link,name}) {
+	return (
+		<div className="col-4 product-browsing__item" >
+			<Link className="product-browsing__item-link" to={link}>
+				<img className="product-browsing__item-img" src={img} alt="completed-build" />
+				<h5 className="product-browsing__item-title">{name}</h5>
+			</Link>
+		</div>
+	)
+}
+
+export default function ProductBrowsing() {
+	return (
+  	<div className="container">
+			<div className="row">
+				<div className="col-6">
+					<div className="row">
+						<ProductItem img={cpu_icon} link="#" name="CPU"/>
+						<ProductItem img={gpu_icon} link="#" name="Video Card"/>
+						<ProductItem img={ram_icon} link="#" name="Memory"/>
+						<ProductItem img={main_icon} link="#" name="Mother board"/>
+						<ProductItem img={ssd_icon} link="#" name="Storage"/>
+						<div className="col-4 product-browsing__item">
+							<button type="button" className="btn btn-primary btn-lg">See more</button>
+						</div>
+
+					</div>
+				</div>
+				<div className="col-6">
+					<div className="card-body">
+						<h2 className="card-title">Abcdefghiklm</h2>
+						<p className="card-text">Looking for PC part?</p>
+					</div>
+				</div>
+			</div>
+		</div>
+  );
+}

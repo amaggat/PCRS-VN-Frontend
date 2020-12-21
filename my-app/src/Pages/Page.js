@@ -25,9 +25,12 @@ import Storage from './Product/Part/Storage'
 import VideoCard from './Product/Part/VideoCard'
 import Power from './Product/Part/Power'
 import Case from './Product/Part/Case'
+
 import ProductSample from './Product/Part/Sample/ProductSample';
 
 import './Page.css'
+import Login from './Account/Login';
+import Register from './Account/Register'
 
 class Page extends Component {
     render() {

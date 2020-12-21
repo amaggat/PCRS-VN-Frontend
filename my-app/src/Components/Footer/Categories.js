@@ -8,22 +8,22 @@ class Categories extends Component {
             <div className="col">
                 <div className="card white">
                     <div className="card-body">
-                        <p className="card-text">
+                        <div className="card-text">
                             <ul className="footer-list">
                                 <li>
                                     <h5 className="footer-title">CATEGORIES</h5> 
                                 </li>
                                 <li>
-                                    <Link to="">System Builds</Link>
+                                    <Link to="#">System Builds</Link>
                                 </li>
                                 <li>
-                                    <Link to="">Complete Builds</Link>
+                                    <Link to="#">Complete Builds</Link>
                                 </li>
                                 <li>
-                                    <Link to="">Browse Products</Link>
+                                    <Link to="#">Browse Products</Link>
                                 </li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@ class Sologan extends Component {
             <div className="col">
                 <div className="card white-text">
                     <div className="card-body">
-                        <img src={logo} class="logo" alt="PC-Builder" />
+                        <img src={logo} className="logo" alt="PC-Builder" />
                         <h4 className="card-title">PICK PARTS.</h4>
                         <h4 className="card-title">BUILD YOUR PC.</h4>
                         <h4 className="card-title">COMPARE AND SHARE.</h4>
