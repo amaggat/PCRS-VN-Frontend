@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Footer from '../../../../Components/Footer/Footer';
-import Header from '../../../../Components/Header/Header';
+import Footer from '../../../../../Components/Footer/Footer';
+import Header from '../../../../../Components/Header/Header';
 import img from './cpu-demo.jpeg';
 
-import './ProductSample.css';
+import '../../ProductSample.css';
 
-class ProductSample extends Component {
+class CPUTemplate extends Component {
     render () {
         return (
             <div className="product-detail white-back">
@@ -86,4 +86,4 @@ class ProductSample extends Component {
     }
 }
 
-export default ProductSample;
+export default CPUTemplate;

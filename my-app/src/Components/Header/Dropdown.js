@@ -60,7 +60,7 @@ class Dropdown extends Component {
                                 </Link>
                             </div>
                             <div className="col-3 prodcut-catrgory">
-                                <Link className="product-category__item" to="/products/gpu">
+                                <Link className="product-category__item" to="/products/video-card">
                                     <img className="product-category__item-img" alt="gpu" src={GPU}/>
                                     <span className="product-category__item-title">Video Card</span>
                                 </Link>

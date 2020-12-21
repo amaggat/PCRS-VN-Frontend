@@ -14,13 +14,13 @@ class Categories extends Component {
                                     <h5 className="footer-title">CATEGORIES</h5> 
                                 </li>
                                 <li>
-                                    <Link to="#">System Builds</Link>
+                                    <Link to="/list">System Builds</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">Complete Builds</Link>
+                                    <Link to="/builds">Complete Builds</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">Browse Products</Link>
+                                    <Link to="/products">Browse Products</Link>
                                 </li>
                             </ul>
                         </div>

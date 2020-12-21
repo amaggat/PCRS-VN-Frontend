@@ -7,60 +7,60 @@ import './Product.css'
 class Product extends Component {
     render (){
         return(
-            <div className="products-menu">
+            <div className="products-menu white-back">
                 <Header />
                 <div className="banner">
                     <h1 className="text-center">Products Categories</h1>
                 </div>
-                <div className=" container-md">
+                <div className="w-container">
                     <div>
-                        <h4 className="title border-bottom">Core</h4>
-                        <ul className="container-sm">
-                            <li><Link tp="#">CPU</Link></li>
-                            <li><Link tp="#">CPU Cooler</Link></li>
-                            <li><Link tp="#">Motherboards</Link></li>
-                            <li><Link tp="#">Memory</Link></li>
-                            <li><Link tp="#">Storage</Link></li>
-                            <li><Link tp="#">Video Cards</Link></li>
-                            <li><Link tp="#">Cases</Link></li>
-                            <li><Link tp="#">Power Supplies</Link></li>
-                            <li><Link tp="#">Optical Drives</Link></li>
-                            <li><Link tp="#">Operating Systems</Link></li>
-                            <li><Link tp="#">Software</Link></li>
-                            <li><Link tp="#">Monitors</Link></li>
-                            <li><Link tp="#">External Storage</Link></li>
-                            <li><Link tp="#">Laptops</Link></li>
+                        <h4 className="title">Core</h4>
+                        <ul className="block">
+                            <li><Link to="/products/cpu">CPU</Link></li>
+                            <li><Link to="/products/cpu-cooler">CPU Cooler</Link></li>
+                            <li><Link to="/products/mother-board">Motherboards</Link></li>
+                            <li><Link to="/products/memory">Memory</Link></li>
+                            <li><Link to="/products/storage">Storage</Link></li>
+                            <li><Link to="/products/video-card">Video Cards</Link></li>
+                            <li><Link to="/products/case">Cases</Link></li>
+                            <li><Link to="/products/power">Power Supplies</Link></li>
+                            <li><Link to="#">Optical Drives</Link></li>
+                            <li><Link to="#">Operating Systems</Link></li>
+                            <li><Link to="#">Software</Link></li>
+                            <li><Link to="#">Monitors</Link></li>
+                            <li><Link to="#">External Storage</Link></li>
+                            <li><Link to="#">Laptops</Link></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="title border-bottom">Accessories/Other</h4>
-                        <ul className="container-sm">
-                            <li><Link tp="#">Case Accessories</Link></li>
-                            <li><Link tp="#">Case Fans</Link></li>
-                            <li><Link tp="#">Fan Controllers</Link></li>
-                            <li><Link tp="#">Thermal Compound</Link></li>
-                            <li><Link tp="#">UPS Systems</Link></li>
+                        <h4 className="title">Accessories / Other</h4>
+                        <ul className="block">
+                            <li><Link to="#">Case Accessories</Link></li>
+                            <li><Link to="#">Case Fans</Link></li>
+                            <li><Link to="#">Fan Controllers</Link></li>
+                            <li><Link to="#">Thermal Compound</Link></li>
+                            <li><Link to="#">UPS Systems</Link></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="title border-bottom">Expansion Cards/Networking</h4>
-                        <ul className="container-sm">
-                            <li><Link tp="#">Sound Cards</Link></li>
-                            <li><Link tp="#">Wired Network Adapters</Link></li>
-                            <li><Link tp="#">Wireless Network Adapters</Link></li>
+                        <h4 className="title">Expansion Cards / Networking</h4>
+                        <ul className="block">
+                            <li><Link to="#">Sound Cards</Link></li>
+                            <li><Link to="#">Wired Network Adapters</Link></li>
+                            <li><Link to="#">Wireless Network Adapters</Link></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="title border-bottom">Peripherals</h4>
-                        <ul className="container-sm">
-                            <li><Link tp="#">Headphones</Link></li>
-                            <li><Link tp="#">Keyboards</Link></li>
-                            <li><Link tp="#">Mice</Link></li>
-                            <li><Link tp="#">Speakers</Link></li>
-                            <li><Link tp="#">Webcams</Link></li>
+                        <h4 className="title">Peripherals</h4>
+                        <ul className="block">
+                            <li><Link to="#">Headphones</Link></li>
+                            <li><Link to="#">Keyboards</Link></li>
+                            <li><Link to="#">Mice</Link></li>
+                            <li><Link to="#">Speakers</Link></li>
+                            <li><Link to="#">Webcams</Link></li>
                         </ul>
                     </div>
                 </div>

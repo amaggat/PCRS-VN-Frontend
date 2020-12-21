@@ -17,20 +17,18 @@ import List from "./List/List"
 import Build from "./Build/Build"
 import Products from './Product/Product'
 
-import CPU from "./Product/Part/CPU"
-import CCooler from './Product/Part/CCooler'
-import MotherBoard from './Product/Part/MotherBoard'
-import Memory from './Product/Part/Memory'
-import Storage from './Product/Part/Storage'
-import VideoCard from './Product/Part/VideoCard'
-import Power from './Product/Part/Power'
-import Case from './Product/Part/Case'
+import CPU from "./Product/Part/CPU/CPU"
+import CCooler from './Product/Part/CCooler/CCooler'
+import MotherBoard from './Product/Part/MotherBoard/MotherBoard'
+import Memory from './Product/Part/Memory/Memory'
+import Storage from './Product/Part/Storage/Storage'
+import VideoCard from './Product/Part/VideoCard/VideoCard'
+import Power from './Product/Part/Power/Power'
+import Case from './Product/Part/Case/Case'
 
-import ProductSample from './Product/Part/Sample/ProductSample';
+import ProductSample from './Product/Part/CPU/Sample/CPUTemplate';
 
 import './Page.css'
-import Login from './Account/Login';
-import Register from './Account/Register'
 
 class Page extends Component {
     render() {
