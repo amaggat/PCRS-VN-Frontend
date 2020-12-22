@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Header from "../Components/Header/Header";
-import Footer from "../Components/Footer/Footer";
-import ReturnHeader from "../Components/Header/ReturnHeader";
 import NotFound from "./NotFound";
 
 import Login from "./Account/Login";
@@ -26,9 +23,16 @@ import VideoCard from './Product/Part/VideoCard/VideoCard'
 import Power from './Product/Part/Power/Power'
 import Case from './Product/Part/Case/Case'
 
-import ProductSample from './Product/Part/CPU/Sample/CPUTemplate';
+import CPUTemplate from './Product/Part/CPU/Sample/CPUTemplate';
+import CaseTemplate from './Product/Part/Case/Sample/CaseTemplate';
 
 import './Page.css'
+import CCoolerTemplate from './Product/Part/CCooler/Sample/CCoolerTemplate';
+import MemoryTemplate from './Product/Part/Memory/Sample/MemoryTemplate';
+import MotherboardTemplate from './Product/Part/MotherBoard/Sample/MotherboardTemplate';
+import PowerTemplate from './Product/Part/Power/Sample/PowerTemplate';
+import StorageTemplate from './Product/Part/Storage/Sample/StorageTemplate';
+import VidecardTemplate from './Product/Part/VideoCard/Sample/VideocardTemplate';
 
 class Page extends Component {
     render() {
@@ -57,7 +61,14 @@ class Page extends Component {
                         <Route exact path="/products/power" component={Power} />
                         <Route exact path="/products/case" component={Case} />
                         
-                        <Route exact path="/products/cpu/sample" component={ProductSample} />
+                        <Route exact path="/products/cpu/sample" component={CPUTemplate} />
+                        <Route exact path="/products/case/sample" component={CaseTemplate} />
+                        <Route exact path="/products/cpu-cooler/sample" component={CCoolerTemplate} />
+                        <Route exact path="/products/memory/sample" component={MemoryTemplate} />
+                        <Route exact path="/products/motherboard/sample" component={MotherboardTemplate} />
+                        <Route exact path="/products/power/sample" component={PowerTemplate} />
+                        <Route exact path="/products/storage/sample" component={StorageTemplate} />
+                        <Route exact path="/products/video-card/sample" component={VidecardTemplate} />
                         {/* 404 */}
 
                         <Route component={NotFound}/>

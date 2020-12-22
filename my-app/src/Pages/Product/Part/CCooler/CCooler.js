@@ -25,8 +25,9 @@ class CCooler extends Component {
                             <TopFunctionProduct/>
                             <table className="table">
                                 <thead>
-                                    <tr className="font-weight-bold">
-                                        <th scope="col" className="font-weight-bold"><input type="checkbox" value=""/></th>
+                                    <tr className="product-title">
+                                        <th></th>
+                                        {/* <th scope="col" className="font-weight-bold"><input type="checkbox" value=""/></th> */}
                                         <th scope="col" className="font-weight-bold" id="name" >Name</th>
                                         <th scope="col" className="font-weight-bold" id="fan-rpm">Fan RPM</th>
                                         <th scope="col" className="font-weight-bold" id="noise">Noise Level</th>
@@ -34,6 +35,7 @@ class CCooler extends Component {
                                         <th scope="col" className="font-weight-bold" id="radiator">Radiator Size</th>
                                         <th scope="col" className="font-weight-bold" id="rating">Rating</th>
                                         <th scope="col" className="font-weight-bold" id="price">Price</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>

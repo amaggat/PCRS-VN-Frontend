@@ -25,17 +25,17 @@ class MotherBoard extends Component {
                             <TopFunctionProduct/>
                             <table class="table">
                                 <thead>
-                                    <tr class="font-weight-bold">
+                                    <tr className="product-title">
                                         <th></th>
                                         {/* <th scope="col" class="font-weight-bold"><input type="checkbox" value=""/></th> */}
                                         <th scope="col" class="font-weight-bold" id="name">Name</th>
                                         <th scope="col" class="font-weight-bold" id="socket">Socket / CPU</th>
-                                        <th scope="col" class="font-weight-bold" id="form">Form Factor</th>
+                                        <th scope="col" class="font-weight-bold" id="chipset">Chipset</th>
                                         <th scope="col" class="font-weight-bold" id="memory-max">Memory Max</th>
                                         <th scope="col" class="font-weight-bold" id="memory-slots">Memory Slots</th>
-                                        <th scope="col" class="font-weight-bold" id="color">Color</th>
                                         <th scope="col" class="font-weight-bold" id="rating">Rating</th>
                                         <th scope="col" class="font-weight-bold" id="price">Price</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>

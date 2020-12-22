@@ -25,18 +25,16 @@ class Storage extends Component {
                             <TopFunctionProduct/>
                             <table class="table">
                                 <thead>
-                                    <tr class="font-weight-bold">
+                                    <tr class="product-title">
                                         <th></th>
                                         {/* <th scope="col" class="font-weight-bold"><input type="checkbox" value=""/></th> */}
                                         <th scope="col" class="font-weight-bold" id="name">Name</th>
                                         <th scope="col" class="font-weight-bold" id="capacity">Capacity</th>
-                                        <th scope="col" class="font-weight-bold" id="price-per-gb">Price / GB</th>
                                         <th scope="col" class="font-weight-bold" id="type">Type</th>
-                                        <th scope="col" class="font-weight-bold" id="cache">Cache</th>
-                                        <th scope="col" class="font-weight-bold" id="form">Form Factor</th>
-                                        <th scope="col" class="font-weight-bold" id="interface">Interface</th>
+                                        <th scope="col" class="font-weight-bold" id="chipset">Chipset</th>
                                         <th scope="col" class="font-weight-bold" id="rating">Rating</th>
                                         <th scope="col" class="font-weight-bold" id="price">Price</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>

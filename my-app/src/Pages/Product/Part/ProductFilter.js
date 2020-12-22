@@ -5,8 +5,8 @@ class ProductFilter extends Component {
     render(){
         return (
             <div className="filter">
-                <h5 className="border-bottom p-2 font-weight-bold">Filter</h5>
-                <form>
+                <h5 className="filter-title p-2">Filter</h5>
+                <form className="filter-content">
                     <div className="form-group">
                         <label>Price</label>
                         <div className="input-group">

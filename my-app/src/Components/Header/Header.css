@@ -3,6 +3,11 @@
     src: url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap);
 }
 
+.dropdown-container {
+    margin: auto;
+    width: 70vw;
+}
+
 .header {
     position: relative;
     background-color: rgb(18, 19, 30);

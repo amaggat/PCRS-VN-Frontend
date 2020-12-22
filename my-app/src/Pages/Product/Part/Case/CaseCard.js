@@ -1,14 +1,17 @@
 import React, { Component } from 'react';  
+import { Link, Route } from 'react-router-dom';
 import sample_image from './Sample/case-demo.jpeg' 
 
 class CaseCard extends Component {
     render(){
         return (
-            <tr>
-                <th scope="row"><input type="checkbox" value=""/></th>
+            <tr className="product-card">
+                <td scope="row"><input type="checkbox" value=""/></td>
                 <td className="preview card-text">
-                    <img src={sample_image} alt="" />
-                    <span>Phanteks Eclipse P300A Mesh</span>
+                    <Link to="/products/case/sample">
+                        <img src={sample_image} alt="" />
+                        <span>Phanteks Eclipse P300A Mesh</span>
+                    </Link>
                 </td>
                 <td className="card-text">ATX Mid Tower</td>
                 <td className="card-text">Black</td>
@@ -23,6 +26,7 @@ class CaseCard extends Component {
                         Add
                     </button>
                 </td>
+                <Route path="/products/case/sample" component={CaseCard}></Route>
             </tr>
         )
     }

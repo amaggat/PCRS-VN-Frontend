@@ -7,11 +7,13 @@ import PageNav from '../../../../Components/Page/PageNav';
 
 import CPUCard from './CPUCard';
 import '../../Product.css'
+import { Route, Switch } from 'react-router-dom';
+import CPUTemplate from './Sample/CPUTemplate';
 
 class CPU extends Component {
     render() {
         return ( 
-            <div className="product cpu white-back">
+            <div className="product white-back">
                 <Header />
                 <div className="product-banner">
                     <h1 className="text-center">Choose A CPU</h1>
@@ -25,17 +27,18 @@ class CPU extends Component {
                         <div className="col-10">
                             <TopFunctionProduct/>
                             <table className="table">
-                                <thead>
-                                    <tr className="font-weight-bold">
-                                        <th scope="col" className="font-weight-bold"><input type="checkbox" value=""/></th>
+                                <thead className="product-card-head">
+                                    <tr className="product-title">
+                                        <th></th>
+                                        {/* <th scope="col" className="font-weight-bold"><input type="checkbox" value=""/></th> */}
                                         <th scope="col" className="font-weight-bold" id="name">Name</th>
-                                        <th scope="col" className="font-weight-bold" id="core-clock">Core Clock</th>
-                                        <th scope="col" className="font-weight-bold" id="boost-clock">Boost Clock</th>
-                                        <th scope="col" className="font-weight-bold" id="tdp">TDP</th>
-                                        <th scope="col" className="font-weight-bold" id="integrated-graphics">Integrated Graphics</th>
-                                        <th scope="col" className="font-weight-bold" id="smt">SMT</th>
+                                        <th scope="col" className="font-weight-bold" id="chipset">Chipset</th>
+                                        <th scope="col" className="font-weight-bold" id="core">Core</th>
+                                        <th scope="col" className="font-weight-bold" id="thread">Thread</th>
+                                        <th scope="col" className="font-weight-bold" id="socket">Socket</th>
                                         <th scope="col" className="font-weight-bold" id="rating">Rating</th>
                                         <th scope="col" className="font-weight-bold" id="price">Price</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>

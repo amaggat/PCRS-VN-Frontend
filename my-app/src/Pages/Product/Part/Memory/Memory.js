@@ -25,17 +25,16 @@ class CCooler extends Component {
                             <TopFunctionProduct/>
                             <table className="table">
                                 <thead>
-                                    <tr className="font-weight-bold">
-                                        <th scope="col" className="font-weight-bold"><input type="checkbox" value=""/></th>
+                                    <tr className="product-title">
+                                        <th></th>
+                                        {/* <th scope="col" className="font-weight-bold"><input type="checkbox" value=""/></th> */}
                                         <th scope="col" className="font-weight-bold" id="name" >Name</th>
-                                        <th scope="col" className="font-weight-bold" id="speed">Speed</th>
+                                        <th scope="col" className="font-weight-bold" id="speed">Clock speed</th>
+                                        <th scope="col" className="font-weight-bold" id="chipset">Chipset</th>
                                         <th scope="col" className="font-weight-bold" id="modules">Modules</th>
-                                        <th scope="col" className="font-weight-bold" id="price-per-gb" >Price / GB</th>
-                                        <th scope="col" className="font-weight-bold" id="color">Color</th>
-                                        <th scope="col" className="font-weight-bold" id="word-latency">First Word Latency</th>
-                                        <th scope="col" className="font-weight-bold" id="cas-latency">CAS Latency</th>
                                         <th scope="col" className="font-weight-bold" id="rating">Rating</th>
                                         <th scope="col" className="font-weight-bold" id="price">Price</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>

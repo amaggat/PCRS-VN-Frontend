@@ -1,4 +1,5 @@
-.detail-img {
+.product-detail .detail-img {
+    padding: 25px 15px;
     position: block;
     width: 100%;
     z-index: 0;
@@ -34,8 +35,6 @@
     font-family: 'Rubik', sans-serif; 
     font-size: 14px;
 }
-
-
 
 .product-detail .detail-block .body {
     margin-bottom: 5px;

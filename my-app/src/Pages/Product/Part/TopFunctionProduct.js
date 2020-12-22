@@ -4,7 +4,7 @@ import '../Product.css'
 class TopFunctionProduct extends Component {
     render(){
         return(
-            <div className="form-row border-bottom align-items-center">
+            <div className="top-bar form-row align-items-center">
                 <div className="col-5">
                     <div className="col align-items-center">
                         <div className="form-check">

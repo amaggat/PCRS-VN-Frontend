@@ -25,16 +25,19 @@ class CCooler extends Component {
                             <TopFunctionProduct/>
                             <table className="table">
                                 <thead>
-                                    <tr className="font-weight-bold">
-                                        <th scope="col" className="font-weight-bold"><input type="checkbox" value=""/></th>
+                                    <tr className="product-title">
+                                        <th></th>
+                                        {/* <th scope="col" className="font-weight-bold"><input type="checkbox" value=""/></th> */}
                                         <th scope="col" className="font-weight-bold" id="name" >Name</th>
                                         <th scope="col" className="font-weight-bold" id="type">Type</th>
+                                        <th scope="col" className="font-weight-bold" id="color">Color</th>
                                         <th scope="col" className="font-weight-bold" id="power">Power Supply</th>
                                         <th scope="col" className="font-weight-bold" id="window">Side Pane Window</th>
                                         <th scope="col" className="font-weight-bold" id="external-bays">External 5.25" Bays</th>
                                         <th scope="col" className="font-weight-bold" id="internal-bays">Internal 5.25" Bays</th>
                                         <th scope="col" className="font-weight-bold" id="rating">Rating</th>
                                         <th scope="col" className="font-weight-bold" id="price">Price</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>

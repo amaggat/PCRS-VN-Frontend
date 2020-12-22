@@ -14,7 +14,7 @@ class Dropdown extends Component {
     render() {
         return (
             <div className="dropdown container-fluid">
-                <div className="row">
+                <div className="row dropdown-container">
                     <div className="col-6">
                         <div className="row">
                             <div className="col-3 prodcut-catrgory">

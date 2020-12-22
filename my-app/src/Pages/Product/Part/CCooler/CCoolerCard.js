@@ -1,14 +1,17 @@
 import React, { Component } from 'react';  
+import { Link } from 'react-router-dom';
 import sample_image from './Sample/cpu-cooler-demo.jpeg' 
 
 class CCoolerCard extends Component {
     render(){
         return (
-            <tr>
-                <th scope="row"><input type="checkbox" value=""/></th>
+            <tr className="product-card">
+                <td scope="row"><input type="checkbox" value=""/></td>
                 <td className="preview card-text">
-                    <img src={sample_image} alt="" />
-                    <span>Cooler Master Hyper 212 EVO</span>
+                    <Link to="/products/cpu-cooler/sample">
+                        <img src={sample_image} alt="" />
+                        <span>Cooler Master Hyper 212 EVO</span>
+                    </Link>
                 </td>
                 <td className="card-text">600 - 2000 RPM</td>
                 <td className="card-text">9 - 36 dB</td>
