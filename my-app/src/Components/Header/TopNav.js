@@ -7,30 +7,31 @@ class TopNav extends Component {
     render() {
         return (
             <div className="top-nav">
-                
-                <ul className="nav justify-content-end">
-                    {/* <li className="nav-item">
-                        <Link className="navbar-brand" to="/"><img className="logo round float-left" src={logo} alt="logo"/></Link>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                            <div className="navbar-toggler-icon"></div>
-                        </button>
-                    </li> */}
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/">Home</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/about">About Us</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/help">Help</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/login">Login</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/register">Register</Link>
-                    </li>
-                </ul>
+                <div className="nav-container">
+                    <div className="row">
+                        <div className="col-sm-2 nav-link">
+                            <Link to="/">
+                                <img className="nav-logo" src={logo} alt="Logo"/>
+                            </Link>
+                        </div>
+                        <div className="col-sm-8">
+
+                        </div>
+                        <div className="col-sm-2">
+                            <nav className="nav text-center">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/login">Login</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/register">Register</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/about">About Us</Link>
+                                </li>
+                            </nav>
+                        </div>
+                    </div>    
+                </div>
             </div>
 
         )

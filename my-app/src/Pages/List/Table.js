@@ -12,20 +12,20 @@ import GPUCard from './Part/VideoCard';
 class Table extends Component {
     render() {
         return (
-            <table className="table">
+            <table className="table title">
                 <thead>
                     <tr>
-                        <th scope="col" className="font-weight-bold">Component</th>
-                        <th scope="col" className="font-weight-bold">Selection</th>
-                        <th scope="col" className="font-weight-bold">Base</th>
-                        <th scope="col" className="font-weight-bold">Promo</th>
-                        <th scope="col" className="font-weight-bold">Snipping</th>
-                        <th scope="col" className="font-weight-bold">Tax</th>
-                        <th scope="col" className="font-weight-bold">Price</th>
-                        <th scope="col" className="font-weight-bold">Where</th>
+                        <th scope="col">Component</th>
+                        <th scope="col">Selection</th>
+                        <th scope="col">Base</th>
+                        <th scope="col">Promo</th>
+                        <th scope="col">Snipping</th>
+                        <th scope="col">Tax</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Where</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="attribute">
                     <CPUCard />
                     <CCCCard />
                     <MotherBoardCard />

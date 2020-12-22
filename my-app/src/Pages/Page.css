@@ -54,3 +54,9 @@ html, body {
 .notfound .sub-text h1 {
     font-size: 26px;
 }
+
+.banner {
+    background-color: blueviolet;
+    padding: 2.5rem 0rem 2rem 0rem;
+    color: white;
+}

@@ -5,7 +5,7 @@
 
 .dropdown-container {
     margin: auto;
-    width: 70vw;
+    width: 80vw;
 }
 
 .header {
@@ -13,8 +13,9 @@
     background-color: rgb(18, 19, 30);
 }
 
-.header .navbar {
+.header .sub-nav {
     background-color: #191b2b;
+    border-top: solid 1px rgb(70, 73, 95);
 }
 
 .header .nav-link {
@@ -33,11 +34,69 @@
     position: static;
 }
 
+.top-nav .nav-link {
+    font-family: 'Roboto';
+    font-size: 14px;
+    display: block;
+}
+
+.top-nav .nav-item {
+    border-right: solid 1px rgb(70, 73, 95);
+}
+
+.top-nav .nav-item:first-child {
+    border-left: solid 1px rgb(70, 73, 95);
+}
+
+.top-nav .text-center {
+    padding-top: 20px;
+}
+
+.top-nav .nav-logo {
+    width: 100px;
+}
+
 .hide {
     /* display: none; */
     visibility: hidden;
     opacity: 0;
     transition: visibility 1s;
+}
+
+.nav-container {
+    width: 90vw;
+    margin: auto;
+}
+
+.header .navbar {
+    padding: 0 !important;
+}
+
+.sub-nav .nav-item {
+    padding: 15px 10px 15px 15px;
+    border-right: solid 1px rgb(70, 73, 95);
+    transition: 0.25s;
+}
+
+.sub-nav .nav-link {
+    padding: 10px 0;
+}
+
+.item-img {
+    width: 25px;
+    display: inline-block;    
+}
+
+.sub-nav .nav-item .nav-link {
+    display: inline;
+} 
+
+.sub-nav .nav-item:hover {
+    background-color: rgb(38, 41, 60);
+}
+
+.sub-nav .nav-item:first-child {
+    border-left: solid 1px rgb(70, 73, 95);
 }
 
 .system-builder-dropdown {
@@ -58,7 +117,7 @@
     color: white;
     background-color: rgb(50, 54, 85);
     border: solid 0.6px rgb(64, 70, 116);
-    padding: 1px;
+    padding: 10px;
     transition: 0.2s;
 }
 .product-category__item:hover {

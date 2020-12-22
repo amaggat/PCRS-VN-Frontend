@@ -1,7 +1,5 @@
-.banner {
-    background-color: blueviolet;
-    padding: 2.5rem 0rem 2rem 0rem;
-    color: white;
+.system-build .banner {
+    background-color: rgb(84, 85, 120);
 }
 
 .fa-plus {
@@ -10,4 +8,54 @@
 
 .system-build .component:hover {
     text-decoration: none;
+}
+
+.system-build .attribute tr td {
+    font-family: "Rubik", sans-serif;
+    font-size: 14px;
+}
+
+.system-build .title thead th {
+    border-bottom: solid 0.6px black;
+    border-top: none;
+}
+
+.warn {
+    border: solid 1px black;
+}
+
+.warn .row {
+    margin: 0;
+}
+
+.warn .no-issue {
+    padding: 5px 0px;
+    background-color: rgb(0, 177, 106);
+    color: white;
+}
+
+.warn .tick, .untick {
+    padding-left: 10px;
+}
+
+.warn .issue {
+    padding: 5px 0px;
+    background-color: rgb(217, 30, 24);
+    color: white;
+}
+
+.warn .wattage {
+    padding: 5px 0px;
+    border-left: solid 1px black;
+    background-color: rgb(44, 133, 197);
+    color: white;
+}
+
+.warn .title {
+    padding-left: 10px;
+}
+
+.warn .text {
+    font-family: "Roboto", sans-serif;
+    padding-left: 5px;
 }

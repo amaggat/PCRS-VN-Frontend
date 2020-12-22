@@ -1,7 +1,7 @@
 .account {
+    min-height: 100vh;
     height: 100%;
     background-color: #26293c;
-    padding-bottom: 22vh;
     font-family: 'Nanum Gothic', sans-serif;
 }
 

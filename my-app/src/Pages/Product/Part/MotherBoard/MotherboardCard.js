@@ -15,8 +15,7 @@ class MotherboardCard extends Component {
                 </td>
                 <td className="card-text">AM4</td>
                 <td className="card-text">AMD B450</td>
-                <td className="card-text">64 GB</td>
-                <td className="card-text">4</td>
+                <td className="card-text">-</td>
                 <td className="card-text">5 <i className="fa fa-star star-activate" ></i></td>
                 <td className="card-text">$89.98</td>
                 <td>

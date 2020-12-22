@@ -39,18 +39,18 @@ class Header extends Component {
         return (
             <div className="header">
                 <TopNav />
-
-                <nav className="navbar navbar-expand-lg sticky-top container-fluid">
-                    <SubNav handleDropdown={this.handleDropdown} />
-                    <div className="btn-search">
-                        <form className="form-inline">
-                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                            <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-                        </form>    
-                    </div>
-                </nav>
-                {/* {dropdown ? dropdownElement : null} */}
-                {dropdownElement}
+                <div className="sub-nav">
+                    <nav className="nav-container navbar navbar-expand-lg sticky-top container-fluid">
+                        <SubNav handleDropdown={this.handleDropdown} />
+                        <div className="btn-search">
+                            <form className="form-inline">
+                                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                                <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                            </form>    
+                        </div>
+                    </nav>
+                    {dropdownElement}
+                </div>
             </div>
         );
     }

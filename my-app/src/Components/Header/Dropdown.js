@@ -69,7 +69,7 @@ class Dropdown extends Component {
                     </div>
                     <div className="col-6 extra-list">
                         <div className="row">
-                            <div className="col-2">
+                            <div className="col-4">
                                 <div className="block">
                                     <div className="title">Cooling</div>
                                     <div className="link">
@@ -103,7 +103,7 @@ class Dropdown extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-2">
+                            <div className="col-4">
                                 <div className="block">
                                     <div className="title">Displays</div>
                                     <div className="link">
@@ -140,7 +140,7 @@ class Dropdown extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-2">
+                            <div className="col-4">
                                 <div className="block">
                                     <div className="title">Software</div>
                                     <div className="link">
