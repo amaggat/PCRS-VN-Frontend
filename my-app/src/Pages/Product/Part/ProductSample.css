@@ -12,6 +12,7 @@
 
 .product-detail .left, .product-detail .right {
     padding: 0;
+    height: 100%;
 }
 
 .product-detail .left {
@@ -69,11 +70,20 @@
 
 .retailer-img img {
     height: 50px;
-    border: solid 0.2px rgb(139, 137, 137);
+    /* border: solid 0.2px rgb(139, 137, 137); */
 }
 
 .product-detail .form-title {
     margin: 0;
+}
+
+.product-detail .base div,.product-detail .promo div{
+    font-family: 'Roboto', sans-serif ;
+    font-size: 16px;
+}
+
+.product-detail .total {
+    color: rgb(30, 91, 134);
 }
 
 .product-detail .img {
@@ -124,3 +134,36 @@
     font-size: 18px;
 }
 
+.right-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 40%;
+    font-size: 2rem;
+    color: #2c85c5;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 0.25s;
+}
+
+.left-arrow {
+    position: absolute;
+    left: 1rem;
+    top: 40%;
+    font-size: 2rem;
+    color: #2c85c5;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 0.25s;
+}
+
+.left-arrow:hover, .right-arrow:hover {
+    transition: 0.3s;
+    color: rgb(30, 91, 134);
+}
+
+.slide {
+    opacity: 1;
+    transition: 1s;
+}

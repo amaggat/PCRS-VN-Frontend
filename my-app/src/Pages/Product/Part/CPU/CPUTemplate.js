@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../../../../Components/Footer/Footer';
 import Header from '../../../../Components/Header/Header';
 import img from './cpu-demo.jpeg';
@@ -7,14 +7,52 @@ import '../ProductSample.css';
 
 import { useParams } from 'react-router-dom';
 import Service from '../../../../Client/Service';
-import CPU from './CPU';
 
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
 
 function setCPU2List(cpu) {
     localStorage.setItem('cpu', JSON.stringify(cpu));
-    console.log(localStorage);
     window.location.replace('/list');
+}
+
+
+const ImageSlider = ({ cpu }) => {
+    const [current, setCurrent] = useState(0);
+    const arr =  cpu.cpuPriceList?.map(e => {return (e)})
+
+    const length = arr?.length;
+    const nextSlide = () => {
+        setCurrent(current === length - 1 ? 0 : current + 1);
+    }
+
+    const prevSlide = () => {
+        setCurrent(current === 0 ? length - 1 : current - 1);
+    }
+
+    console.log(current);
+
+    if (!Array.isArray(arr) || arr.length <= 0) {
+        return (
+            <div class="block img">
+                <img className="detail-img" src={img} alt={cpu.id}/>
+            </div>
+        )
+    }
+
+    return (
+        <div class="slider">
+            <i class="fas fa-arrow-left left-arrow" onClick={prevSlide}></i>
+            <i class="fas fa-arrow-right right-arrow" onClick={nextSlide}></i>
+            {arr.map((element, index) => {
+                return (
+                    <div className={`block img slide ${index === current ? "active" : ""}`} key={index}>
+                        {index === current && (
+                            <img className="detail-img" src={element.img} alt={cpu.id}/>
+                        )}
+                    </div>
+                )})}
+        </div>
+    )
 }
 
 function CPUTemplate () {
@@ -23,11 +61,10 @@ function CPUTemplate () {
     useEffect(() => {
         Service.getCPUbyID(id).then(response => {
             setCPU(response.data)
-            console.log(response.data);
         })
         .catch(console.log);
     },[id])
-
+    
     return (
         <div className="product-detail white-back">
             <Header />
@@ -39,19 +76,18 @@ function CPUTemplate () {
             <div className="w-container">
                 <div className="row">
                     <div className="col-lg-4 left">
-                        <div className="block img">
-                            <img src={img} alt="CPU-sample" className="detail-img"/>
-                        </div>
+                        <ImageSlider cpu={cpu}/>
+                        
                         <div className="block action form-group row justify-content-md-center">
-                            {/* <div className="col-sm-2 action-function">
-                                <label for="quantity" className="form-title text-center">QTY</label>
+                        {/* <div className="col-sm-2 action-function">
+                            <label for="quantity" className="form-title text-center">QTY</label>
                             </div>
                             <div className="col-sm-2 action-function ">
-                                <select class="form-control" id="quantity">
-                                    <option>1</option>
-                                    <option>2</option>
-                                </select>
-                            </div> */}
+                            <select class="form-control" id="quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            </select>
+                        </div> */}
                             <div className="col-lg action-function">
                                 <button type="button" className="btn btn-primary" onClick={()=>setCPU2List(cpu)}>Add to your Build</button>
                             </div>
@@ -72,42 +108,38 @@ function CPUTemplate () {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {
-                                        cpu.cpuPriceList?.map(e => {
+                                    {
+                                        cpu.cpuPriceList?.map(element => {
                                             return (
                                                 <tr>
                                                     <td className="retailer-img vertical-container">
-                                                        <img className="" src={e.img} alt="retailer"/>
+                                                        <img className="" src={element.img} alt="retailer"/>
                                                     </td>
                                                     <td className="base vertical-container">
                                                         <div className="vertical">
-                                                            {formatMoney(+e.price)} VND
+                                                            {formatMoney(+element.price)} VND
                                                         </div>
                                                     </td>
                                                     <td className="promo vertical-container">
                                                         <div className="vertical text-center">
-                                                            {e.promo ? e.promo : "-"}
+                                                            {element.promo ? element.promo : "-"}
                                                         </div>
                                                     </td>
                                                     <td className="total vertical-container">
                                                         <div className="vertical">
-                                                            {e.promo ? formatMoney(+(e.promo*e.price)) : formatMoney(+e.price) }
+                                                            {element.promo ? formatMoney(+(element.promo*element.price)) : formatMoney(+element.price) }
                                                         </div>
                                                     </td>
                                                     <td className="buy-button vertical-container">
-                                                        <a target="_blank" className="btn btn-success vertical" href={e.link}>Buy</a>
-                                                    </td>
+                                                        <a target="_blank" rel="noreferrer" className="btn btn-success vertical" href={element.link}>Buy</a>
+                                                    </td>   
                                                 </tr>
-                                            )
-                                        })
+                                            )})
                                         }
                                     </tbody>
                                 </table>
-                                
                             </div>
-                            
                         </div>
-
                         <div className="block detail-text">
                             <ul>
                                 <div className="detail-title ">Specifications</div>
@@ -118,7 +150,7 @@ function CPUTemplate () {
                                     <p className="body">{cpu.manufacturer}</p>
                                 </div>
                             </ul>
-                            <ul>
+                            <ul>div
                                 <div className="detail-block border-bottom" id="serieName">
                                     <p className="title">Series</p>
                                     <p className="body">{cpu.serieName}</p>
