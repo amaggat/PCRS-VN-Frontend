@@ -6,7 +6,7 @@ class GPUCard extends Component {
     render() {
         return (
             <tr>
-                <td><Link className="component" id="" to="/products/video-card">Video Card</Link></td>
+                <td className="row-title"><Link className="component" id="" to="/products/video-card">Video Card</Link></td>
                 <td>
                     <Link type="button" className="btn btn-primary btn-sm" to="/products/video-card">
                         <i className="fas fa-plus" />

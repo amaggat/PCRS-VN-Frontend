@@ -5,7 +5,6 @@ import CPUCard from './Part/CPUCard';
 import MemoryCard from './Part/MemoryCard';
 import MotherBoardCard from './Part/MotherBoardCard';
 import PowerCard from './Part/PowerCard';
-import ProductCard from './Part/ProductCard';
 import StorageCard from './Part/StorageCard';
 import GPUCard from './Part/VideoCard';
 

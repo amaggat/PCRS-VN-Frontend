@@ -6,7 +6,7 @@ class MotherBoardCard extends Component {
     render() {
         return (
             <tr>
-                <td><Link className="component" id="" to="/products/mother-board">Motherboard</Link></td>
+                <td className="row-title"><Link className="component" id="" to="/products/mother-board">Motherboard</Link></td>
                 <td>
                     <Link type="button" className="btn btn-primary btn-sm" to="/products/mother-board">
                         <i className="fas fa-plus" />

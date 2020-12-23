@@ -5,12 +5,33 @@ import Header from '../../../../Components/Header/Header';
 import Footer from '../../../../Components/Footer/Footer';
 import PageNav from '../../../../Components/Page/PageNav';
 
-import CPUCard from './CPUCard';
 import '../../Product.css'
-import { Route, Switch } from 'react-router-dom';
-import CPUTemplate from './Sample/CPUTemplate';
+import Service from '../../../../Client/Service'
+import { Link, withRouter } from 'react-router-dom';
 
 class CPU extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            cpus: []
+        }
+    }
+
+    componentDidMount() {
+        Service.getCPUs().then((response) => {
+            this.setState({
+                cpus: response.data
+            })
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    setCPU2List(cpu) {
+        localStorage.setItem('cpu', JSON.stringify(cpu));
+        this.props.history.push({pathname: "/list"});
+    }
+
     render() {
         return ( 
             <div className="product white-back">
@@ -42,20 +63,30 @@ class CPU extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* TODO: each row is a cpu */}
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
-                                    <CPUCard/>
+                                    {
+                                        this.state.cpus.map(
+                                            cpu =>
+                                            <tr className="product-card" key={cpu.id}>
+                                                <td><input type="checkbox" value=""/></td>
+                                                <td className="preview card-text">
+                                                    <Link to={`/products/cpu/${cpu.id}`}>
+                                                        <img src={cpu.img} alt="CPU"/>
+                                                        <span>{cpu.fullname}</span>
+                                                    </Link>
+                                                </td>
+
+                                                <td className="card-text">{cpu.chipset}</td>
+                                                <td className="card-text">{cpu.cores}</td>
+                                                <td className="card-text">{cpu.threads}</td>
+                                                <td className="card-text">{cpu.socket}</td>
+                                                <td className="card-text">- <i className="fa fa-star star-activate" ></i></td>
+                                                <td className="card-text">-</td>
+                                                <td>
+                                                    <button type="button" className="btn btn-primary btn-sm" onClick={()=>this.setCPU2List(cpu)}>Add</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    }
                                 </tbody>
                             </table>
                             <PageNav/>
@@ -68,4 +99,4 @@ class CPU extends Component {
     }
 }
 
-export default CPU;
+export default withRouter(CPU);

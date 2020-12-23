@@ -6,7 +6,7 @@ class CCCCard extends Component {
     render() {
         return (
             <tr>
-                <td><Link className="component" id="" to="/products/cpu-cooler">CPU Cooler</Link></td>
+                <td className="row-title"><Link className="component" id="" to="/products/cpu-cooler">CPU Cooler</Link></td>
                 <td>
                     <Link type="button" className="btn btn-primary btn-sm" to="/products/cpu-cooler">
                         <i className="fas fa-plus" />

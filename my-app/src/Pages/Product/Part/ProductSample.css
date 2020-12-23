@@ -63,7 +63,13 @@
 
 .product-detail .action-function {
     text-align: center;
+    /* width: 40px; */
     padding: 10px 3px !important;
+}
+
+.retailer-img img {
+    height: 50px;
+    border: solid 0.2px rgb(139, 137, 137);
 }
 
 .product-detail .form-title {
@@ -88,3 +94,33 @@
     font-size: 36px;
     margin-bottom: 0px;
 }
+
+.product-detail .row {
+    margin: 0;
+}
+
+.product-detail .vertical-container {
+    position: relative;
+}
+
+.product-detail .vertical {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.product-detail .detail-table thead th {
+    border-bottom: solid 1px #dee2e6;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    padding-bottom: 2px;
+}
+
+.product-detail .detail-block tbody tr td{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+
