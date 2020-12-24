@@ -5,9 +5,34 @@ import Header from '../../../../Components/Header/Header';
 import Footer from '../../../../Components/Footer/Footer';
 import PageNav from '../../../../Components/Page/PageNav';
 
-import PowerCard from './PowerCard';
 import '../../Product.css'
+import img from './power-demo.jpeg'
+import PowerService from '../../../../Client/PowerService'
+import { Link, withRouter } from 'react-router-dom';
+
 class Power extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            powers: []
+        }
+    }
+    
+    componentDidMount() {
+        PowerService.getPowers().then((response) => {
+            this.setState({
+                powers: response.data
+            })
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    setPower2List(power) {
+        localStorage.setItem('power', JSON.stringify(power));
+        this.props.history.push({pathname: "/list"});
+    }
+
     render() {
         return ( 
             <div className="product white-back">
@@ -30,6 +55,7 @@ class Power extends Component {
                                         {/* <th scope="col" class="font-weight-bold"><input type="checkbox" value=""/></th> */}
                                         <th scope="col" class="font-weight-bold" id="name">Name</th>
                                         <th scope="col" class="font-weight-bold" id="chipset">Chipset</th>
+                                        <th scope="col" class="font-weight-bold" id="power">Efficiency Rating</th>
                                         <th scope="col" class="font-weight-bold" id="power">Wattage</th>
                                         <th scope="col" class="font-weight-bold" id="rating">Rating</th>
                                         <th scope="col" class="font-weight-bold" id="price">Price</th>
@@ -37,19 +63,28 @@ class Power extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* TODO: each row is a cpu */}
-                                    <PowerCard/>
-                                    <PowerCard/>
-                                    <PowerCard/>
-                                    <PowerCard/>
-                                    <PowerCard/>
-                                    <PowerCard/>
-                                    <PowerCard/>
-                                    <PowerCard/>
-                                    <PowerCard/>
-                                    <PowerCard/>
-                                    <PowerCard/>
-                                    <PowerCard/>
+                                {
+                                        this.state.powers.map(
+                                            power =>
+                                            <tr className="product-card" key={power.id}>
+                                                <td scope="row"><input type="checkbox" value=""/></td>
+                                                <td className="preview card-text">
+                                                    <Link to={`/products/Power/${power.id}`}>
+                                                        <img src={(power.psuPriceList)?.length <= 0 ? img : power.psuPriceList[0]?.img} alt={power.id}/>
+                                                        <span>{power.fullname}</span>
+                                                    </Link>
+                                                </td>
+                                                <td className="card-text">{power.standard_80}</td>
+                                                <td className="card-text">{power.chipset}</td>
+                                                <td className="card-text">{power.power}</td>
+                                                <td className="card-text">- <i className="fa fa-star star-activate" ></i></td>
+                                                <td className="card-text">-</td>
+                                                <td>
+                                                <button type="button" className="btn btn-primary btn-sm" onClick={()=>this.setPower2List(power)}>Add</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    }
                                 </tbody>
                             </table>
                             <PageNav/>

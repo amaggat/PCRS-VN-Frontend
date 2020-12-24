@@ -1,55 +1,64 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../../../../Components/Footer/Footer';
 import Header from '../../../../Components/Header/Header';
-import img from './cpu-demo.jpeg';
+import img from './power-demo.jpeg';
 
 import '../ProductSample.css';
 
 import { useParams } from 'react-router-dom';
-import CPUService from '../../../../Client/CPUService';
+import PowerService from '../../../../Client/PowerService';
 
 import ImageSlider from '../../../../Components/Page/ImageSlider'
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
 
-function setCPU2List(cpu) {
-    localStorage.setItem('cpu', JSON.stringify(cpu));
+function setPower2List(power) {
+    localStorage.setItem('power', JSON.stringify(power));
     window.location.replace('/list');
 }
 
-function CPUTemplate () {
+function PowerTemplate () {
     const {id} = useParams();
-    const [cpu, setCPU] = useState({});
+    const [power, setPower] = useState({});
     useEffect(() => {
-        CPUService.getCPUbyID(id).then(response => {
-            setCPU(response.data)
+        PowerService.getPowerbyID(id).then(response => {
+            setPower(response.data)
         })
         .catch(console.log);
     },[id])
-    
+
     return (
         <div className="product-detail white-back">
             <Header />
             <div className="banner text-center">
                 <p className="banner-title">PRODUCT DETAIL</p>
-                <p className="banner-name">{cpu.fullname}</p>
+                <p className="banner-name">Corsair RM (2019)</p>
             </div>
 
             <div className="w-container">
                 <div className="row">
                     <div className="col-lg-4 left">
-                        <ImageSlider arr={cpu.cpuPriceList?.map(element => {return (element)})} img={img}/>
-                        
+                        <div className="block img">
+                            <ImageSlider arr={power.psuPriceList?.map(element => {return (element)})} img={img} />
+                        </div>
                         <div className="block action form-group row justify-content-md-center">
+                            {/* <div className="col-sm-2 action-function">
+                                <label for="quantity" className="form-title text-center">QTY</label>
+                            </div>
+                            <div className="col-sm-2 action-function ">
+                                <select class="form-control" id="quantity">
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </div> */}
                             <div className="col-lg action-function">
-                                <button type="button" className="btn btn-primary" onClick={()=>setCPU2List(cpu)}>Add to your Build</button>
+                                <button type="button" className="btn btn-primary" onClick={()=>setPower2List(power)}>Add to your Build</button>
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-7 right">
                         <div className="block detail-text">
                             <div className="detail-title row">Price</div>
-                            <div className="detail-price row">
-                                <table className="table table-hover detail-table">
+                            <table className="table table-hover detail-table">
                                     <thead>
                                         <tr>
                                             <th scope="col">Retailer</th>
@@ -61,7 +70,7 @@ function CPUTemplate () {
                                     </thead>
                                     <tbody>
                                     {
-                                        cpu.cpuPriceList?.map(element => {
+                                        power.psuPriceList?.map(element => {
                                             return (
                                                 <tr>
                                                     <td className="retailer-img vertical-container">
@@ -90,8 +99,8 @@ function CPUTemplate () {
                                         }
                                     </tbody>
                                 </table>
-                            </div>
                         </div>
+
                         <div className="block detail-text">
                             <ul>
                                 <div className="detail-title ">Specifications</div>
@@ -99,31 +108,31 @@ function CPUTemplate () {
                             <ul>
                                 <div className="detail-block border-bottom" id="manufaturer">
                                     <p className="title">Manufacturer</p>
-                                    <p className="body">{cpu.manufacturer}</p>
+                                    <p className="body">{power.manufacturer}</p>
+                                </div>
+                            </ul>
+                            <ul>
+                                <div className="detail-block border-bottom" id="manufaturer">
+                                    <p className="title">Efficiency Rating</p>
+                                    <p className="body">{power.standard_80}</p>
                                 </div>
                             </ul>
                             <ul>
                                 <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Series</p>
-                                    <p className="body">{cpu.serieName}</p>
+                                    <p className="title">Serie Name</p>
+                                    <p className="body">{power.serieName}</p>
                                 </div>
                             </ul>
                             <ul>
                                 <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Core</p>
-                                    <p className="body">{cpu.cores}</p>
+                                    <p className="title">Chipset</p>
+                                    <p className="body">{power.chipset}</p>
                                 </div>
                             </ul>
                             <ul>
                                 <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Thread</p>
-                                    <p className="body">{cpu.threads}</p>
-                                </div>
-                            </ul>
-                            <ul>
-                                <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Socket</p>
-                                    <p className="body">{cpu.socket}</p>
+                                    <p className="title">Wattage</p>
+                                    <p className="body">{power.power}</p>
                                 </div>
                             </ul>
                         </div>
@@ -135,4 +144,5 @@ function CPUTemplate () {
     )
 }
 
-export default CPUTemplate;
+
+export default PowerTemplate;

@@ -6,7 +6,8 @@ import Footer from '../../../../Components/Footer/Footer';
 import PageNav from '../../../../Components/Page/PageNav';
 
 import '../../Product.css'
-import Service from '../../../../Client/Service'
+import img from './cpu-demo.jpeg'
+import CPUService from '../../../../Client/CPUService'
 import { Link, withRouter } from 'react-router-dom';
 
 class CPU extends Component {
@@ -18,7 +19,7 @@ class CPU extends Component {
     }
 
     componentDidMount() {
-        Service.getCPUs().then((response) => {
+        CPUService.getCPUs().then((response) => {
             this.setState({
                 cpus: response.data
             })
@@ -70,7 +71,7 @@ class CPU extends Component {
                                                 <td><input type="checkbox" value=""/></td>
                                                 <td className="preview card-text">
                                                     <Link to={`/products/cpu/${cpu.id}`}>
-                                                        <img src={cpu.img} alt="CPU"/>
+                                                        <img src={(cpu.cpuPriceList)?.length <= 0 ? img : cpu.cpuPriceList[0]?.img} alt="CPU"/>
                                                         <span>{cpu.fullname}</span>
                                                     </Link>
                                                 </td>

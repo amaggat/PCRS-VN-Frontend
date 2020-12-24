@@ -30,7 +30,7 @@ import CaseTemplate from './Product/Part/Case/Sample/CaseTemplate';
 import CCoolerTemplate from './Product/Part/CCooler/Sample/CCoolerTemplate';
 import MemoryTemplate from './Product/Part/Memory/Sample/MemoryTemplate';
 import MotherboardTemplate from './Product/Part/MotherBoard/Sample/MotherboardTemplate';
-import PowerTemplate from './Product/Part/Power/Sample/PowerTemplate';
+import PowerTemplate from './Product/Part/Power/PowerTemplate';
 import StorageTemplate from './Product/Part/Storage/Sample/StorageTemplate';
 import VidecardTemplate from './Product/Part/VideoCard/Sample/VideocardTemplate';
 
@@ -62,9 +62,9 @@ class Page extends Component {
                         <Route exact path="/products/case" component={Case} />
                         {/* Page of individual product */}
                         <Route path="/products/cpu/:id" component={CPUTemplate} />
+                        <Route exact path="/products/power/:id" component={PowerTemplate} />
                         <Route exact path="/products/memory/sample" component={MemoryTemplate} />
                         <Route exact path="/products/motherboard/sample" component={MotherboardTemplate} />
-                        <Route exact path="/products/power/sample" component={PowerTemplate} />
                         <Route exact path="/products/storage/sample" component={StorageTemplate} />
                         <Route exact path="/products/video-card/sample" component={VidecardTemplate} />
                         {/* Not dont yet */}

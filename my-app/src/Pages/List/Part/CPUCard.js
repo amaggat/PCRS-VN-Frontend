@@ -31,7 +31,7 @@ class CPUCard extends Component {
                 { cpu ?
                     <Link className="wrap-product-img" to={`/products/cpu/${cpu.id}`}>
                         {/* TODO: replace demo to cpu.img */}
-                        <img className="product-img" src={demo} alt={cpu.id}/> 
+                        <img className="product-img" src={(cpu.cpuPriceList)?.length <= 0 ? demo : cpu.cpuPriceList[0]?.img} alt={cpu.id}/> 
                         <span>
                             {cpu.fullname}
                         </span>
