@@ -9,6 +9,7 @@ import '../../Product.css'
 import img from './cpu-demo.jpeg'
 import CPUService from '../../../../Client/CPUService'
 import { Link, withRouter } from 'react-router-dom';
+import formatMoney from '../../../../Components/Page/CurrencyFormat';
 
 class CPU extends Component {
     constructor(props) {
@@ -26,11 +27,6 @@ class CPU extends Component {
         }).catch(err => {
             console.log(err);
         });
-    }
-
-    setCPU2List(cpu) {
-        localStorage.setItem('cpu', JSON.stringify(cpu));
-        this.props.history.push({pathname: "/list"});
     }
 
     render() {
@@ -71,7 +67,7 @@ class CPU extends Component {
                                                 <td><input type="checkbox" value=""/></td>
                                                 <td className="preview card-text">
                                                     <Link to={`/products/cpu/${cpu.id}`}>
-                                                        <img src={(cpu.cpuPriceList)?.length <= 0 ? img : cpu.cpuPriceList[0]?.img} alt="CPU"/>
+                                                        <img src={(cpu.priceList)?.length <= 0 ? img : cpu.priceList[0]?.img} alt={cpu.id}/>
                                                         <span>{cpu.fullname}</span>
                                                     </Link>
                                                 </td>
@@ -81,9 +77,9 @@ class CPU extends Component {
                                                 <td className="card-text">{cpu.threads}</td>
                                                 <td className="card-text">{cpu.socket}</td>
                                                 <td className="card-text">- <i className="fa fa-star star-activate" ></i></td>
-                                                <td className="card-text">-</td>
+                                                <td className="card-text">{cpu.priceList?.length <= 0 ? "-" : formatMoney(cpu.priceList[0].price) + "VND"}</td>
                                                 <td>
-                                                    <button type="button" className="btn btn-primary btn-sm" onClick={()=>this.setCPU2List(cpu)}>Add</button>
+                                                    <button type="button" className="btn btn-primary btn-sm" onClick={()=>CPUService.setCPU2List(cpu)}>Add</button>
                                                 </td>
                                             </tr>
                                         )

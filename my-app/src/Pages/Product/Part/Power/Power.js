@@ -9,6 +9,7 @@ import '../../Product.css'
 import img from './power-demo.jpeg'
 import PowerService from '../../../../Client/PowerService'
 import { Link, withRouter } from 'react-router-dom';
+import formatMoney from '../../../../Components/Page/CurrencyFormat';
 
 class Power extends Component {
     constructor(props) {
@@ -26,11 +27,6 @@ class Power extends Component {
         }).catch(err => {
             console.log(err);
         });
-    }
-
-    setPower2List(power) {
-        localStorage.setItem('power', JSON.stringify(power));
-        this.props.history.push({pathname: "/list"});
     }
 
     render() {
@@ -70,7 +66,7 @@ class Power extends Component {
                                                 <td scope="row"><input type="checkbox" value=""/></td>
                                                 <td className="preview card-text">
                                                     <Link to={`/products/Power/${power.id}`}>
-                                                        <img src={(power.psuPriceList)?.length <= 0 ? img : power.psuPriceList[0]?.img} alt={power.id}/>
+                                                        <img src={(power.priceList)?.length <= 0 ? img : power.priceList[0]?.img} alt={power.id}/>
                                                         <span>{power.fullname}</span>
                                                     </Link>
                                                 </td>
@@ -78,9 +74,9 @@ class Power extends Component {
                                                 <td className="card-text">{power.chipset}</td>
                                                 <td className="card-text">{power.power}</td>
                                                 <td className="card-text">- <i className="fa fa-star star-activate" ></i></td>
-                                                <td className="card-text">-</td>
+                                                <td className="card-text">{power.priceList?.length <= 0 ? "-" : formatMoney(power.priceList[0].price) + "VND"}</td>
                                                 <td>
-                                                <button type="button" className="btn btn-primary btn-sm" onClick={()=>this.setPower2List(power)}>Add</button>
+                                                <button type="button" className="btn btn-primary btn-sm" onClick={()=>PowerService.setPower2List(power)}>Add</button>
                                                 </td>
                                             </tr>
                                         )

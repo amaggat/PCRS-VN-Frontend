@@ -19,20 +19,22 @@ import CPU from "./Product/Part/CPU/CPU"
 import CCooler from './Product/Part/CCooler/CCooler'
 import MotherBoard from './Product/Part/MotherBoard/MotherBoard'
 import Memory from './Product/Part/Memory/Memory'
-import Storage from './Product/Part/Storage/Storage'
+import SSD from './Product/Part/SSD/SSD'
+import HDD from './Product/Part/HDD/HDD'
 import VideoCard from './Product/Part/VideoCard/VideoCard'
 import Power from './Product/Part/Power/Power'
 import Case from './Product/Part/Case/Case'
 
 import CPUTemplate from './Product/Part/CPU/CPUTemplate';
-import CaseTemplate from './Product/Part/Case/Sample/CaseTemplate';
-
-import CCoolerTemplate from './Product/Part/CCooler/Sample/CCoolerTemplate';
-import MemoryTemplate from './Product/Part/Memory/Sample/MemoryTemplate';
-import MotherboardTemplate from './Product/Part/MotherBoard/Sample/MotherboardTemplate';
+import MemoryTemplate from './Product/Part/Memory/MemoryTemplate';
 import PowerTemplate from './Product/Part/Power/PowerTemplate';
-import StorageTemplate from './Product/Part/Storage/Sample/StorageTemplate';
-import VidecardTemplate from './Product/Part/VideoCard/Sample/VideocardTemplate';
+import MotherboardTemplate from './Product/Part/MotherBoard/MotherboardTemplate';
+import VidecardTemplate from './Product/Part/VideoCard/VideocardTemplate';
+import SSDTemplate from './Product/Part/SSD/SSDTemplate';
+import HDDTemplate from './Product/Part/HDD/HDDTemplate';
+
+import CaseTemplate from './Product/Part/Case/Sample/CaseTemplate';
+import CCoolerTemplate from './Product/Part/CCooler/Sample/CCoolerTemplate';
 
 class Page extends Component {
     render() {
@@ -54,20 +56,22 @@ class Page extends Component {
                         {/* Browse Product subpages */}
                         <Route exact path="/products/cpu" component={CPU} />
                         <Route exact path="/products/cpu-cooler" component={CCooler} />
-                        <Route exact path="/products/mother-board" component={MotherBoard} />
+                        <Route exact path="/products/motherboard" component={MotherBoard} />
                         <Route exact path="/products/memory" component={Memory} />
-                        <Route exact path="/products/storage" component={Storage} />
+                        <Route exact path="/products/hdd" component={HDD} />
+                        <Route exact path="/products/ssd" component={SSD} />
                         <Route exact path="/products/video-card" component={VideoCard} />
                         <Route exact path="/products/power" component={Power} />
                         <Route exact path="/products/case" component={Case} />
                         {/* Page of individual product */}
                         <Route path="/products/cpu/:id" component={CPUTemplate} />
-                        <Route exact path="/products/power/:id" component={PowerTemplate} />
-                        <Route exact path="/products/memory/sample" component={MemoryTemplate} />
-                        <Route exact path="/products/motherboard/sample" component={MotherboardTemplate} />
-                        <Route exact path="/products/storage/sample" component={StorageTemplate} />
-                        <Route exact path="/products/video-card/sample" component={VidecardTemplate} />
-                        {/* Not dont yet */}
+                        <Route path="/products/power/:id" component={PowerTemplate} />
+                        <Route path="/products/memory/:id" component={MemoryTemplate} />
+                        <Route path="/products/motherboard/:id" component={MotherboardTemplate} />
+                        <Route path="/products/video-card/:id" component={VidecardTemplate} />
+                        <Route path="/products/ssd/:id" component={SSDTemplate} />
+                        <Route path="/products/hdd/:id" component={HDDTemplate} />
+                        {/* Not ready yet */}
                         <Route exact path="/products/case/sample" component={CaseTemplate} />
                         <Route exact path="/products/cpu-cooler/sample" component={CCoolerTemplate} />
                         {/* 404 */}

@@ -6,14 +6,14 @@
     padding-right: 0.5rem;
 }
 
-.system-build .component {
+.system-build .vertical-center {
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
-.system-build .component:hover {
+.system-build .vertical-center:hover {
     text-decoration: none;
 }
 
@@ -92,21 +92,28 @@
 }
 
 .delete {
-    font-size: 18px;
-    padding-top: 10px;
+    font-size: 20px;
+    padding-top: 12px;
     border-top: none !important;
+}
+
+.delete div i{
+    cursor: pointer;
     transition: 0.25s;
 }
 
-.delete:hover {
+.delete div i:hover {
     color: brown;
 }
 
 .product-img {
     height: 45px;
     border: solid 1px rgb(85, 85, 85);
-    padding: 2px;
     margin-right: 10px;
+}
+
+.contain-img {
+    padding-left: 40px;
 }
 
 .wrap-product-img {
@@ -132,4 +139,24 @@
 
 .note-text .content {
     font-family: 'Roboto', sans-serif;
+}
+
+.product-card .price {
+    color: rgb(44, 133, 197);
+}
+
+.system-build .total-price {
+    text-align: right;
+    font-size: 1.0rem;
+    padding-right: 60px;
+}
+
+.system-build .text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.system-build .price {
+    font-weight: 600;
+    font-size: 1.25rem;
 }

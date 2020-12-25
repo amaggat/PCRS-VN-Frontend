@@ -11,11 +11,6 @@ import PowerService from '../../../../Client/PowerService';
 import ImageSlider from '../../../../Components/Page/ImageSlider'
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
 
-function setPower2List(power) {
-    localStorage.setItem('power', JSON.stringify(power));
-    window.location.replace('/list');
-}
-
 function PowerTemplate () {
     const {id} = useParams();
     const [power, setPower] = useState({});
@@ -38,20 +33,11 @@ function PowerTemplate () {
                 <div className="row">
                     <div className="col-lg-4 left">
                         <div className="block img">
-                            <ImageSlider arr={power.psuPriceList?.map(element => {return (element)})} img={img} />
+                            <ImageSlider arr={power.priceList?.map(element => {return (element)})} img={img} />
                         </div>
                         <div className="block action form-group row justify-content-md-center">
-                            {/* <div className="col-sm-2 action-function">
-                                <label for="quantity" className="form-title text-center">QTY</label>
-                            </div>
-                            <div className="col-sm-2 action-function ">
-                                <select class="form-control" id="quantity">
-                                    <option>1</option>
-                                    <option>2</option>
-                                </select>
-                            </div> */}
                             <div className="col-lg action-function">
-                                <button type="button" className="btn btn-primary" onClick={()=>setPower2List(power)}>Add to your Build</button>
+                                <button type="button" className="btn btn-primary" onClick={()=>PowerService.setPower2List(power)}>Add to your Build</button>
                             </div>
                         </div>
                     </div>
@@ -70,11 +56,11 @@ function PowerTemplate () {
                                     </thead>
                                     <tbody>
                                     {
-                                        power.psuPriceList?.map(element => {
+                                        power.priceList?.map(element => {
                                             return (
                                                 <tr>
                                                     <td className="retailer-img vertical-container">
-                                                        <img className="" src={element.img} alt="retailer"/>
+                                                        <img className="" src={element.logo} alt="retailer"/>
                                                     </td>
                                                     <td className="base vertical-container">
                                                         <div className="vertical">
@@ -106,13 +92,13 @@ function PowerTemplate () {
                                 <div className="detail-title ">Specifications</div>
                             </ul>
                             <ul>
-                                <div className="detail-block border-bottom" id="manufaturer">
+                                <div className="detail-block border-bottom">
                                     <p className="title">Manufacturer</p>
                                     <p className="body">{power.manufacturer}</p>
                                 </div>
                             </ul>
                             <ul>
-                                <div className="detail-block border-bottom" id="manufaturer">
+                                <div className="detail-block border-bottom">
                                     <p className="title">Efficiency Rating</p>
                                     <p className="body">{power.standard_80}</p>
                                 </div>

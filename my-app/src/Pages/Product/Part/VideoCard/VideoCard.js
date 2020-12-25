@@ -5,9 +5,30 @@ import Header from '../../../../Components/Header/Header';
 import Footer from '../../../../Components/Footer/Footer';
 import PageNav from '../../../../Components/Page/PageNav';
 
-import VideoCardCard from './VideoCardCard';
 import '../../Product.css'
+import img from './video-card-demo.jpeg'
+import VideocardService from '../../../../Client/VideocardService'
+import { Link, withRouter } from 'react-router-dom';
+import formatMoney from '../../../../Components/Page/CurrencyFormat';
+
 class VideoCard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            videocards: []
+        }
+    }
+    
+    componentDidMount() {
+        VideocardService.getGPUs().then((response) => {
+            this.setState({
+                videocards: response.data
+            })
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
     render() {
         return ( 
             <div className="product white-back">
@@ -37,20 +58,27 @@ class VideoCard extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* TODO: each row is a cpu */}
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
-                                    <VideoCardCard/>
+                                    {
+                                        this.state.videocards.map(
+                                            gpu => 
+                                            <tr className="product-card">
+                                                <td><input type="checkbox" value=""/></td>
+                                                <td className="preview card-text">
+                                                    <Link to={`/products/video-card/${gpu.id}`}>
+                                                        <img src={(gpu.priceList)?.length <= 0 ? img : gpu.priceList[0]?.img} alt={gpu.id}/>
+                                                        <span>{gpu.fullname}</span>
+                                                    </Link>
+                                                </td>
+                                                <td className="card-text">{gpu.chipset}</td>
+                                                <td className="card-text">{gpu.vram}</td>
+                                                <td className="card-text">- <i className="fa fa-star star-activate"></i></td>
+                                                <td className="card-text">{gpu.priceList?.length <= 0 ? "-" : formatMoney(gpu.priceList[0].price) + "VND"}</td>
+                                                <td>
+                                                <button type="button" className="btn btn-primary btn-sm" onClick={()=>VideocardService.setGPU2List(gpu)}>Add</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    }
                                 </tbody>
                             </table>
                             <PageNav/>

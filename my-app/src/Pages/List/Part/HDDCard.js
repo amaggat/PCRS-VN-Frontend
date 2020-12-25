@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../List.css'
 
-import img from '../../Product/Part/CPU/cpu-demo.jpeg'
+import img from '../../Product/Part/HDD/hdd-demo.jpeg'
 import formatMoney from '../../../Components/Page/CurrencyFormat';
 
-class CPUCard extends Component {
+class HDDCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cpu: JSON.parse(localStorage.getItem('cpu'))
+            hdd: JSON.parse(localStorage.getItem('hdd'))
         }
     }
 
@@ -18,37 +18,37 @@ class CPUCard extends Component {
     }
 
     remove = () => {
-        localStorage.removeItem('cpu');
-        this.setState({cpu: null});
+        localStorage.removeItem('hdd');
+        this.setState({hdd: null});
     }
 
     render() {
-        const { cpu } = this.state;
+        const { hdd } = this.state;
         return (
             <tr className="product-card">
-                <td className="row-title"><Link className="vertical-center" id="" to="/products/cpu">CPU</Link></td>
+                <td className="row-title"><Link className="vertical-center" id="" to="/products/hdd">Hard Disk Drive</Link></td>
                 <td>
-                { cpu ?
-                    <Link className="wrap-product-img" to={`/products/cpu/${cpu.id}`}>
-                        <img className="product-img" src={cpu.img ? cpu.img : img} alt={cpu.id}/> 
+                { hdd ?
+                    <Link className="wrap-product-img" to={`/products/hdd/${hdd.id}`}>
+                        <img className="product-img" src={hdd.img ? hdd.img : img} alt={hdd.id}/> 
                         <span>
-                            {cpu.fullname}
+                            {hdd.fullname}
                         </span>
                     </Link>
                     :
-                    <Link type="button" className="btn btn-primary btn-sm" to="/products/cpu">
+                    <Link type="button" className="btn btn-primary btn-sm" to="/products/hdd">
                         <i className="fas fa-plus" />
-                        Choose a CPU
+                        Choose a HDD
                     </Link>
                 }
                 </td>
                 <td className="base row-title">
-                    <div className="vertical-center">{cpu ? formatMoney(cpu.price) + "VND" : null}</div>
+                    <div className="vertical-center">{hdd ? formatMoney(hdd.price) + "VND" : null}</div>
                 </td>
                 <td className="promo row-title">
-                    <div className="vertical-center">{cpu ?
-                            cpu.promo ? 
-                                cpu.promo
+                    <div className="vertical-center">{hdd ?
+                            hdd.promo ? 
+                                hdd.promo
                                 :
                                 null
                             :
@@ -57,9 +57,9 @@ class CPUCard extends Component {
                 </td>
                 <td className="snipping row-title">
                     <div className="vertical-center">{
-                        cpu ?
-                        cpu.snipping ? 
-                            cpu.snipping
+                        hdd ?
+                        hdd.snipping ? 
+                            hdd.snipping
                             :
                             null
                         :
@@ -68,9 +68,9 @@ class CPUCard extends Component {
                 </td>
                 <td className="tax row-title">
                     <div className="vertical-center">{
-                        cpu ?
-                        cpu.tax ? 
-                            cpu.tax
+                        hdd ?
+                        hdd.tax ? 
+                            hdd.tax
                             :
                             null
                         :
@@ -80,11 +80,11 @@ class CPUCard extends Component {
                 <td className="price row-title">
                     <div className="vertical-center">
                         {
-                            cpu ?
-                                cpu.promo ? 
-                                    formatMoney(cpu.price * cpu.promo) + "VND"
+                            hdd ?
+                                hdd.promo ? 
+                                    formatMoney(hdd.price * hdd.promo) + "VND"
                                     :
-                                    formatMoney(cpu.price) + "VND"
+                                    formatMoney(hdd.price) + "VND"
                                 :
                             null
                         }
@@ -93,17 +93,17 @@ class CPUCard extends Component {
                 <td className="where">
                 <div>
                         {
-                            cpu ?
-                                <a className="contain-img" target="_blank" rel="noreferrer" href={cpu.link}>
-                                    <img className="product-img" src={cpu.logo ? cpu.logo : img} alt={cpu.id}/>
-                                </a>
+                            hdd ?
+                                <Link className="contain-img" to={hdd.link}>
+                                    <img className="product-img" src={hdd.logo ? hdd.logo : img} alt={hdd.id}/>
+                                </Link>
                             : null
                         }
                     </div>
                 </td>
                 <td className="delete">
                     {
-                    cpu ?
+                    hdd ?
                         <div onClick={this.remove}><i class="delete fas fa-times"></i></div>
                         :
                         null
@@ -115,4 +115,4 @@ class CPUCard extends Component {
     }
 }
 
-export default CPUCard;
+export default HDDCard;

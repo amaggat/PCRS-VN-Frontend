@@ -6,8 +6,30 @@ import Footer from '../../../../Components/Footer/Footer';
 import PageNav from '../../../../Components/Page/PageNav';
 
 import '../../Product.css'
-import MemoryCard from './MemoryCard';
-class CCooler extends Component {
+
+import { Link } from 'react-router-dom';
+import MemoryService from '../../../../Client/MemoryService'
+import img from './memory-demo.jpeg'
+import formatMoney from '../../../../Components/Page/CurrencyFormat';
+
+class Memory extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            memories: []
+        }
+    }
+
+    componentDidMount() {
+        MemoryService.getMemorys().then((response) => {
+            this.setState({
+                memories: response.data
+            })
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
     render() {
         return ( 
             <div className="product white-back">
@@ -38,19 +60,28 @@ class CCooler extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* TODO: each row is a cpu */}
-                                    <MemoryCard/>
-                                    <MemoryCard/>
-                                    <MemoryCard/>
-                                    <MemoryCard/>
-                                    <MemoryCard/>
-                                    <MemoryCard/>
-                                    <MemoryCard/>
-                                    <MemoryCard/>
-                                    <MemoryCard/>
-                                    <MemoryCard/>
-                                    <MemoryCard/>
-                                    <MemoryCard/>
+                                    {
+                                        this.state.memories.map(
+                                            memory => 
+                                            <tr className="product-card" key={memory.id}>
+                                                <td><input type="checkbox" value=""/></td>
+                                                <td className="preview card-text">
+                                                    <Link to={`/products/memory/${memory.id}`}>
+                                                        <img src={(memory.priceList)?.length <= 0 ? img : memory.priceList[0]?.img} alt={memory.id}/>
+                                                        <span>{memory.fullname}</span>
+                                                    </Link>
+                                                </td>
+                                                <td className="card-text">{memory.clockSpeed}</td>
+                                                <td className="card-text">{memory.chipset}</td>
+                                                <td className="card-text">{memory.sizeOfRam}</td>
+                                                <td className="card-text">- <i className="fa fa-star star-activate" ></i></td>
+                                                <td className="card-text">{memory.priceList?.length <= 0 ? "-" : formatMoney(memory.priceList[0].price) + "VND"}</td>
+                                                <td>
+                                                    <button type="button" className="btn btn-primary btn-sm" onClick={()=>MemoryService.setMemory2List(memory)}>Add</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    }
                                 </tbody>
                             </table>
                             <PageNav/>
@@ -63,4 +94,4 @@ class CCooler extends Component {
     }
 }
 
-export default CCooler;
+export default Memory;

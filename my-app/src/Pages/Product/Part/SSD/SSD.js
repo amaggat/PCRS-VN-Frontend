@@ -6,24 +6,23 @@ import Footer from '../../../../Components/Footer/Footer';
 import PageNav from '../../../../Components/Page/PageNav';
 
 import '../../Product.css'
-
-import { Link } from 'react-router-dom';
-import MotherboardService from '../../../../Client/MotherboardService'
-import img from './motherboard-demo.jpeg'
+import img from './ssd-demo.jpeg'
+import SSDService from '../../../../Client/SSDService'
+import { Link, withRouter } from 'react-router-dom';
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
 
-class MotherBoard extends Component {
+class VideoCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            motherboards: []
+            ssds: []
         }
     }
-
+    
     componentDidMount() {
-        MotherboardService.getMotherboards().then((response) => {
+        SSDService.getSSDs().then((response) => {
             this.setState({
-                motherboards: response.data
+                ssds: response.data
             })
         }).catch(err => {
             console.log(err);
@@ -35,7 +34,7 @@ class MotherBoard extends Component {
             <div className="product white-back">
                 <Header />
                 <div className="product-banner">
-                    <h1 className="text-center">Choose A MotherBoard</h1>
+                    <h1 className="text-center">Choose A SSD</h1>
                 </div>
 
                 <div class="tab-pane w-container" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -47,13 +46,12 @@ class MotherBoard extends Component {
                             <TopFunctionProduct/>
                             <table class="table">
                                 <thead>
-                                    <tr className="product-title">
+                                    <tr class="product-title">
                                         <th></th>
                                         {/* <th scope="col" class="font-weight-bold"><input type="checkbox" value=""/></th> */}
                                         <th scope="col" class="font-weight-bold" id="name">Name</th>
-                                        <th scope="col" class="font-weight-bold" id="socket">Socket / CPU</th>
                                         <th scope="col" class="font-weight-bold" id="chipset">Chipset</th>
-                                        <th scope="col" class="font-weight-bold" id="size">Size</th>
+                                        <th scope="col" class="font-weight-bold" id="memory">Memory</th>
                                         <th scope="col" class="font-weight-bold" id="rating">Rating</th>
                                         <th scope="col" class="font-weight-bold" id="price">Price</th>
                                         <th></th>
@@ -61,23 +59,22 @@ class MotherBoard extends Component {
                                 </thead>
                                 <tbody>
                                     {
-                                        this.state.motherboards.map(
-                                            motherboard => 
-                                            <tr className="product-card" key={motherboard.id}>
+                                        this.state.ssds.map(
+                                            ssd => 
+                                            <tr className="product-card">
                                                 <td><input type="checkbox" value=""/></td>
                                                 <td className="preview card-text">
-                                                    <Link to={`/products/motherboard/${motherboard.id}`}>
-                                                        <img src={(motherboard.priceList)?.length <= 0 ? img : motherboard.priceList[0]?.img} alt={motherboard.id}/>
-                                                        <span>{motherboard.fullname}</span>
+                                                    <Link to={`/products/ssd/${ssd.id}`}>
+                                                        <img src={(ssd.priceList)?.length <= 0 ? img : ssd.priceList[0]?.img} alt={ssd.id}/>
+                                                        <span>{ssd.fullname}</span>
                                                     </Link>
                                                 </td>
-                                                <td className="card-text">{motherboard.clockSpeed}</td>
-                                                <td className="card-text">{motherboard.chipset}</td>
-                                                <td className="card-text">{motherboard.sizeOfRam}</td>
-                                                <td className="card-text">- <i className="fa fa-star star-activate" ></i></td>
-                                                <td className="card-text">{motherboard.priceList?.length <= 0 ? "-" : formatMoney(motherboard.priceList[0].price) + "VND"}</td>
+                                                <td className="card-text">{ssd.chipset}</td>
+                                                <td className="card-text">{ssd.vram}</td>
+                                                <td className="card-text">- <i className="fa fa-star star-activate"></i></td>
+                                                <td className="card-text">{ssd.priceList?.length <= 0 ? "-" : formatMoney(ssd.priceList[0].price) + "VND"}</td>
                                                 <td>
-                                                    <button type="button" className="btn btn-primary btn-sm" onClick={()=>MotherboardService.setMotherboard2List(motherboard)}>Add</button>
+                                                <button type="button" className="btn btn-primary btn-sm" onClick={()=>SSDService.setSSD2List(ssd)}>Add</button>
                                                 </td>
                                             </tr>
                                         )
@@ -94,4 +91,4 @@ class MotherBoard extends Component {
     }
 }
 
-export default MotherBoard;
+export default VideoCard;

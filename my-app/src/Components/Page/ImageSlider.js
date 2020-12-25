@@ -13,7 +13,7 @@ const ImageSlider = ({ arr, img }) => {
         setCurrent(current === 0 ? length - 1 : current - 1);
     }
 
-    // console.log(arr);
+     console.log(arr?.length);
 
     if (!Array.isArray(arr) || arr.length <= 0) {
         return (
@@ -23,7 +23,8 @@ const ImageSlider = ({ arr, img }) => {
         )
     }
 
-    else if (arr?.length === 1) {
+    else if (arr?.length <= 1) {
+        
         arr.map(element => {
             return (
                 <div class="block img">

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Case from './img/nav-case.png'
 import CPU from './img/nav-cpu.png'
-import CC from './img/nav-cpucooler.png'
+import HDD from './img/nav-hdd.png'
 import Memmory from './img/nav-memory.png'
 import Motherboard from './img/nav-motherboard.png'
 import Storage from './img/nav-ssd.png'
@@ -30,9 +30,9 @@ class Dropdown extends Component {
                                 </Link>
                             </div>
                             <div className="col-3 prodcut-catrgory">
-                                <Link className="product-category__item" to="/products/cpu-cooler">
-                                    <img className="product-category__item-img" alt="cc" src={CC} />
-                                    <span className="product-category__item-title">CPU Cooler</span>
+                                <Link className="product-category__item" to="/products/hdd">
+                                    <img className="product-category__item-img" alt="cc" src={HDD} />
+                                    <span className="product-category__item-title">Hard Disk Drive</span>
                                 </Link>
                             </div>
                             <div className="col-3 prodcut-catrgory">
@@ -42,7 +42,7 @@ class Dropdown extends Component {
                                 </Link>
                             </div>
                             <div className="col-3 prodcut-catrgory">
-                                <Link className="product-category__item" to="/products/mother-board">
+                                <Link className="product-category__item" to="/products/motherboard">
                                     <img className="product-category__item-img" alt="mother-board" src={Motherboard}/>
                                     <span className="product-category__item-title">Mother Board</span>
                                 </Link>
@@ -54,9 +54,9 @@ class Dropdown extends Component {
                                 </Link>
                             </div>
                             <div className="col-3 prodcut-catrgory">
-                                <Link className="product-category__item" to="/products/storage">
+                                <Link className="product-category__item" to="/products/ssd">
                                     <img className="product-category__item-img" alt="storage" src={Storage}/>
-                                    <span className="product-category__item-title">Storage</span>
+                                    <span className="product-category__item-title">Solid State Drive</span>
                                 </Link>
                             </div>
                             <div className="col-3 prodcut-catrgory">

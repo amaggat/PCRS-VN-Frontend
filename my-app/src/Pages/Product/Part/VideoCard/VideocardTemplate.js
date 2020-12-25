@@ -1,50 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from '../../../../Components/Footer/Footer';
 import Header from '../../../../Components/Header/Header';
-import img from './cpu-demo.jpeg';
+import img from './video-card-demo.jpeg';
 
 import '../ProductSample.css';
-
-import { Link, useParams } from 'react-router-dom';
-import CPUService from '../../../../Client/CPUService';
-
-import ImageSlider from '../../../../Components/Page/ImageSlider'
+import ImageSlider from '../../../../Components/Page/ImageSlider';
+import { useParams } from 'react-router-dom';
+import VideocardService from '../../../../Client/VideocardService';
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
 
-function CPUTemplate () {
+function VidecardTemplate (){
     const {id} = useParams();
-    const [cpu, setCPU] = useState({});
+    const [GPU, setGPU] = useState({});
     useEffect(() => {
-        CPUService.getCPUbyID(id).then(response => {
-            setCPU(response.data)
+        VideocardService.getGPUbyID(id).then(response => {
+            setGPU(response.data)
         })
         .catch(console.log);
     },[id])
-    
+
     return (
         <div className="product-detail white-back">
             <Header />
             <div className="banner text-center">
                 <p className="banner-title">PRODUCT DETAIL</p>
-                <p className="banner-name">{cpu.fullname}</p>
+                <p className="banner-name">{GPU.fullname}</p>
             </div>
 
             <div className="w-container">
                 <div className="row">
                     <div className="col-lg-4 left">
-                        <ImageSlider arr={cpu.priceList?.map(element => {return (element)})} img={img}/>
-                        
+                        <div className="block img">
+                            <ImageSlider arr={GPU.priceList?.map(element => {return (element)})} img={img} />
+                        </div>
                         <div className="block action form-group row justify-content-md-center">
                             <div className="col-lg action-function">
-                                <button type="button" className="btn btn-primary" onClick={()=>CPUService.setCPU2List(cpu)}>Add to your Build</button>
+                                <button type="button" className="btn btn-primary" onClick={()=>VideocardService.setGPU2List(GPU)}>Add to your Build</button>
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-7 right">
                         <div className="block detail-text">
-                            <div className="detail-title row">Price</div>
-                            <div className="detail-price row">
-                                <table className="table table-hover detail-table">
+                            <div className="detail-title">Price</div>
+                            <table className="table table-hover detail-table">
                                     <thead>
                                         <tr>
                                             <th scope="col">Retailer</th>
@@ -56,15 +54,15 @@ function CPUTemplate () {
                                     </thead>
                                     <tbody>
                                     {
-                                        cpu.priceList?.map(element => {
+                                        GPU.priceList?.map(element => {
                                             return (
                                                 <tr>
                                                     <td className="retailer-img vertical-container">
-                                                        <img className="" src={element.logo}  alt="retailer"/>
+                                                        <img className="" src={element.logo} alt="retailer"/>
                                                     </td>
                                                     <td className="base vertical-container">
                                                         <div className="vertical">
-                                                            {formatMoney(+element.price)}
+                                                            {formatMoney(+element.price)} VND
                                                         </div>
                                                     </td>
                                                     <td className="promo vertical-container">
@@ -85,8 +83,8 @@ function CPUTemplate () {
                                         }
                                     </tbody>
                                 </table>
-                            </div>
                         </div>
+
                         <div className="block detail-text">
                             <ul>
                                 <div className="detail-title ">Specifications</div>
@@ -94,31 +92,25 @@ function CPUTemplate () {
                             <ul>
                                 <div className="detail-block border-bottom" id="manufaturer">
                                     <p className="title">Manufacturer</p>
-                                    <p className="body">{cpu.manufacturer}</p>
+                                    <p className="body">{GPU.manufacturer}</p>
                                 </div>
                             </ul>
                             <ul>
                                 <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Series</p>
-                                    <p className="body">{cpu.serieName}</p>
+                                    <p className="title">Serie Name</p>
+                                    <p className="body">{GPU.serieName}</p>
                                 </div>
                             </ul>
                             <ul>
                                 <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Core</p>
-                                    <p className="body">{cpu.cores}</p>
+                                    <p className="title">Chipset</p>
+                                    <p className="body">{GPU.chipset}</p>
                                 </div>
                             </ul>
                             <ul>
                                 <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Thread</p>
-                                    <p className="body">{cpu.threads}</p>
-                                </div>
-                            </ul>
-                            <ul>
-                                <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Socket</p>
-                                    <p className="body">{cpu.socket}</p>
+                                    <p className="title">Memory</p>
+                                    <p className="body">{GPU.vram}</p>
                                 </div>
                             </ul>
                         </div>
@@ -130,4 +122,4 @@ function CPUTemplate () {
     )
 }
 
-export default CPUTemplate;
+export default VidecardTemplate;
