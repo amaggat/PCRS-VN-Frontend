@@ -14,19 +14,19 @@ class Info extends Component {
                                     <h5 className="footer-title">PROJECT TEAM</h5> 
                                 </li>
                                 <li>
-                                    <Link to="">About us</Link>
+                                    <Link className="link" to="/about">About us</Link>
                                 </li>
                                 <li>
-                                    <Link to="">Contact</Link>
+                                    <Link className="link" to="/about">Contact</Link>
                                 </li>
                                 <li>
-                                    <Link to="">Persional Informaition</Link>
+                                    <Link className="link" to="">Persional Informaition</Link>
                                 </li>
                                 <li>
-                                    <Link to="">Terms of Service</Link>
+                                    <Link className="link" to="">Terms of Service</Link>
                                 </li>
                                 <li>
-                                    <Link to="">Privacy Policy</Link>
+                                    <Link className="link" to="">Privacy Policy</Link>
                                 </li>
                             </ul>
                         </div>

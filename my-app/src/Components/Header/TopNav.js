@@ -1,6 +1,6 @@
 import { React, Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../Sources/Icon/logo.svg';
+import logo from '../Sources/Icon/logo_final2.png';
 import './Header.css';
 
 class TopNav extends Component {

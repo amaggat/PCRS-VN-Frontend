@@ -49,11 +49,12 @@
 }
 
 .top-nav .text-center {
-    padding-top: 20px;
+    padding-top: 15px;
 }
 
 .top-nav .nav-logo {
-    width: 100px;
+    height: 55px;
+    padding: 5px 0;
 }
 
 .hide {

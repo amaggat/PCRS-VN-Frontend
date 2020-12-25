@@ -31,7 +31,12 @@
 }
 .footer .logo {
     display: block;
-    height: 100px;
+    height: 80px;
+    padding-bottom: 20px;
+}
+
+.footer .link:hover {
+    text-decoration: none;
 }
 
 

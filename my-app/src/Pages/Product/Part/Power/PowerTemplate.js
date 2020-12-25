@@ -31,7 +31,7 @@ function PowerTemplate () {
             <Header />
             <div className="banner text-center">
                 <p className="banner-title">PRODUCT DETAIL</p>
-                <p className="banner-name">Corsair RM (2019)</p>
+                <p className="banner-name">{power.fullname}</p>
             </div>
 
             <div className="w-container">
