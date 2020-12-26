@@ -31,12 +31,16 @@ class List extends Component {
             // case: JSON.parse(localStorage.getItem('case')),
             power: JSON.parse(localStorage.getItem('power')),
         }
-        console.log(this.state.cpu);
     }
 
     render () {
         const {cpu, motherboard, memory, hdd, ssd, gpu, power} = this.state
-        const total = 1000000
+        
+        var total = 0
+        Object.entries(this.state).map(
+            parts => parts[1]?.price ? total += parts[1].price : null
+        )
+
         const noIssue = (
             <div className="row">
                 <div className="col-lg-9 no-issue">

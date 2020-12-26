@@ -55,6 +55,7 @@ class Page extends Component {
                         <Route exact path="/products" component={Products} />
                         {/* Browse Product subpages */}
                         <Route exact path="/products/cpu" component={CPU} />
+                        {/* <Route exact path="/products/cpu?page=:number" component={CPU} /> */}
                         <Route exact path="/products/cpu-cooler" component={CCooler} />
                         <Route exact path="/products/motherboard" component={MotherBoard} />
                         <Route exact path="/products/memory" component={Memory} />

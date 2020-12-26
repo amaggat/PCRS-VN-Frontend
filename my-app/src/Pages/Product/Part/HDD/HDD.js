@@ -43,7 +43,7 @@ class VideoCard extends Component {
                             <ProductFilter/>
                         </div>
                         <div className="col-10">
-                            <TopFunctionProduct/>
+                            <TopFunctionProduct arr={this.state.hdds}/>
                             <table class="table">
                                 <thead>
                                     <tr class="product-title">

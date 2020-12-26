@@ -18,15 +18,21 @@ class Dropdown extends Component {
                     <div className="col-6">
                         <div className="row">
                             <div className="col-3 prodcut-catrgory">
-                                <Link className="product-category__item" to="/products/case">
-                                    <img className="product-category__item-img" alt="case" src={Case}/>
-                                    <span className="product-category__item-title">Case</span>
-                                </Link>
-                            </div>
-                            <div className="col-3 prodcut-catrgory">
                                 <Link className="product-category__item" to="/products/cpu">
                                     <img className="product-category__item-img" alt="cpu" src={CPU}/>
                                     <span className="product-category__item-title">CPU</span>
+                                </Link>
+                            </div>
+                            <div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/motherboard">
+                                    <img className="product-category__item-img" alt="mother-board" src={Motherboard}/>
+                                    <span className="product-category__item-title">Mother Board</span>
+                                </Link>
+                            </div>
+                            <div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/case">
+                                    <img className="product-category__item-img" alt="case" src={Case}/>
+                                    <span className="product-category__item-title">Case</span>
                                 </Link>
                             </div>
                             <div className="col-3 prodcut-catrgory">
@@ -41,12 +47,7 @@ class Dropdown extends Component {
                                     <span className="product-category__item-title">Memory</span>
                                 </Link>
                             </div>
-                            <div className="col-3 prodcut-catrgory">
-                                <Link className="product-category__item" to="/products/motherboard">
-                                    <img className="product-category__item-img" alt="mother-board" src={Motherboard}/>
-                                    <span className="product-category__item-title">Mother Board</span>
-                                </Link>
-                            </div>
+                            
                             <div className="col-3 prodcut-catrgory">
                                 <Link className="product-category__item" to="/products/power">
                                     <img className="product-category__item-img" alt="power" src={Power}/>
