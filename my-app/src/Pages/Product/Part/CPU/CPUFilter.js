@@ -105,6 +105,14 @@ function CPUFilter ({search}) {
                         <label className="form-check-label" for="cores-6">6</label>
                     </div>
                     <div className="form-check">
+                        <input type="radio" name="cores" value="8" onChange={handleChange} className="form-check-input" id="cores-8"/>
+                        <label className="form-check-label" for="cores-8">8</label>
+                    </div>
+                    <div className="form-check">
+                        <input type="radio" name="cores" value="10" onChange={handleChange} className="form-check-input" id="cores-8"/>
+                        <label className="form-check-label" for="cores-10">10</label>
+                    </div>
+                    <div className="form-check">
                         <input type="radio" name="cores" value="12" onChange={handleChange} className="form-check-input" id="cores-12"/>
                         <label className="form-check-label" for="cores-12">12</label>
                     </div>
@@ -123,7 +131,7 @@ function CPUFilter ({search}) {
                     </div>
                     <div className="form-check">
                         <input type="radio" name="socket" value="am4" onChange={handleChange} disabled={disable} className="form-check-input" id="socket-am4"/>
-                        <label className="form-check-label" for="socket-am4">Socket AM4</label>
+                        <label className="form-check-label" for="socket-am4">AM4</label>
                     </div>
                     <div className="form-check">
                         <input type="radio" name="socket" value="lga1200" onChange={handleChange} disabled={disable} className="form-check-input" id="socket-lga1200"/>

@@ -1,11 +1,9 @@
 import React, { useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import formatMoney from '../../Components/Page/CurrencyFormat';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 
-import img from './logo.png'
 import ProfileService from '../../Client/ProfileService'
 import Card from './Card';
 

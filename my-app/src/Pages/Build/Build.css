@@ -88,3 +88,66 @@
     font-size: 14px;
     color: #f78300;
 }
+
+.build .banner {
+    background-color: #b18c5a;
+}
+
+.tag .img img{
+    width: 100%;
+}
+
+.tag {
+    height: 100%;
+    padding: 5px;
+    margin: 15px;
+    width: auto;
+    min-width: 200px;
+    background-color: #b18c5a;
+}
+
+.tag:hover {
+    outline-style: solid;
+    outline-width: 3px;
+    outline-color: black;
+    transition: 0.1s;
+}
+
+.tag .content {
+    color: unset;
+}
+
+.tag .content:hover {
+    text-decoration: none;
+    color: unset;
+}
+
+.tag .text {
+    padding: 15px;
+}
+
+.build .section-title {
+    border-bottom: solid 1px black;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.text .title {
+    font-size: 20px;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.text .description p {
+    margin-bottom: 5px;
+}
+
+.text .price {
+    font-size: 18px;
+    margin: 10px 0px;
+    color: white;
+}
+
+.text .fas {
+    padding-right: 6px;
+}

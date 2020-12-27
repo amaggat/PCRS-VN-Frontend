@@ -27,14 +27,14 @@ class List extends Component {
             memory: JSON.parse(localStorage.getItem('memory')),
             hdd: JSON.parse(localStorage.getItem('hdd')),
             ssd: JSON.parse(localStorage.getItem('ssd')),
-            gpu: JSON.parse(localStorage.getItem('gpy')),
+            gpu: JSON.parse(localStorage.getItem('video-card')),
             // case: JSON.parse(localStorage.getItem('case')),
             power: JSON.parse(localStorage.getItem('power')),
         }
     }
 
     render () {
-        const {cpu, motherboard, memory, hdd, ssd, gpu, power} = this.state
+        const {cpu, motherboard} = this.state
         var socket = null;
 
         if (cpu !== null || motherboard !== null) {

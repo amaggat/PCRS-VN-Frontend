@@ -13,15 +13,15 @@ class SubNav extends Component {
             <nav className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <img className="item-img" src={build}></img>
+                        <img className="item-img" src={build} alt=""></img>
                         <Link className="nav-link" to="/list">System Builder</Link>
                     </li>
                     <li className="nav-item">
-                        <img className="item-img" src={guide}></img>
-                        <Link className="nav-link" to="/builds">Completed Builds</Link>
+                        <img className="item-img" src={guide} alt=""></img>
+                        <Link className="nav-link" to="/builds">Builds Guide</Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <img className="item-img" src={product}></img>
+                        <img className="item-img" src={product} alt=""></img>
                         <Link to="#" className="nav-link dropdown-toggle" role="button" onFocus={()=>handleDropdown('focus')} onBlur={()=>handleDropdown('blur')}>Browse Products</Link>
                     </li>
                 </ul>

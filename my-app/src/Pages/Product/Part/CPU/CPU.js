@@ -45,6 +45,12 @@ class CPU extends Component {
             searchList.socket = socket
         }
 
+        if(prevState.searchList !== searchList) {
+            this.setState({
+                pageNumber: 0,
+            })
+        }
+
         if (prevState.pageNumber === pageNumber && prevState.searchList === searchList) {
             return;
         }

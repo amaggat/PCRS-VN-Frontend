@@ -29,12 +29,6 @@ class Dropdown extends Component {
                                     <span className="product-category__item-title">Mother Board</span>
                                 </Link>
                             </div>
-                            {/* <div className="col-3 prodcut-catrgory">
-                                <Link className="product-category__item" to="/products/case">
-                                    <img className="product-category__item-img" alt="case" src={Case}/>
-                                    <span className="product-category__item-title">Case</span>
-                                </Link>
-                            </div> */}
                             <div className="col-3 prodcut-catrgory">
                                 <Link className="product-category__item" to="/products/hdd">
                                     <img className="product-category__item-img" alt="cc" src={HDD} />
@@ -64,6 +58,12 @@ class Dropdown extends Component {
                                 <Link className="product-category__item" to="/products/video-card">
                                     <img className="product-category__item-img" alt="gpu" src={GPU}/>
                                     <span className="product-category__item-title">Video Card</span>
+                                </Link>
+                            </div>
+                            <div className="col-3 prodcut-catrgory">
+                                <Link className="product-category__item" to="/products/case">
+                                    <img className="product-category__item-img" alt="case" src={Case}/>
+                                    <span className="product-category__item-title">Case</span>
                                 </Link>
                             </div>
                         </div>

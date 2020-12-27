@@ -1,37 +1,30 @@
-import React, { Component } from 'react';
-import image from './avatar.jpg';
-import logo from './logo.png';
+import React from 'react';
+import formatMoney from '../../Components/Page/CurrencyFormat';
+import img from './sample.png'
 import './Build.css'
 
-class BuildTag extends Component {
-    render() {
-        return (
-            <div className="item">
-                <div className="top">
-                    <div className="info">
-                        <img src={logo} alt=""/>
-                        <span>Title</span>
+function BuildTag ({post}) {
+    console.log("POST", post)
+    console.log("ID", post.id)
+    return (
+        <div className="col-sm tag border">
+            <a className="content" href={`/builds/${post.id}`}>
+                <div className="text">
+                    <div className="title">Excellent AMD Gaming/Streaming Build{post.name}</div>
+                    <div className="description">
+                        {post.description}
+                        <p>AMD Ryzen 5 5600X</p>
+                        <p>Parametric Video Card (Chipset: GeForce RTX 3070)</p>
+                        <p>Corsair 4000D Airflow ATX Mid Tower</p>
                     </div>
-                    <div className="image">
-                        <img className="w-100" src={image} alt=""/>
-                    </div>
+                    <div className="price"><i class="fas fa-money-bill-alt"></i>{formatMoney(1000000)}VND</div>
                 </div>
-                <div className="center mt-2 p-2">
-                    <h3>Tiêu đề</h3>
-                    <div className="des">
-                        <p>Mô tả</p>
-                    </div>
+                <div className="img">
+                    <img src={img} alt="demo"/>
                 </div>
-                <div className="footer d-flex p-2 border-top">
-                    <div className="text-left w-100">$123.123</div>
-                    <div className="text-right w-100">
-                        <i className="fa fa-arrow-up"></i>6
-                        <i className="ml-2 fa fa-comment"></i>6
-                    </div>
-                </div>
-            </div>
-        )
-    }
+            </a>
+        </div>
+    )
 }
 
 export default BuildTag;
