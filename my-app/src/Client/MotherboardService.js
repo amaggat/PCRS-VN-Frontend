@@ -24,25 +24,27 @@ class Service {
         window.location.replace('/list');
     }
 
-    static getMotherboards() {
-        return axios.get(MAIN_REST_API_URL);
-    }
-
     static getMotherboardbyID(id) {
         return axios.get(MAIN_REST_API_URL+'/'+id)
     }
 
-    static getMotherboardbyName(name) {
-        return axios.get(MAIN_REST_API_URL+'/find/name='+name)
-    }
+    static getSearchMotherboard({searchList={}, pageNumber=0, pageSize=20}) {
+        var request = MAIN_REST_API_URL+'?'
+        
+        if(Object.entries(searchList) !== {}) {}
 
+        request += 'page='+ pageNumber + '&size=' + pageSize;
+        console.log(searchList, pageNumber)
 
-    static getMotherboardbySocket(size) {
-        return axios.get(MAIN_REST_API_URL+'/find/size='+size)
-    }
+        // eslint-disable-next-line array-callback-return
+        Object.entries(searchList).map(e => {
+            if(e[1] !== "") {
+                request += '&' + e[0] + "=" + e[1] + '&'
+            }
+        })
 
-    static getMotherboardbyManufacturer(manufacturer) {
-        return axios.get(MAIN_REST_API_URL+'/find/manufacturer='+manufacturer)
+        // console.log(request);
+        return axios.get(request)
     }
 
 }

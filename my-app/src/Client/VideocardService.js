@@ -24,29 +24,24 @@ class Service {
         window.location.replace('/list');
     }
 
-    static getGPUs() {
-        return axios.get(GPU_REST_API_URL);
-    }
-
     static getGPUbyID(id) {
         return axios.get(GPU_REST_API_URL+'/'+id)
     }
 
-    static getGPUbyName(name) {
-        return axios.get(GPU_REST_API_URL+'/find/name='+name)
-    }
+    static getSearchVideocard({searchList={}, pageNumber=0, pageSize=20}) {
+        var request = GPU_REST_API_URL+'?'
+        request += 'page='+ pageNumber + '&size=' + pageSize;
+        // console.log(searchList)
 
+        // eslint-disable-next-line array-callback-return
+        Object.entries(searchList).map(e => {
+            if(e[1] !== "") {
+                request += '&' + e[0] + "=" + e[1] + '&'
+            }
+        })
 
-    static getGPUbyChipset(size) {
-        return axios.get(GPU_REST_API_URL+'/find/chipset='+size)
-    }
-
-    static getGPUbyVram(size) {
-        return axios.get(GPU_REST_API_URL+'/find/vram='+size)
-    }
-
-    static getGPUbyManufacturer(manufacturer) {
-        return axios.get(GPU_REST_API_URL+'/find/manufacturer='+manufacturer)
+        // console.log(request);
+        return axios.get(request)
     }
 
 }

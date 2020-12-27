@@ -35,6 +35,7 @@ import HDDTemplate from './Product/Part/HDD/HDDTemplate';
 
 import CaseTemplate from './Product/Part/Case/Sample/CaseTemplate';
 import CCoolerTemplate from './Product/Part/CCooler/Sample/CCoolerTemplate';
+import BuildTemplate from './Build/BuildTemplate';
 
 class Page extends Component {
     render() {
@@ -53,6 +54,9 @@ class Page extends Component {
                         <Route exact path="/list" component={List} />
                         <Route exact path="/builds" component={Build} />
                         <Route exact path="/products" component={Products} />
+                        {/* Browse Build */}
+                        <Route exact path="/builds/:id" component={BuildTemplate} />
+
                         {/* Browse Product subpages */}
                         <Route exact path="/products/cpu" component={CPU} />
                         {/* <Route exact path="/products/cpu?page=:number" component={CPU} /> */}

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ProductFilter from '../ProductFilter';
 import TopFunctionProduct from '../TopFunctionProduct';
 import Header from '../../../../Components/Header/Header';
 import Footer from '../../../../Components/Footer/Footer';
@@ -11,23 +10,56 @@ import { Link } from 'react-router-dom';
 import MotherboardService from '../../../../Client/MotherboardService'
 import img from './motherboard-demo.jpeg'
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
+import MotherboardFilter from './MotherboardFilter';
 
 class MotherBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            motherboards: []
+            motherboards: [],
+            totalPages: 0,
+            totalElements: 0,
+            pageNumber: 0,
+            searchList: {},
         }
     }
 
     componentDidMount() {
-        MotherboardService.getMotherboards().then((response) => {
+        const {pageNumber} = this.state
+        MotherboardService.getSearchMotherboard({pageNumber}).then((response) => {
             this.setState({
-                motherboards: response.data
+                motherboards: response.data.content,
+                totalPages: response.data.totalPages,
+                totalElements: response.data.totalElements,
             })
         }).catch(err => {
             console.log(err);
         });
+    }
+
+    componentDidUpdate(props, prevState) {
+        const {pageNumber, searchList} = this.state
+
+        const socket = JSON.parse(localStorage.getItem('socket'))
+        if (socket !== null) {
+            searchList.socket = socket
+        }
+        if (prevState.pageNumber === pageNumber && prevState.searchList === searchList) {
+            return
+        }
+        MotherboardService.getSearchMotherboard({pageNumber, searchList}).then((response) => {
+            this.setState({
+                motherboards: response.data.content,
+                totalPages: response.data.totalPages,
+                totalElements: response.data.totalElements,
+            })
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    search = (searchList) => {
+        this.setState({searchList})
     }
 
     render() {
@@ -41,10 +73,10 @@ class MotherBoard extends Component {
                 <div class="tab-pane w-container" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <div class="row ">
                         <div class="col-2">
-                            <ProductFilter/>
+                            <MotherboardFilter search={this.search}/>
                         </div>
                         <div className="col-10">
-                            <TopFunctionProduct/>
+                            <TopFunctionProduct total={this.state.totalElements} search={this.search}/>
                             <table class="table">
                                 <thead>
                                     <tr className="product-title">
@@ -53,7 +85,9 @@ class MotherBoard extends Component {
                                         <th scope="col" class="font-weight-bold" id="name">Name</th>
                                         <th scope="col" class="font-weight-bold" id="socket">Socket / CPU</th>
                                         <th scope="col" class="font-weight-bold" id="chipset">Chipset</th>
-                                        <th scope="col" class="font-weight-bold" id="size">Size</th>
+                                        <th scope="col" class="font-weight-bold" id="chipset">Form Factor</th>
+                                        <th scope="col" class="font-weight-bold" id="size">Memory size</th>
+                                        <th scope="col" class="font-weight-bold" id="size">Memory slot</th>
                                         <th scope="col" class="font-weight-bold" id="rating">Rating</th>
                                         <th scope="col" class="font-weight-bold" id="price">Price</th>
                                         <th></th>
@@ -71,9 +105,11 @@ class MotherBoard extends Component {
                                                         <span>{motherboard.fullname}</span>
                                                     </Link>
                                                 </td>
-                                                <td className="card-text">{motherboard.clockSpeed}</td>
+                                                <td className="card-text">{motherboard.socket}</td>
                                                 <td className="card-text">{motherboard.chipset}</td>
-                                                <td className="card-text">{motherboard.sizeOfRam}</td>
+                                                <td className="card-text">{motherboard.formfactor}</td>
+                                                <td className="card-text">{motherboard.sizeofram}</td>
+                                                <td className="card-text">{motherboard.memory_slot}</td>
                                                 <td className="card-text">- <i className="fa fa-star star-activate" ></i></td>
                                                 <td className="card-text">{motherboard.priceList?.length <= 0 ? "-" : formatMoney(motherboard.priceList[0].price) + "VND"}</td>
                                                 <td>
@@ -84,7 +120,7 @@ class MotherBoard extends Component {
                                     }
                                 </tbody>
                             </table>
-                            <PageNav/>
+                            <PageNav totalPages={this.state.totalPages} setPageNumber={(pageNumber) => {this.setState({pageNumber})}} />
                         </div>
                     </div>
                 </div>

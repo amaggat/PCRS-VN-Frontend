@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ProductFilter from '../ProductFilter';
 import TopFunctionProduct from '../TopFunctionProduct';
 import Header from '../../../../Components/Header/Header';
 import Footer from '../../../../Components/Footer/Footer';
@@ -11,23 +10,51 @@ import { Link } from 'react-router-dom';
 import MemoryService from '../../../../Client/MemoryService'
 import img from './memory-demo.jpeg'
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
+import MemoryFilter from './MemoryFilter';
 
 class Memory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            memories: []
+            memories: [],
+            totalPages: 0,
+            totalElements: 0,
+            pageNumber: 0,
+            searchList: {},
         }
     }
 
     componentDidMount() {
-        MemoryService.getMemorys().then((response) => {
+        const {pageNumber} = this.state
+        MemoryService.getSearchMemory({pageNumber}).then((response) => {
             this.setState({
-                memories: response.data
+                memories: response.data.content,
+                totalPages: response.data.totalPages,
+                totalElements: response.data.totalElements,
             })
         }).catch(err => {
             console.log(err);
         });
+    }
+
+    componentDidUpdate(props, prevState) {
+        const {pageNumber, searchList} = this.state
+        if (prevState.pageNumber === pageNumber && prevState.searchList === searchList) {
+            return
+        }
+        MemoryService.getSearchMemory({pageNumber, searchList}).then((response) => {
+            this.setState({
+                memories: response.data.content,
+                totalPages: response.data.totalPages,
+                totalElements: response.data.totalElements,
+            })
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    search = (searchList) => {
+        this.setState({searchList})
     }
 
     render() {
@@ -41,10 +68,10 @@ class Memory extends Component {
                 <div className="tab-pane w-container" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <div className="row">
                         <div className="col-2">
-                            <ProductFilter/>
+                            <MemoryFilter search={this.search}/>
                         </div>
                         <div className="col-10">
-                            <TopFunctionProduct/>
+                            <TopFunctionProduct total={this.state.totalElements} search={this.search}/>
                             <table className="table">
                                 <thead>
                                     <tr className="product-title">
@@ -84,7 +111,7 @@ class Memory extends Component {
                                     }
                                 </tbody>
                             </table>
-                            <PageNav/>
+                            <PageNav totalPages={this.state.totalPages} setPageNumber={(pageNumber) => {this.setState({pageNumber})}} />
                         </div>
                     </div>
                 </div>

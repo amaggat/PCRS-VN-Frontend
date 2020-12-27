@@ -24,25 +24,24 @@ class MemoryService {
         window.location.replace('/list');
     }
 
-    static getMemorys() {
-        return axios.get(RAM_REST_API_URL);
-    }
-
     static getMemorybyID(id) {
         return axios.get(RAM_REST_API_URL+'/'+id)
     }
 
-    static getMemorybyName(name) {
-        return axios.get(RAM_REST_API_URL+'/find/name='+name)
-    }
+    static getSearchMemory({searchList={}, pageNumber=0, pageSize=20}) {
+        var request = RAM_REST_API_URL+'?'
+        request += 'page='+ pageNumber + '&size=' + pageSize;
+        // console.log(searchList)
 
+        // eslint-disable-next-line array-callback-return
+        Object.entries(searchList).map(e => {
+            if(e[1] !== "") {
+                request += '&' + e[0] + "=" + e[1] + '&'
+            }
+        })
 
-    static getMemorybySize(size) {
-        return axios.get(RAM_REST_API_URL+'/find/size='+size)
-    }
-
-    static getMemorybyManufacturer(manufacturer) {
-        return axios.get(RAM_REST_API_URL+'/find/manufacturer='+manufacturer)
+        // console.log(request);
+        return axios.get(request)
     }
 
 }

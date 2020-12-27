@@ -30,3 +30,61 @@
     border: 1px solid #ccc;
     border-bottom: 2px solid #ccc;
 }
+
+.build-container {
+    width: 60vw;
+    margin: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.build-template .banner {
+    background-color: #b18c5a;
+}
+
+.build-template p.banner-title {
+    color: #5f492d !important;
+}
+
+.build-template .block {
+    margin-bottom: 30px;
+}
+
+.build-template .block-link {
+    background-color: #f9f5e9;
+    border: solid 1px black;
+    padding: 12px 30px;
+}
+
+.build-template .list-link-url {
+    transition: 0.25s;
+    color: black;
+}
+
+.build-template .list-link-url:hover {
+    text-decoration: none;
+    color: #2c85c5;
+}
+
+.build-template .content div, .build-template .content  p {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+}
+
+.build-template .section-title {
+    font-size: 1.2rem !important;
+    font-family: 'Fjalla One', sans-serif !important;
+    border-bottom: solid 0.6px black;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.build-template .warn {
+    background-color: rgb(0, 177, 106);
+}
+
+.build-template .author {
+    border-top: solid 0.6px black;
+    font-size: 14px;
+    color: #f78300;
+}

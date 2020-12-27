@@ -24,25 +24,24 @@ class HDDService {
         window.location.replace('/list');
     }
 
-    static getHDDs() {
-        return axios.get(HDD_REST_API_URL);
-    }
-
     static getHDDbyID(id) {
         return axios.get(HDD_REST_API_URL+'/'+id)
     }
 
-    static getHDDbyName(name) {
-        return axios.get(HDD_REST_API_URL+'/find/name='+name)
-    }
+    static getSearchHDD({searchList={}, pageNumber=0, pageSize=20}) {
+        var request = HDD_REST_API_URL+'?'
+        request += 'page='+ pageNumber + '&size=' + pageSize;
+        // console.log(searchList)
 
+        // eslint-disable-next-line array-callback-return
+        Object.entries(searchList).map(e => {
+            if(e[1] !== "") {
+                request += '&' + e[0] + "=" + e[1] + '&'
+            }
+        })
 
-    static getHDDbySize(size) {
-        return axios.get(HDD_REST_API_URL+'/find/size='+size)
-    }
-
-    static getHDDbyManufacturer(manufacturer) {
-        return axios.get(HDD_REST_API_URL+'/find/manufacturer='+manufacturer)
+        // console.log(request);
+        return axios.get(request)
     }
 
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ProductFilter from '../ProductFilter';
 import TopFunctionProduct from '../TopFunctionProduct';
 import Header from '../../../../Components/Header/Header';
 import Footer from '../../../../Components/Footer/Footer';
@@ -8,6 +7,7 @@ import PageNav from '../../../../Components/Page/PageNav';
 import '../../Product.css'
 import img from './video-card-demo.jpeg'
 import VideocardService from '../../../../Client/VideocardService'
+import VideocardFilter from './VideocardFilter';
 import { Link, withRouter } from 'react-router-dom';
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
 
@@ -15,18 +15,45 @@ class VideoCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            videocards: []
+            videocards: [],
+            totalPages: 0,
+            totalElements: 0,
+            pageNumber: 0,
+            searchList: {},
         }
     }
-    
+
     componentDidMount() {
-        VideocardService.getGPUs().then((response) => {
+        const {pageNumber} = this.state
+        VideocardService.getSearchVideocard({pageNumber}).then((response) => {
             this.setState({
-                videocards: response.data
+                videocards: response.data.content,
+                totalPages: response.data.totalPages,
+                totalElements: response.data.totalElements,
             })
         }).catch(err => {
             console.log(err);
         });
+    }
+
+    componentDidUpdate(props, prevState) {
+        const {pageNumber, searchList} = this.state
+        if (prevState.pageNumber === pageNumber && prevState.searchList === searchList) {
+            return
+        }
+        VideocardService.getSearchVideocard({pageNumber, searchList}).then((response) => {
+            this.setState({
+                videocards: response.data.content,
+                totalPages: response.data.totalPages,
+                totalElements: response.data.totalElements,
+            })
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    search = (searchList) => {
+        this.setState({searchList})
     }
 
     render() {
@@ -40,10 +67,10 @@ class VideoCard extends Component {
                 <div class="tab-pane w-container" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <div class="row ">
                         <div class="col-2">
-                            <ProductFilter/>
+                            <VideocardFilter search={this.search}/>
                         </div>
                         <div className="col-10">
-                            <TopFunctionProduct/>
+                            <TopFunctionProduct total={this.state.totalElements} search={this.search}/>
                             <table class="table">
                                 <thead>
                                     <tr class="product-title">
@@ -81,7 +108,7 @@ class VideoCard extends Component {
                                     }
                                 </tbody>
                             </table>
-                            <PageNav/>
+                            <PageNav totalPages={this.state.totalPages} setPageNumber={(pageNumber) => {this.setState({pageNumber})}} />
                         </div>
                     </div>
                 </div>

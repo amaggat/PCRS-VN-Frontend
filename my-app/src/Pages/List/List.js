@@ -35,7 +35,14 @@ class List extends Component {
 
     render () {
         const {cpu, motherboard, memory, hdd, ssd, gpu, power} = this.state
-        
+        var socket = null;
+
+        if (cpu !== null || motherboard !== null) {
+            cpu !== null ? socket = cpu.socket : socket = motherboard.socket
+            console.log(socket)
+            localStorage.setItem('socket', JSON.stringify(socket));
+        }
+
         var total = 0
         Object.entries(this.state).map(
             parts => parts[1]?.price ? total += parts[1].price : null
@@ -132,6 +139,7 @@ class List extends Component {
                         <span className="content">Some physical dimension restrictions cannot (yet) be automatically checked, such as cpu cooler / RAM clearance with modules using tall heat spreaders. </span>
                     </dir>
                 </div>
+                
                 <Footer/>
             </div>
         )

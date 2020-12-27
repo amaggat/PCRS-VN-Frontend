@@ -24,24 +24,24 @@ class Service {
         window.location.replace('/list');
     }
 
-    static getPowers() {
-        return axios.get(POWER_REST_API_URL);
-    }
-
-    static getPowerbyName(name) {
-        return axios.get(POWER_REST_API_URL+'/find/name='+name)
-    }
-
     static getPowerbyID(id) {
         return axios.get(POWER_REST_API_URL+'/'+id)
     }
 
-    static getPowerbySize(min, max) {
-        return axios.get(POWER_REST_API_URL+'/find/size='+min+'-'+max)
-    }
+    static getSearchPower({searchList={}, pageNumber=0, pageSize=20}) {
+        var request = POWER_REST_API_URL+'?'
+        request += 'page='+ pageNumber + '&size=' + pageSize;
+        // console.log(searchList)
 
-    static getPowerbyManufacturer(manufacturer) {
-        return axios.get(POWER_REST_API_URL+'/find/manufacturer='+manufacturer)
+        // eslint-disable-next-line array-callback-return
+        Object.entries(searchList).map(e => {
+            if(e[1] !== "") {
+                request += '&' + e[0] + "=" + e[1] + '&'
+            }
+        })
+
+        // console.log(request);
+        return axios.get(request)
     }
 
 }

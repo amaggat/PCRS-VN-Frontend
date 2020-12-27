@@ -25,6 +25,7 @@ class CPU extends Component {
 
     componentDidMount() {
         const {pageNumber} = this.state
+
         CPUService.getSearchCPU({pageNumber}).then((response) => {
             this.setState({
                 cpus: response.data.content,
@@ -38,8 +39,14 @@ class CPU extends Component {
 
     componentDidUpdate(props, prevState) {
         const {pageNumber, searchList} = this.state
+
+        const socket = JSON.parse(localStorage.getItem('socket'))
+        if (socket !== null) {
+            searchList.socket = socket
+        }
+
         if (prevState.pageNumber === pageNumber && prevState.searchList === searchList) {
-            return
+            return;
         }
         CPUService.getSearchCPU({pageNumber, searchList}).then((response) => {
             this.setState({
@@ -52,7 +59,7 @@ class CPU extends Component {
         });
     }
 
-    searchCPU = (searchList) => {
+    search = (searchList) => {
         this.setState({searchList})
     }
     
@@ -69,10 +76,10 @@ class CPU extends Component {
                 <div className="tab-pane w-container" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <div className="row ">
                         <div className="col-2">
-                            <CPUFilter searchCPU={this.searchCPU}/>
+                            <CPUFilter search={this.search}/>
                         </div>
                         <div className="col-10">
-                            <TopFunctionProduct total={this.state.totalElements}/>
+                            <TopFunctionProduct total={this.state.totalElements} search={this.search}/>
                             <table className="table">
                                 <thead className="product-card-head">
                                     <tr className="product-title">

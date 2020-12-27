@@ -1,39 +1,42 @@
-import React, { useEffect  } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMergeState } from '../../../../Hook'
 import '../../Product.css'
 
-function ProductFilter ({searchCPU}) {
+function CPUFilter ({search}) {
     const [filters, setFilters] = useMergeState({});
-    
+    const socket = JSON.parse(localStorage.getItem('socket'));
+    console.log("SOCKET: ", socket);
+    const [disable, setDisable] = useState(false)
+
     function handleSubmit(e) {
         e.preventDefault();
     }
 
     function handleChange(e) {
+        if (socket !== null && e.target.value.toUpperCase() !== socket.toUpperCase()) {
+            return
+        }
+
         setFilters({
             [e.target.name]: e.target.value
         })
     }
 
     useEffect(() => {
-        searchCPU(filters)
-        // console.log(filters);
-    }, [filters, searchCPU])
+        if (socket !== null) {
+            setDisable({
+                disable: false
+            });
+        }
+        search(filters)
+        // console.log("CPU FILTER", filters);
+    }, [filters, search, socket])
 
     return (
         <div className="filter">
             <h5 className="filter-title p-2">Filter</h5>
             <form className="filter-content" onSubmit={handleSubmit} id="filterForm">
-                <div className="form-group">
-                    <label>Price</label>
-                    <div className="input-group">
-                        <input type="text" className="form-control  form-control-sm"
-                            placeholder="min"/>
-                        <input type="text" className="form-control  form-control-sm"
-                            placeholder="max"/>
-                    </div>
-                </div>
-                <div className="form-group border-top pt-2"> 
+                <div className="form-group pt-2"> 
                     <label>Manufacture</label>
                     <div className="form-check">
                         <input type="radio" name="manufacturer" value="" defaultChecked={true} onChange={handleChange} className="form-check-input" id="man-all"/>
@@ -90,43 +93,44 @@ function ProductFilter ({searchCPU}) {
                 <div className="form-group border-top pt-2">
                     <label>Core</label>
                     <div className="form-check">
-                        <input type="radio" name="core" value="" defaultChecked={true} onChange={handleChange} className="form-check-input" id="core-all"/>
-                        <label className="form-check-label" for="core-all">All</label>
+                        <input type="radio" name="cores" value="" defaultChecked={true} onChange={handleChange} className="form-check-input" id="cores-all"/>
+                        <label className="form-check-label" for="cores-all">All</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="core" value="4" onChange={handleChange} className="form-check-input" id="core-4"/>
-                        <label className="form-check-label" for="core-4">4</label>
+                        <input type="radio" name="cores" value="4" onChange={handleChange} className="form-check-input" id="cores-4"/>
+                        <label className="form-check-label" for="cores-4">4</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="core" value="6" onChange={handleChange} className="form-check-input" id="core-6"/>
-                        <label className="form-check-label" for="core-6">6</label>
+                        <input type="radio" name="cores" value="6" onChange={handleChange} className="form-check-input" id="cores-6"/>
+                        <label className="form-check-label" for="cores-6">6</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="core" value="12" onChange={handleChange} className="form-check-input" id="core-12"/>
-                        <label className="form-check-label" for="core-12">12</label>
+                        <input type="radio" name="cores" value="12" onChange={handleChange} className="form-check-input" id="cores-12"/>
+                        <label className="form-check-label" for="cores-12">12</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="core" value="16" onChange={handleChange} className="form-check-input" id="core-16"/>
-                        <label className="form-check-label" for="core-16">16</label>
+                        <input type="radio" name="cores" value="16" onChange={handleChange} className="form-check-input" id="cores-16"/>
+                        <label className="form-check-label" for="cores-16">16</label>
                     </div>
                 </div>
                 <div className="form-group border-top pt-2">
                     {/* CPUService.getCPUbySocket(socket) */}
                     <label>Socket</label>
                     <div className="form-check">
+                        {/* value={isCheck} checked={isCheck==="..."} */}
                         <input type="radio" name="socket" value="" defaultChecked={true} onChange={handleChange} className="form-check-input" id="socket-all"/>
                         <label className="form-check-label" for="socket-all">All</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="socket" value="am4" onChange={handleChange} className="form-check-input" id="socket-am4"/>
+                        <input type="radio" name="socket" value="am4" onChange={handleChange} disabled={disable} className="form-check-input" id="socket-am4"/>
                         <label className="form-check-label" for="socket-am4">Socket AM4</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="socket" value="lga1200" onChange={handleChange} className="form-check-input" id="socket-lga1200"/>
+                        <input type="radio" name="socket" value="lga1200" onChange={handleChange} disabled={disable} className="form-check-input" id="socket-lga1200"/>
                         <label className="form-check-label" for="lga1200">LGA1200</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="socket" value="lga1151" onChange={handleChange} className="form-check-input" id="socket-lga1151"/>
+                        <input type="radio" name="socket" value="lga1151" onChange={handleChange} disabled={disable} className="form-check-input" id="socket-lga1151"/>
                         <label className="form-check-label" for="lga1151">LGA1151</label>
                     </div>
                 </div>
@@ -182,4 +186,4 @@ function ProductFilter ({searchCPU}) {
     )
 }
 
-export default ProductFilter;
+export default CPUFilter;

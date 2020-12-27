@@ -63,3 +63,7 @@
 .preview img {
     padding-right: 5px;
 }
+
+.page-link .active {
+    color: black;
+}

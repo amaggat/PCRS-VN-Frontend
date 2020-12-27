@@ -24,11 +24,6 @@ class Service {
         window.location.replace('/list');
     }
 
-    static getCPUs() {
-        return axios.get(CPU_REST_API_URL+'?page=0&size=30');
-    }
-
-
     static getCPUbyID(id) {
         return axios.get(CPU_REST_API_URL+'/'+id)
     }
@@ -36,23 +31,15 @@ class Service {
     static getSearchCPU({searchList={}, pageNumber=0, pageSize=20}) { 
         var request = CPU_REST_API_URL+'?'
         request += 'page='+ pageNumber + '&size=' + pageSize;
-        console.log(searchList)
+        // eslint-disable-next-line array-callback-return
         Object.entries(searchList).map(e => {
             if(e[1] !== "") {
                 request += '&' + e[0] + "=" + e[1] + '&'
             }
         })
 
-        console.log(request);
+        console.log("REQUEST", request);
         return axios.get(request)
-    }
-
-    static getCPUbyName(name) {
-        return axios.get(CPU_REST_API_URL+'/find/name='+name)
-    }
-
-    static getCPUbySocket(socket) {
-        return axios.get(CPU_REST_API_URL+'/find/socket='+socket)
     }
 }
 

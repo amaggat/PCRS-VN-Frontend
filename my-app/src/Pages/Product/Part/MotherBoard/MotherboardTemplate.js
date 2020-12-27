@@ -104,8 +104,14 @@ function MotherboardTemplate () {
                                 </ul>
                                 <ul>
                                     <div className="detail-block border-bottom" id="serieName">
-                                        <p className="title">Motherboard Max</p>
-                                        <p className="body">{motherboard.size}</p>
+                                        <p className="title">Memory Max</p>
+                                        <p className="body">{motherboard.sizeofram}</p>
+                                    </div>
+                                </ul>
+                                <ul>
+                                    <div className="detail-block border-bottom" id="serieName">
+                                        <p className="title">Memory Slot</p>
+                                        <p className="body">{motherboard.memory_slot}</p>
                                     </div>
                                 </ul>
                                 <ul>
