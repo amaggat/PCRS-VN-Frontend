@@ -3,10 +3,31 @@ import {useParams} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
+import avatar from './avatar.png';
+import Feedback from './Feedback';
 
 import ProfileService from '../../Client/ProfileService'
 import Card from './Card';
+import ImageSlider from '../../Components/Page/ImageSlider';
+import CPUService from '../../Client/CPUService';
+import MemoryService from '../../Client/MemoryService';
+import MotherboardService from '../../Client/MotherboardService';
+import SSDService from '../../Client/SSDService';
+import HDDService from '../../Client/HDDService';
+import PowerService from '../../Client/PowerService';
+import VideocardService from '../../Client/VideocardService';
 
+
+function add2List (profile) {
+    localStorage.clear()
+    CPUService.setCPU2List(profile.pcProfile?.cpu[0])
+    MemoryService.setMemory2List(profile.pcProfile?.ram[0])
+    MotherboardService.setMotherboard2List(profile.pcProfile?.main[0])
+    PowerService.setPower2List(profile.pcProfile?.psu[0])
+    HDDService.setHDD2List(profile.pcProfile?.hdd[0])
+    SSDService.setSSD2List(profile.pcProfile?.ssd[0])
+    VideocardService.setGPU2List(profile.pcProfile?.gpu[0])
+}
 
 export default function BuildTemplate () {
     const {id} = useParams();
@@ -17,7 +38,11 @@ export default function BuildTemplate () {
             setProfile(response.data)
         })
         .catch(console.log);
-    },[id])    
+    },[id])
+
+    const arrImg = []
+
+    console.log(profile.pcProfile?.cpu)
 
     return (
         <div className="build-template white-back">
@@ -27,10 +52,14 @@ export default function BuildTemplate () {
                 <p className="banner-name">{profile.name}</p>
             </div>
 
+            {/* <div className="image-slider">
+                <ImageSlider arr={arrImg} />
+            </div> */}
+
             <div className="build-container block block-link">
                 <div className="row list-link">
                     <i class="fas fa-link"></i>
-                    <Link className="list-link-url" url={window.location.href}>{window.location.href}</Link>
+                    <a className="list-link-url" rel="noreferrer" target="_blank" href={window.location.href}>{window.location.href}</a>
                 </div>
             </div>
 
@@ -128,21 +157,31 @@ export default function BuildTemplate () {
                                 <th scope="col">Where</th>
                             </tr>
                         </thead>
-                        {
-                            <tbody className="attribute">
-                                <Card name="CPU" part={profile.pcProfile?.cpu[0]} />
-                                <Card name="Motherboard" part={profile.pcProfile?.main[0]} />
-                                <Card name="Memory" part={profile.pcProfile?.ram[0]} />
-                                <Card name="Videocard" part={profile.pcProfile?.gpu[0]} />
-                                <Card name="SSD" part={profile.pcProfile?.ssd[0]} />
-                                <Card name="HDD" part={profile.pcProfile?.hdd[0]} />
-                                <Card name="Power supply" part={profile.pcProfile?.psu[0]} />
-                            </tbody>
-                        }
+                        <tbody className="attribute">
+                            <Card title="CPU" name="cpu" part={profile.pcProfile?.cpu[0]} />
+                            <Card title="Motherboard" name="motherboard" part={profile.pcProfile?.main[0]} />
+                            <Card title="Memory" name="memory" part={profile.pcProfile?.ram[0]} />
+                            <Card title="Video card" name="video-card" part={profile.pcProfile?.gpu[0]} />
+                            <Card title="Solid State Drive" name="ssd" part={profile.pcProfile?.ssd[0]} />
+                            <Card title="Hard Disk Drive" name="hdd" part={profile.pcProfile?.hdd[0]} />
+                            <Card title="Power Supply" name="power" part={profile.pcProfile?.psu[0]} />
+                        </tbody>
                     </table>
                     </div>
                 </div>
             </div>
+
+            <div className="w-container block">
+                <div className="row note-title">Applying guild</div>
+                    <dir className="note-text">
+                        <span className="note-link">
+                            <i class="fas fa-sticky-note"></i>
+                            <span>Note:</span>
+                        </span>
+                        <span className="content">You can add this build to your list by click this button </span>
+                        <button type="button" className="btn btn-primary btn-sm" onClick={()=>add2List(profile)}>Add to my build</button>
+                    </dir>
+                </div>
 
             <div className="w-container block">
                 <div className="row note-title">Compatibility Notes</div>
@@ -154,6 +193,9 @@ export default function BuildTemplate () {
                     <span className="content">Some physical dimension restrictions cannot (yet) be automatically checked, such as cpu cooler / RAM clearance with modules using tall heat spreaders. </span>
                 </dir>
             </div>
+
+            <Feedback buildId={id} />
+
             <Footer />
         </div>
     )

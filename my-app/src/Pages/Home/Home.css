@@ -6,99 +6,137 @@
     font-weight: bold;
 } */
 
-.home .white-back {
-    background-color: white;
+.home-product {
+    padding: 40px 0;
 }
 
-.home .carouselImg {
-    height: 80vh;
-    width: 100vw;
+.light-back {
+    background-color: #f4f4f3;
 }
 
-.home .card {
-    background-color: transparent;
-    border: none;
-    padding: 0rem 2rem 0rem 2rem;
-
+.small-container .row {
+    margin: 0;
 }
 
-.home .carouselCaption {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.home-product .block-title {
+    font-size: 22px;
+    border-bottom: solid 1px black;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
 }
 
-.viewMoreBtn {
-    width: 80%;
+.text-banner-wrap {
+    padding: 40px;
+    color: white;
+    font-size: 18px;
 }
 
-.guild-group {
-    background-color: orange;
-    padding: 0px;
-    
+.text-banner-wrap .button {
+    margin-top: 20px;
 }
 
-.guild-group:hover {
+.text-banner-wrap .banner-title {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.home-product .wrap-text {
+    background-color: #e26723;
+    padding: 10px 0px;
+}
+
+.wrap-text {
+    font-size: 34px;
+}
+
+.wrap-text .title {
+    font-size: 24px;
+    color: white;
+    padding-bottom: 5px;
+}
+
+.wrap-text .context {
+    font-size: 18px;
+    padding-top: 10px;
+}
+
+.home-product .block {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+.home-product .col {
+    padding: 0px 10px;
+}
+
+.first {
+    font-size: 18px;
+    border: solid 2px rgb(95, 95, 95);
+}
+
+.first:hover {
+    text-decoration: none;
     outline-style: solid;
     outline-width: 4px;
-    outline-color: black;
+    outline-color: #ffe683 !important;
     transition: 0.1s;
 }
 
-.BGpaddingfull {
-    padding: .75rem;
+.see-more .button {
+    margin-top: 30%;
+}
+
+.see-more .button .btn {
+    width: 80%;
+    padding: 10px;
+}
+
+.col-img:hover {
+    text-decoration: none;
+    outline-style: solid;
+    outline-width: 4px;
+    outline-color: #e26723;
+    transition: 0.1s;
+}
+
+.col-img {
+    height: 240px;
+    width: 250px;
+    min-height: 100%;
+    border: solid 2px rgb(95, 95, 95);
+}
+
+.col-img img {
+    height: 200px;
+}
+
+.home-product .v-center {
+    margin-top: 20%;
+}
+
+.home-product .small-container {
+    width: 60vw;
+    margin: auto;
+}
+
+.text-content {
+    position: relative;
+}
+
+.vertical-center {
     margin: 0;
-}
-
-.BGpadding2d {
-    padding: 0rem 1rem 0rem 1rem;
-    margin: 0;
-}
-
-.BGdetail {
-    font-size: 14px;
-    font-family: 'Noto Sans JP', sans-serif;
-
-}
-
-.BGtitle {
-    font-size: 24px;
-    color: white;
-}
-
-.BGMainTitle {
-    font-size: 52px;
-    font-weight: bold;
-    padding: 1rem 0rem;
-}
-
-.BGMainDescription {
-    font-size: 20px;
-    font-family: 'Noto Sans JP', sans-serif;
-    padding: 0rem 0rem 1rem 0rem;
-}
-
-.price-tag {
-    font-size: 18px;
-    color: white;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .home .grey-back {
-    height: 80vh;
-    width: 100vw;
-    background-image: radial-gradient(rgb(180, 180, 180), rgb(140, 140, 140));;
-}
-
-.sectionTitle {
-    border-bottom: 1px solid black;
-}
-
-.buildGuild {
-    padding: 5rem 0rem 5rem 0rem;
-}
-
-.productBrowsing {
-    padding: 3rem 0rem 1.5rem 0rem;;
+    margin: 0;
+    min-height: fit-content;
+    padding: 0.25rem 0;
+    background-image: radial-gradient(rgb(180, 180, 180), rgb(78, 77, 77));
 }
 
 .product-browsing__item {

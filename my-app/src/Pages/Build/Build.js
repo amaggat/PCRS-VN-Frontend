@@ -23,7 +23,8 @@ class Build extends Component {
     }
 
     render () {
-        console.log(this.state.posts)
+        const {posts} = this.state;
+
         return (
             <div className="build white-back">
                 <Header />
@@ -34,16 +35,13 @@ class Build extends Component {
                     <div className="row block section-title">Desktop / Gaming / Streaming</div>
                     <div className="row block">
                         {
-                            this.state.posts.map(
+                            posts.map(
                                 post => 
-                                <BuildTag post={post} />
+                                <div className="col-lg-3">
+                                    <BuildTag post={post} />
+                                </div>
                             )
                         }
-                    </div>
-                    
-                    <div className="row block section-title">Desktop / Gaming</div>
-                    
-                    <div className="row block">
                     </div>
                 </div>
                 <Footer />

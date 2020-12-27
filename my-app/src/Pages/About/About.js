@@ -6,13 +6,15 @@ function About() {
     return(
         <div>
             <Header />
-            <h2>ABOUT US</h2>
-            <h2>ABOUT US</h2>
-            <h2>ABOUT US</h2>
-            <h2>ABOUT US</h2>
-            <h2>ABOUT US</h2>
-            <h2>ABOUT US</h2>
-            <h2>ABOUT US</h2>
+            <div className="white-back">
+                <h2>ABOUT US</h2>
+                <h2>ABOUT US</h2>
+                <h2>ABOUT US</h2>
+                <h2>ABOUT US</h2>
+                <h2>ABOUT US</h2>
+                <h2>ABOUT US</h2>
+                <h2>ABOUT US</h2>
+            </div>
             <Footer />
         </div>
     );

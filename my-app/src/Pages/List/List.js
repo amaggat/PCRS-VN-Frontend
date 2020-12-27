@@ -31,6 +31,16 @@ class List extends Component {
             // case: JSON.parse(localStorage.getItem('case')),
             power: JSON.parse(localStorage.getItem('power')),
         }
+        this.removeAll = this.removeAll.bind(this);
+    }
+    
+    // haveItem() {
+    //     if 
+    // }
+
+    removeAll () {
+        localStorage.clear();
+        location.reload();
     }
 
     render () {
@@ -94,6 +104,14 @@ class List extends Component {
                 </div>
 
                 <div className="tab-content sb-table w-container block" id="pills-tabContent">
+                    {
+                        this.state ? 
+                            <div className="text-right">
+                                <button type="button" className="btn btn-primary btn-sm" onClick={this.removeAll}>Remove all</button>
+                            </div>
+                        : null
+
+                    }
                     <div className="tab-pane fade show active" id="pills-system" role="tabpanel" aria-labelledby="pills-home-tab">
                     <table className="table title">
                         <thead>

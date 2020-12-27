@@ -5,24 +5,25 @@ import './Build.css'
 
 function BuildTag ({post}) {
     console.log("POST", post)
-    console.log("ID", post.id)
     return (
-        <div className="col-sm tag border">
-            <a className="content" href={`/builds/${post.id}`}>
-                <div className="text">
-                    <div className="title">Excellent AMD Gaming/Streaming Build{post.name}</div>
-                    <div className="description">
-                        {post.description}
-                        <p>AMD Ryzen 5 5600X</p>
-                        <p>Parametric Video Card (Chipset: GeForce RTX 3070)</p>
-                        <p>Corsair 4000D Airflow ATX Mid Tower</p>
+        <div className="tag">
+            <div className="background">
+                <a className="content" href={`/builds/${post.id}`}>
+                    <div className="text">
+                        <div className="title">{post.name}</div>
+                        <div className="description">
+                            {/* {post.description} */}
+                            <p>AMD Ryzen 5 5600X</p>
+                            <p>Parametric Video Card (Chipset: GeForce RTX 3070)</p>
+                            <p>Corsair 4000D Airflow ATX Mid Tower</p>
+                        </div>
+                        <div className="price"><i class="fas fa-money-bill-alt"></i>{formatMoney(1000000)}VND</div>
                     </div>
-                    <div className="price"><i class="fas fa-money-bill-alt"></i>{formatMoney(1000000)}VND</div>
-                </div>
-                <div className="img">
-                    <img src={img} alt="demo"/>
-                </div>
-            </a>
+                    <div className="img">
+                        <img src={img} alt="demo"/>
+                    </div>
+                </a>
+            </div>
         </div>
     )
 }

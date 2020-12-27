@@ -20,13 +20,13 @@ class TopNav extends Component {
                         <div className="col-sm-2">
                             <nav className="nav text-center">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/login">Login</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/register">Register</Link>
+                                    <a target="_blank" rel="noreferrer" className="nav-link" href="https://github.com/manhdung20112000/app-front-end">Github</a>
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/about">About Us</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/">Help</Link>
                                 </li>
                             </nav>
                         </div>

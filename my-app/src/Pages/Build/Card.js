@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import formatMoney from "../../Components/Page/CurrencyFormat";
 
-export default function Card ({name, part}) {
-    const min = {}
-    // console.log(part)
+export default function Card ({title, name, part}) {
+    const min = {...part}
+    console.log(part)
     min.price = 10000000000
         
         // eslint-disable-next-line array-callback-return
@@ -21,19 +21,14 @@ export default function Card ({name, part}) {
 
     return (
         <tr className="product-card">
-            <td className="row-title"><Link className="vertical-center" id="" to={`/products/${name}`}>{name}</Link></td>
+            <td className="row-title"><Link className="vertical-center" id="" to={`/products/${name}`}>{title}</Link></td>
             <td>
-            { min ?
-                <Link className="wrap-product-img" to={`/products/${min.id}`}>
+            {
+                <Link className="wrap-product-img" to={`/products/${name}/${min.id}`}>
                     <img className="product-img" src={min.img ? min.img : null} alt={min.id}/> 
                     <span>
                         {min.fullname}
                     </span>
-                </Link>
-                :
-                <Link type="button" className="btn btn-primary btn-sm" to={`/products/${name}`}>
-                    <i className="fas fa-plus" />
-                    Choose a CPU
                 </Link>
             }
             </td>

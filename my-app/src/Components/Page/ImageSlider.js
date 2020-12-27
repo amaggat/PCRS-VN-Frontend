@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ImageSlider = ({ arr, img }) => {
+const ImageSlider = ({ arr, img=null }) => {
     const [current, setCurrent] = useState(0);
     // const arr =  cpu.cpuPriceList?.map(e => {return (e)})
 
