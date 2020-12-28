@@ -21,6 +21,7 @@ class GPUCard extends Component {
     remove = () => {
         localStorage.removeItem('video-card');
         this.setState({videocard: null});
+        window.location.reload()
     }
 
     render() {

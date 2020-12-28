@@ -20,6 +20,7 @@ class MemoryCard extends Component {
     remove = () => {
         localStorage.removeItem('memory');
         this.setState({memory: null});
+        window.location.reload()
     }
 
     render() {

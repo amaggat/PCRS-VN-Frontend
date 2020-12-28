@@ -21,6 +21,7 @@ class CPUCard extends Component {
         localStorage.removeItem('cpu');
         localStorage.removeItem('socket');
         this.setState({cpu: null});
+        window.location.reload()
     }
 
     render() {

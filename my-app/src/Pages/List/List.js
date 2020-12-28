@@ -33,14 +33,10 @@ class List extends Component {
         }
         this.removeAll = this.removeAll.bind(this);
     }
-    
-    // haveItem() {
-    //     if 
-    // }
 
     removeAll () {
         localStorage.clear();
-        location.reload();
+        window.location.reload();
     }
 
     render () {
@@ -63,12 +59,12 @@ class List extends Component {
                 <div className="col-lg-9 no-issue">
                     <i class="tick far fa-check-circle"></i>
                     <span className="title">Compatibility: </span>
-                    <span className="text">No issues or incompatibilities found.</span> 
+                    <span className="text">Dunno.</span> 
                 </div>
                 <div className="col-lg-3 wattage">
                     <i class="lightning fas fa-bolt"></i>
                     <span className="title">Estimate Wattage: </span>
-                    <span className="text">220 W</span>
+                    <span className="text">... W</span>
                 </div>
             </div>
         )
@@ -78,7 +74,7 @@ class List extends Component {
                 <div className="issue">
                     <i class="untick far fa-times-circle"></i>
                     <span className="title">Compatibility: </span>
-                    <span className="warning-text">Warning! These parts have potential issues or incompatibilities.</span>
+                    <span className="warning-text">Dunno.</span>
                 </div>
                 <div className="col-lg-3 wattage">
                     <i class="lightning fas fa-bolt"></i>
@@ -97,7 +93,7 @@ class List extends Component {
                 <div className="warn w-container block">
                     <div className="row list-link">
                         <i class="fas fa-link"></i>
-                        <Link className="list-link-url" url="/list/bRDXKB">https://localhost:3000/list/bRDXKB</Link>
+                        <Link className="list-link-url" url="/list/">https://localhost:3000/list/</Link>
                     </div>
                     {/* if noIssue, the background will be set to green. Else "Issue" will return red. */}
                     {noIssue}

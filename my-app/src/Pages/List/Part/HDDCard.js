@@ -20,6 +20,7 @@ class HDDCard extends Component {
     remove = () => {
         localStorage.removeItem('hdd');
         this.setState({hdd: null});
+        window.location.reload()
     }
 
     render() {

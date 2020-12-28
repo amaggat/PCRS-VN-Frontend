@@ -24,6 +24,7 @@ class Build extends Component {
 
     render () {
         const {posts} = this.state;
+        console.log('Posts: ', posts);
 
         return (
             <div className="build white-back">

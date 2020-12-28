@@ -17,7 +17,7 @@ function BuildTag ({post}) {
                             <p>Parametric Video Card (Chipset: GeForce RTX 3070)</p>
                             <p>Corsair 4000D Airflow ATX Mid Tower</p>
                         </div>
-                        <div className="price"><i class="fas fa-money-bill-alt"></i>{formatMoney(1000000)}VND</div>
+                        <div className="price"><i class="fas fa-money-bill-alt"></i>{post.price}</div>
                     </div>
                     <div className="img">
                         <img src={img} alt="demo"/>

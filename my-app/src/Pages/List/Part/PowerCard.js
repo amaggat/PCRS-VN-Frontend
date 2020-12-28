@@ -21,6 +21,7 @@ class PowerCard extends Component {
     remove = () => {
         localStorage.removeItem('power');
         this.setState({power: null});
+        window.location.reload()
     }
     
     render() {

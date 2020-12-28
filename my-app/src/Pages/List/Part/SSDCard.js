@@ -20,6 +20,7 @@ class SSDCard extends Component {
     remove = () => {
         localStorage.removeItem('ssd');
         this.setState({ssd: null});
+        window.location.reload()
     }
 
     render() {

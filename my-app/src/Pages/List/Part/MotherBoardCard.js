@@ -21,6 +21,7 @@ class MotherBoardCard extends Component {
         localStorage.removeItem('socket');
         localStorage.removeItem('motherboard');
         this.setState({motherboard: null});
+        window.location.reload()
     }
 
     render() {
