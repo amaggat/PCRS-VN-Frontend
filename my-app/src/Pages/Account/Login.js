@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import ReturnHeader from '../../Components/Header/ReturnHeader';
 import Color from '../../Variables/color';
 import "./Account.css"
@@ -7,6 +8,11 @@ import "./Account.css"
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const handleSubmitLoginInfo = async () => {
+        toast.error('Implementing, please wait...')
+    }
+
     return (
         <div className="account">
             <ReturnHeader returnTo="/" />
@@ -36,7 +42,7 @@ const Login = () => {
                                     </div>
                                 </form>
                                 <div className="submit-btn">
-                                    <button className="btn btn-primary" type="submit" id="login-submit">Submit</button>
+                                    <button className="btn btn-primary" onClick={() => handleSubmitLoginInfo()} id="login-submit">Submit</button>
                                 </div>
                             </div>
 

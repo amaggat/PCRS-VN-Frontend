@@ -1,15 +1,28 @@
 import './App.css';
 import Page from "./Pages/Page"
-import {BrowserRouter as Router} from "react-router-dom"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter as Router } from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Page/>
+        <Page />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </Router>
     </div>
   );
-} 
+}
 
 export default App;
