@@ -23,7 +23,7 @@ class TopNav extends Component {
                                     <Link className="nav-link" to="/login">Login</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a target="_blank" rel="noreferrer" className="nav-link" href="https://github.com/manhdung20112000/app-front-end">Github</a>
+                                    <a target="_blank" rel="noreferrer" className="nav-link" href="https://github.com/amaggat/PCRS-VN-Frontend">Github</a>
                                 </li>
                             </nav>
                         </div>
