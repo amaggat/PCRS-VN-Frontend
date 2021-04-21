@@ -7,3 +7,25 @@
 html, body {
   height: 100%;
 }
+
+.btn-primary {
+  color: white;
+  background-color: #191b2b;
+  border-color: #191b2b;
+}
+
+.btn-primary:hover {
+  background-color: #12131e;
+  border-color: #12131e;
+}
+
+.btn-outline-primary {
+  color: #191b2b;
+  border-color: #191b2b;
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #191b2b;
+  border-color: #191b2b;
+}
