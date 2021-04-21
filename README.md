@@ -1,4 +1,4 @@
-# [PcPartPickerVN](name)
+# [PCRS-VN](name)
 
 ## [Introduction](#introduction)
 PcPartPickerVN is our project on Web application development course at [VNU University of Engineering and Technology](http://uet.vnu.edu.vn/).
