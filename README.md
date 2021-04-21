@@ -1,7 +1,7 @@
 # [PCRS-VN](name)
 
 ## [Introduction](#introduction)
-PcPartPickerVN is our project on Web application development course at [VNU University of Engineering and Technology](http://uet.vnu.edu.vn/).
+PCRS-VN is our project on Web application development course at [VNU University of Engineering and Technology](http://uet.vnu.edu.vn/).
 We were inspired by [PcPartPicker](http://pcpartpicker.com), a website that allows users create their own PC and check their compatibility, it also allow users to compare price from different retail stores.
 
 ## [Demo](demo)
