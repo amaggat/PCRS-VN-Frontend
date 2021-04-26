@@ -69,6 +69,11 @@
     margin: auto;
 }
 
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
 .header .navbar {
     padding: 0 !important;
 }
