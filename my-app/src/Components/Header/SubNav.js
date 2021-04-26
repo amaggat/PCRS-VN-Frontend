@@ -26,10 +26,6 @@ class SubNav extends Component {
                         <Link to="#" className="nav-link dropdown-toggle" role="button" onFocus={()=>handleDropdown('focus')} onBlur={()=>handleDropdown('blur')}>Browse Products</Link>
                     </li>
                     <li className="nav-item">
-                        <img className="item-img" src={guide} alt="" />
-                        <Link className="nav-link" to="/builds">Builds Guide</Link>
-                    </li>
-                    <li className="nav-item">
                         <img className="item-img" src={completedBuild} alt="" />
                         <Link className="nav-link" to="/completed-builds">Completed Builds</Link>
                     </li>
