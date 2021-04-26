@@ -68,6 +68,8 @@
 
 .home-product .col {
     padding: 0px 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .first {
@@ -81,6 +83,10 @@
     outline-width: 4px;
     outline-color: #ffe683 !important;
     transition: 0.1s;
+}
+
+.suggestion {
+    cursor: pointer;
 }
 
 .see-more .button {
