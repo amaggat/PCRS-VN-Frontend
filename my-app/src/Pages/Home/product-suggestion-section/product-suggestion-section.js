@@ -8,9 +8,23 @@ import memory from '../img/nav-memory.png'
 import ssd from '../img/nav-ssd.png'
 import power from '../img/nav-powersupply.png'
 import videocard from '../img/nav-videocard.png'
+import SuggestionBlock from './suggestion-block/suggestion-block';
 
 const ProductSuggestionSection = () => {
+    const [isFirstBlockShow, setFirstBlockShow] = useState(false);
+    const [isSecondBlockShow, setSecondBlockShow] = useState(false);
+    const [selected_product_type, setSelectedProductType] = useState('');
+
     const handleCategoryClick = (product_type) => {
+        if (product_type === 'cpu' || product_type === 'motherboard' || product_type === 'memory') {
+            if (product_type !== selected_product_type) {
+                setFirstBlockShow(!isFirstBlockShow);
+            } else setSelectedProductType(product_type);
+        } else {
+            if (product_type !== selected_product_type) {
+                setSecondBlockShow(!isSecondBlockShow);
+            } else setSelectedProductType(product_type);
+        }
         toast.dark(`Product suggestion clicked: ${product_type || 'no product type'}`)
     }
 
@@ -44,6 +58,11 @@ const ProductSuggestionSection = () => {
                         </div>
                     </div>
                 </div>
+                {
+                    isFirstBlockShow
+                        ? <SuggestionBlock product_type={selected_product_type} />
+                        : null
+                }
                 <div className="row block small-container">
                     <div className="col text-center">
                         <div className="col-img">
@@ -75,6 +94,11 @@ const ProductSuggestionSection = () => {
                             </div>
                         </div> */}
                 </div>
+                {
+                    isSecondBlockShow
+                        ? <SuggestionBlock product_type={selected_product_type} />
+                        : null
+                }
                 <Button style={{ width: '100%' }} color="primary">See more</Button>
             </div>
         </div>
