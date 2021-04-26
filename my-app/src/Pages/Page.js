@@ -36,6 +36,7 @@ import HDDTemplate from './Product/Part/HDD/HDDTemplate';
 import CaseTemplate from './Product/Part/Case/Sample/CaseTemplate';
 import CCoolerTemplate from './Product/Part/CCooler/Sample/CCoolerTemplate';
 import BuildTemplate from './Build/BuildTemplate';
+import CompletedBuilds from './CompletedBuilds/completed-builds';
 
 class Page extends Component {
     render() {
@@ -54,6 +55,7 @@ class Page extends Component {
                         <Route exact path="/list" component={List} />
                         <Route exact path="/builds" component={Build} />
                         <Route exact path="/products" component={Products} />
+                        <Route exact path="/completed-builds" component={CompletedBuilds} />
                         {/* Browse Build */}
                         <Route exact path="/builds/:id" component={BuildTemplate} />
 
