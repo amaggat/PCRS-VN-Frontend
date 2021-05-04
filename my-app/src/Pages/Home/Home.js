@@ -49,19 +49,7 @@ function Home() {
                     }
                 </div>
             </div>
-            
             <ProductSuggestionSection />
-            {/* <div className="carousel-slide">
-                <Carousel />
-            </div>
-
-            <div className="build-guild white-back">
-                
-            </div>
-
-            <div className="product-browsing grey-back">
-                <ProductBrowsing />
-            </div> */}
             <Footer />
         </div>
     );

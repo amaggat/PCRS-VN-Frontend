@@ -5,24 +5,24 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router } from "react-router-dom"
 
 function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Page />
-        <ToastContainer
-          position="bottom-right"
-          autoClose={4000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      </Router>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router>
+                <Page />
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={4000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+            </Router>
+        </div>
+    );
 }
 
 export default App;
