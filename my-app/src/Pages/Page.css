@@ -24,12 +24,8 @@ html, body {
     margin-bottom: 2.5rem;
 }
 
-.page-body {
-    background-color: #191b2b;
-}
-
 .white-back {
-    background-color: white;
+    background-color: transparent;
 }
 
 .notfound {

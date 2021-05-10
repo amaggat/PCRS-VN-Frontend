@@ -41,51 +41,49 @@ import CompletedBuilds from './CompletedBuilds/completed-builds';
 class Page extends Component {
     render() {
         return (
-            <div className="App">   
-                <div className="page-body">
-                    <Switch>
-                        {/* Login and Register Page */}
-                        <Route path="/login" component={Login}/>
-                        <Route path="/register" component={Register} />
-                        {/* Basic Page */}
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/about" component={About} />
-                        <Route exact path="/help" component={Help} />
-                        {/* Functional Page */}
-                        <Route exact path="/list" component={List} />
-                        <Route exact path="/builds" component={Build} />
-                        <Route exact path="/products" component={Products} />
-                        <Route exact path="/completed-builds" component={CompletedBuilds} />
-                        {/* Browse Build */}
-                        <Route exact path="/builds/:id" component={BuildTemplate} />
+            <>
+                <Switch>
+                    {/* Login and Register Page */}
+                    <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register} />
+                    {/* Basic Page */}
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/about" component={About} />
+                    <Route exact path="/help" component={Help} />
+                    {/* Functional Page */}
+                    <Route exact path="/list" component={List} />
+                    <Route exact path="/builds" component={Build} />
+                    <Route exact path="/products" component={Products} />
+                    <Route exact path="/completed-builds" component={CompletedBuilds} />
+                    {/* Browse Build */}
+                    <Route exact path="/builds/:id" component={BuildTemplate} />
 
-                        {/* Browse Product subpages */}
-                        <Route exact path="/products/cpu" component={CPU} />
-                        {/* <Route exact path="/products/cpu?page=:number" component={CPU} /> */}
-                        <Route exact path="/products/cpu-cooler" component={CCooler} />
-                        <Route exact path="/products/motherboard" component={MotherBoard} />
-                        <Route exact path="/products/memory" component={Memory} />
-                        <Route exact path="/products/hdd" component={HDD} />
-                        <Route exact path="/products/ssd" component={SSD} />
-                        <Route exact path="/products/video-card" component={VideoCard} />
-                        <Route exact path="/products/power" component={Power} />
-                        <Route exact path="/products/case" component={Case} />
-                        {/* Page of individual product */}
-                        <Route path="/products/cpu/:id" component={CPUTemplate} />
-                        <Route path="/products/power/:id" component={PowerTemplate} />
-                        <Route path="/products/memory/:id" component={MemoryTemplate} />
-                        <Route path="/products/motherboard/:id" component={MotherboardTemplate} />
-                        <Route path="/products/video-card/:id" component={VidecardTemplate} />
-                        <Route path="/products/ssd/:id" component={SSDTemplate} />
-                        <Route path="/products/hdd/:id" component={HDDTemplate} />
-                        {/* Not ready yet */}
-                        <Route exact path="/products/case/sample" component={CaseTemplate} />
-                        <Route exact path="/products/cpu-cooler/sample" component={CCoolerTemplate} />
-                        {/* 404 */}
-                        <Route component={NotFound}/>
-                    </Switch>
-                </div>
-            </div>
+                    {/* Browse Product subpages */}
+                    <Route exact path="/products/cpu" component={CPU} />
+                    {/* <Route exact path="/products/cpu?page=:number" component={CPU} /> */}
+                    <Route exact path="/products/cpu-cooler" component={CCooler} />
+                    <Route exact path="/products/motherboard" component={MotherBoard} />
+                    <Route exact path="/products/memory" component={Memory} />
+                    <Route exact path="/products/hdd" component={HDD} />
+                    <Route exact path="/products/ssd" component={SSD} />
+                    <Route exact path="/products/video-card" component={VideoCard} />
+                    <Route exact path="/products/power" component={Power} />
+                    <Route exact path="/products/case" component={Case} />
+                    {/* Page of individual product */}
+                    <Route path="/products/cpu/:id" component={CPUTemplate} />
+                    <Route path="/products/power/:id" component={PowerTemplate} />
+                    <Route path="/products/memory/:id" component={MemoryTemplate} />
+                    <Route path="/products/motherboard/:id" component={MotherboardTemplate} />
+                    <Route path="/products/video-card/:id" component={VidecardTemplate} />
+                    <Route path="/products/ssd/:id" component={SSDTemplate} />
+                    <Route path="/products/hdd/:id" component={HDDTemplate} />
+                    {/* Not ready yet */}
+                    <Route exact path="/products/case/sample" component={CaseTemplate} />
+                    <Route exact path="/products/cpu-cooler/sample" component={CCoolerTemplate} />
+                    {/* 404 */}
+                    <Route component={NotFound} />
+                </Switch>
+            </>
         );
     }
 }
