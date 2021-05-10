@@ -11,20 +11,12 @@ import videocard from '../img/nav-videocard.png'
 import SuggestionBlock from './suggestion-block/suggestion-block';
 
 const ProductSuggestionSection = () => {
-    const [isFirstBlockShow, setFirstBlockShow] = useState(false);
-    const [isSecondBlockShow, setSecondBlockShow] = useState(false);
+    const [suggestionBlockShow, setSuggestionBlockShow] = useState(false);
     const [selected_product_type, setSelectedProductType] = useState('');
 
     const handleCategoryClick = (product_type) => {
-        if (product_type === 'cpu' || product_type === 'motherboard' || product_type === 'memory') {
-            if (product_type !== selected_product_type) {
-                setFirstBlockShow(!isFirstBlockShow);
-            } else setSelectedProductType(product_type);
-        } else {
-            if (product_type !== selected_product_type) {
-                setSecondBlockShow(!isSecondBlockShow);
-            } else setSelectedProductType(product_type);
-        }
+        setSelectedProductType(product_type);
+        if (suggestionBlockShow !== true) setSuggestionBlockShow(true);
         toast.dark(`Product suggestion clicked: ${product_type || 'no product type'}`)
     }
 
@@ -58,11 +50,6 @@ const ProductSuggestionSection = () => {
                         </div>
                     </div>
                 </div>
-                {
-                    isFirstBlockShow
-                        ? <SuggestionBlock product_type={selected_product_type} />
-                        : null
-                }
                 <div className="row block small-container">
                     <div className="col text-center">
                         <div className="col-img">
@@ -88,18 +75,13 @@ const ProductSuggestionSection = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="col see-more">
-                            <div className="button text-center">
-                                <a href="/products" type="button" className="btn btn-primary">See More</a>
-                            </div>
-                        </div> */}
                 </div>
                 {
-                    isSecondBlockShow
+                    suggestionBlockShow
                         ? <SuggestionBlock product_type={selected_product_type} />
                         : null
                 }
-                <Button style={{ width: '100%' }} color="primary">See more</Button>
+                <Button style={{ width: '100%' }} href="/products" color="primary">See more</Button>
             </div>
         </div>
     )
