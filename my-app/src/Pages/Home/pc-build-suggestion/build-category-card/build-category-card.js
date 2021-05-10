@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+// No CSS imported, using styled-components instead
 
 const defaultImg = './background.jpg';
 
