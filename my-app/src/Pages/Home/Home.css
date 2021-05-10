@@ -11,7 +11,7 @@
 }
 
 .light-back {
-    background-color: #f4f4f3;
+    background-color: transparent;
 }
 
 .small-container .row {
@@ -143,6 +143,7 @@
     min-height: fit-content;
     padding: 0.25rem 0;
     background-image: radial-gradient(rgb(180, 180, 180), rgb(78, 77, 77));
+    /* background-color: #191B2B; */
 }
 
 .product-browsing__item {
