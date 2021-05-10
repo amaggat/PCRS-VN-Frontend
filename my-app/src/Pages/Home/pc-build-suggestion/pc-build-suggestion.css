@@ -1,0 +1,16 @@
+.build-guide {
+  min-height: 100%;
+}
+
+.block-title {
+  font-size: 22px;
+  border-bottom: solid 1px black;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+/* Center each category card in a column */
+.build-category-column {
+  display: flex;
+  justify-content: center;
+}
