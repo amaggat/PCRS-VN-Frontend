@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 const defaultImg = './background.jpg';
 
-const BuildCategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradientShadow }) => {
-  const BuildCardWrapper = styled.div`
+const CategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradientShadow }) => {
+  const CardWrapper = styled.div`
     z-index: 9999;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 
@@ -18,7 +18,7 @@ const BuildCategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradien
     }
   `;
 
-  const BuildCardGradientOverlay = styled.div`
+  const CardGradientOverlay = styled.div`
     position: relative;
     width: 300px;
     height: 150px;
@@ -71,7 +71,7 @@ const BuildCategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradien
     }
   `;
 
-  const BuildCardTitle = styled.div`
+  const CardTitle = styled.div`
     position: relative;
     z-index: 1;
     margin: 0 0;
@@ -83,18 +83,14 @@ const BuildCategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradien
   `;
 
   return (
-    <BuildCardWrapper>
-      <BuildCardGradientOverlay>
-        <BuildCardTitle>
+    <CardWrapper>
+      <CardGradientOverlay>
+        <CardTitle>
           {title || 'Placebo title'}
-        </BuildCardTitle>
-      </BuildCardGradientOverlay>
-    </BuildCardWrapper>
-    //   <div class="build-card-gradient-overlay">
-    //     <div class="build-card-title"></div>
-    //   </div>
-    // </div >
+        </CardTitle>
+      </CardGradientOverlay>
+    </CardWrapper>
   )
 }
 
-export default BuildCategoryCard;
+export default CategoryCard;
