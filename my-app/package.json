@@ -9,11 +9,13 @@
     "axios": "*",
     "http-proxy-middleware": "^0.19.1",
     "react": "^17.0.1",
-    "react-bootstrap": "*",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.1",
+    "react-horizontal-scrolling-menu": "^0.7.10",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-toastify": "*",
+    "styled-components": "^5.3.0",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
