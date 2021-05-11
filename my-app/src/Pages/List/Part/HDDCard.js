@@ -31,7 +31,7 @@ class HDDCard extends Component {
                 <td>
                 { hdd ?
                     <Link className="wrap-product-img" to={`/products/hdd/${hdd.id}`}>
-                        <img className="product-img" src={hdd.img ? hdd.img : img} alt={hdd.id}/> 
+                        <img className="product-img" src={hdd.image || img} alt={hdd.id}/> 
                         <span>
                             {hdd.fullname}
                         </span>

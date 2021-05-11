@@ -31,7 +31,7 @@ class SSDCard extends Component {
                 <td>
                 { ssd ?
                     <Link className="wrap-product-img" to={`/products/ssd/${ssd.id}`}>
-                        <img className="product-img" src={ssd.img ? ssd.img : img} alt={ssd.id}/> 
+                        <img className="product-img" src={ssd.image || img} alt={ssd.id}/> 
                         <span>
                             {ssd.fullname}
                         </span>

@@ -94,14 +94,14 @@ class Memory extends Component {
                                                 <td><input type="checkbox" value=""/></td>
                                                 <td className="preview card-text">
                                                     <Link to={`/products/memory/${memory.id}`}>
-                                                        <img src={(memory.priceList)?.length <= 0 ? img : memory.priceList[0]?.img} alt={memory.id}/>
+                                                        <img src={(memory.priceList)?.length <= 0 ? img : memory.image} alt={memory.id}/>
                                                         <span>{memory.fullname}</span>
                                                     </Link>
                                                 </td>
                                                 <td className="card-text">{memory.clockSpeed}</td>
                                                 <td className="card-text">{memory.chipset}</td>
                                                 <td className="card-text">{memory.sizeOfRam}</td>
-                                                <td className="card-text">- <i className="fa fa-star star-activate" ></i></td>
+                                                <td className="card-text">{memory.averageRating || '-'}<i className="fa fa-star star-activate" /></td>
                                                 <td className="card-text">{memory.priceList?.length <= 0 ? "-" : formatMoney(memory.priceList[0].price) + "VND"}</td>
                                                 <td>
                                                     <button type="button" className="btn btn-primary btn-sm" onClick={()=>MemoryService.setMemory2List(memory)}>Add</button>

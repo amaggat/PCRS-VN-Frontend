@@ -33,7 +33,7 @@ class MotherBoardCard extends Component {
                 <td>
                 { motherboard ?
                     <Link className="wrap-product-img" to={`/products/motherboard/${motherboard.id}`}>
-                        <img className="product-img" src={motherboard.img ? motherboard.img : img} alt={motherboard.id}/> 
+                        <img className="product-img" src={motherboard.image || img} alt={motherboard.id}/> 
                         <span>
                             {motherboard.fullname}
                         </span>

@@ -1,7 +1,7 @@
 import axios from 'axios';
+import Cookies from 'js-cookie'
 
 const CPU_REST_API_URL = '/api/cpu';
-
 class Service {
     static setCPU2List(cpu) {
         var minCPU = cpu
@@ -25,7 +25,13 @@ class Service {
     }
 
     static getCPUbyID(id) {
-        return axios.get(CPU_REST_API_URL+'/'+id)
+        return axios({
+            method: 'GET',
+            url: CPU_REST_API_URL+'/'+id,
+            data: {
+                jwt: Cookies.get('jwt') || '',
+            }
+        })
     }
 
     static getSearchCPU({searchList={}, pageNumber=0, pageSize=20}) { 

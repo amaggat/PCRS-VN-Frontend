@@ -37,6 +37,7 @@ import CaseTemplate from './Product/Part/Case/Sample/CaseTemplate';
 import CCoolerTemplate from './Product/Part/CCooler/Sample/CCoolerTemplate';
 import BuildTemplate from './Build/BuildTemplate';
 import CompletedBuilds from './CompletedBuilds/completed-builds';
+import RetailersPage from './Retailers-Page/retailers-page';
 
 class Page extends Component {
     render() {
@@ -57,7 +58,7 @@ class Page extends Component {
                     <Route exact path="/completed-builds" component={CompletedBuilds} />
                     {/* Browse Build */}
                     <Route exact path="/builds/:id" component={BuildTemplate} />
-
+                    <Route exact path="/retailers" component={RetailersPage} />
                     {/* Browse Product subpages */}
                     <Route exact path="/products/cpu" component={CPU} />
                     {/* <Route exact path="/products/cpu?page=:number" component={CPU} /> */}

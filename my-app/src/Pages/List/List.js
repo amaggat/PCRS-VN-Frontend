@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+
 import formatCurrency from '../../Components/Page/CurrencyFormat'
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
@@ -16,6 +18,8 @@ import HDDCard from './Part/HDDCard';
 import SSDCard from './Part/SSDCard';
 
 import "./List.css"
+import { AddPCProfileService } from '../../Client/AccountService';
+import { toast } from 'react-toastify';
 
 class List extends Component {
     constructor(props) {
@@ -30,17 +34,76 @@ class List extends Component {
             gpu: JSON.parse(localStorage.getItem('video-card')),
             // case: JSON.parse(localStorage.getItem('case')),
             power: JSON.parse(localStorage.getItem('power')),
+            isLoading: false,
+            name: ''
         }
         this.removeAll = this.removeAll.bind(this);
+        this.handleAddBuild = this.handleAddBuild.bind(this);
     }
 
-    removeAll () {
+    async handleAddBuild() {
+        const { cpu, motherboard, memory, hdd, ssd, gpu, power, name } = this.state;
+        let data = {}
+        if (cpu !== null) {
+            data.cpu = [{
+                id: cpu.id
+            }]
+        }
+        if (gpu !== null) {
+            data.gpu = [{
+                id: gpu.id
+            }]
+        }
+        if (motherboard !== null) {
+            data.mainboard = [{
+                id: motherboard.id
+            }]
+        }
+        if (power !== null) {
+            data.psu = [{
+                id: power.id
+            }]
+        }
+        if (hdd !== null) {
+            data.hdd = [{
+                id: hdd.id
+            }]
+        }
+        if (ssd !== null) {
+            data.ssd = [{
+                id: ssd.id
+            }]
+        }
+        if (memory !== null) {
+            data.ram = [{
+                id: memory.id
+            }]
+        }
+        this.setState({
+            isLoading: true,
+        })
+        try {
+            const result = await AddPCProfileService({name, payload: data});
+            if (result.data.success) {
+                toast.dark('Added to Collection!');
+            } else {
+                toast.error(`Error: ${result.data.jwt}`)
+            }
+        } catch (error) {
+            toast.error(`Error: ${error}`)
+        }
+        this.setState({
+            isLoading: false
+        })
+    }
+
+    removeAll() {
         localStorage.clear();
         window.location.reload();
     }
 
-    render () {
-        const {cpu, motherboard} = this.state
+    render() {
+        const { cpu, motherboard, isLoading, name } = this.state
         var socket = null;
 
         if (cpu !== null || motherboard !== null) {
@@ -59,7 +122,7 @@ class List extends Component {
                 <div className="col-lg-9 no-issue">
                     <i class="tick far fa-check-circle"></i>
                     <span className="title">Compatibility: </span>
-                    <span className="text">Dunno.</span> 
+                    <span className="text">Dunno.</span>
                 </div>
                 <div className="col-lg-3 wattage">
                     <i class="lightning fas fa-bolt"></i>
@@ -101,40 +164,40 @@ class List extends Component {
 
                 <div className="tab-content sb-table w-container block" id="pills-tabContent">
                     {
-                        this.state ? 
+                        this.state ?
                             <div className="text-right">
                                 <button type="button" className="btn btn-primary btn-sm" onClick={this.removeAll}>Remove all</button>
                             </div>
-                        : null
+                            : null
 
                     }
                     <div className="tab-pane fade show active" id="pills-system" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <table className="table title">
-                        <thead>
-                            <tr>
-                                <th scope="col">Component</th>
-                                <th scope="col">Selection</th>
-                                <th scope="col">Base</th>
-                                <th scope="col">Promo</th>
-                                <th scope="col">Snipping</th>
-                                <th scope="col">Tax</th>
-                                <th scope="col-2">Price</th>
-                                <th scope="col">Where</th>
-                            </tr>
-                        </thead>
-                        <tbody className="attribute">
-                            <CPUCard />
-                            <MotherBoardCard />
-                            <MemoryCard />
-                            <HDDCard />
-                            <SSDCard />
-                            <GPUCard />
-                            <PowerCard />
-                            {/* <CCCCard /> */}
-                            {/* <StorageCard /> */}
-                            {/* <CaseCard /> */}
-                        </tbody>
-                    </table>
+                        <table className="table title">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Component</th>
+                                    <th scope="col">Selection</th>
+                                    <th scope="col">Base</th>
+                                    <th scope="col">Promo</th>
+                                    <th scope="col">Snipping</th>
+                                    <th scope="col">Tax</th>
+                                    <th scope="col-2">Price</th>
+                                    <th scope="col">Where</th>
+                                </tr>
+                            </thead>
+                            <tbody className="attribute">
+                                <CPUCard />
+                                <MotherBoardCard />
+                                <MemoryCard />
+                                <HDDCard />
+                                <SSDCard />
+                                <GPUCard />
+                                <PowerCard />
+                                {/* <CCCCard /> */}
+                                {/* <StorageCard /> */}
+                                {/* <CaseCard /> */}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -144,17 +207,18 @@ class List extends Component {
                 </div>
 
                 <div className="w-container block">
-                    <div className="row note-title">Compatibility Notes</div>
-                    <dir className="note-text">
-                        <span className="note-link">
-                            <i class="fas fa-sticky-note"></i>
-                            <span>Note:</span>
-                        </span>
-                        <span className="content">Some physical dimension restrictions cannot (yet) be automatically checked, such as cpu cooler / RAM clearance with modules using tall heat spreaders. </span>
-                    </dir>
+                    <div className="row note-title">Add this build to your collection</div>
+                    <div className="current-build-name">
+                        <input className="form-control" value={name} onChange={(event) => this.setState({ name: event.target.value })} type="text" placeholder="Your PC name here" />
+                        <br />
+                        <Button color="primary" block disabled={isLoading} onClick={() => this.handleAddBuild()}>
+                            <i class="fa fa-plus" />
+                            Add to collection
+                        </Button>
+                    </div>
                 </div>
-                
-                <Footer/>
+
+                <Footer />
             </div>
         )
     }

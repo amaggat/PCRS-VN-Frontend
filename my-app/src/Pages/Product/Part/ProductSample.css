@@ -57,9 +57,9 @@
 
 .product-detail .action {
     margin: 0;
-    border: solid 0.6px black;
+    /* border: solid 0.6px black; */
     border-top: none;
-    background-color: #f9f5e9;
+    background-color: transparent;
 }
 
 .product-detail .action-function {

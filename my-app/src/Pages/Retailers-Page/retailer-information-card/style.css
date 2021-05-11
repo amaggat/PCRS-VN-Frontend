@@ -1,13 +1,7 @@
-body {
-  background-color: whitesmoke;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-
 .card-wrapper {
   max-width: 250px;
-  margin: 0px 15px;
-  height: fit-content;
+  /* margin: 0px 15px; */
+  height: 350px;
   align-items: center;
   flex-direction: column;
   background-color: white;
@@ -27,19 +21,20 @@ body {
   padding: 5px 5px;
 }
 
-.seller-image {
+.retailer-image {
   max-width: 15%;
   max-height: fit-content;
   padding: 2px 2px;
 }
 
-.seller-name {
+.retailer-name {
+  font-size: 0.8rem;
   align-self: center;
   color: white;
   cursor: pointer;
 }
 
-.seller-name:hover {
+.retailer-name:hover {
   text-decoration: underline;
 }
 
@@ -49,22 +44,32 @@ body {
   max-height: 100%;
 }
 
-.card-product-image {
+.retailer-logo {
+  display: flex;
+  justify-content: center;
+  padding: 10px 10px;
   max-width: 100%;
   border-bottom: 1px solid #EAEAEA;
   /* max-height: 100%; */
 }
 
-.card-title {
-  font-size: x-large;
-  font-weight: bolder;
-  align-self: flex-end;
-  padding: 10px 10px 5px 10px
+.retailer-information {
+  position: relative;
 }
 
-.card-price {
-  padding: 5px 10px 10px 10px;
+.card-description {
+  padding: 10px 10px;
+  text-align: justify;
+  align-self: flex-end;
   border-bottom: 1px solid #EAEAEA;
+}
+
+.card-rating {
+  padding: 10px 10px;
+  position: absolute;
+  /* bottom: 0; */
+  /* padding: 10px 10px; */
+  /* border-bottom: 1px solid #EAEAEA; */
 }
 
 .card-buttons {
@@ -74,16 +79,7 @@ body {
   padding: 10px 10px
 }
 
-.card-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-color: #191B2B;
-  color: white;
-  padding: 5px 5px;
-}
-
-.card-button:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
+/* .product-button {
+  width: 75px;
+  height: 100px;
+} */

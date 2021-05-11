@@ -94,13 +94,13 @@ class VideoCard extends Component {
                                                 <td><input type="checkbox" value=""/></td>
                                                 <td className="preview card-text">
                                                     <Link to={`/products/hdd/${hdd.id}`}>
-                                                        <img src={(hdd.priceList)?.length <= 0 ? img : hdd.priceList[0]?.img} alt={hdd.id}/>
+                                                        <img src={(hdd.priceList)?.length <= 0 ? img : hdd.image} alt={hdd.id}/>
                                                         <span>{hdd.fullname}</span>
                                                     </Link>
                                                 </td>
                                                 <td className="card-text">{hdd.chipset}</td>
                                                 <td className="card-text">{hdd.storage}</td>
-                                                <td className="card-text">- <i className="fa fa-star star-activate"></i></td>
+                                                <td className="card-text">{hdd.averageRating || '-'}<i className="fa fa-star star-activate" /></td>
                                                 <td className="card-text">{hdd.priceList?.length <= 0 ? "-" : formatMoney(hdd.priceList[0].price) + "VND"}</td>
                                                 <td>
                                                 <button type="button" className="btn btn-primary btn-sm" onClick={()=>HDDService.setHDD2List(hdd)}>Add</button>

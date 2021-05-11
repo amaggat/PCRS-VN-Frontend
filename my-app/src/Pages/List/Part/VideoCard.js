@@ -33,7 +33,7 @@ class GPUCard extends Component {
                 <td>
                 { videocard ?
                     <Link className="wrap-product-img" to={`/products/video-card/${videocard.id}`}>
-                        <img className="product-img" src={videocard.img ? videocard.img : img} alt={videocard.id}/> 
+                        <img className="product-img" src={videocard.image || img} alt={videocard.id}/> 
                         <span>
                             {videocard.fullname}
                         </span>

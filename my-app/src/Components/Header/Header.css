@@ -183,3 +183,7 @@
     text-decoration: none;
     transition: 0.25s;
 }
+
+.username-topnav {
+    color: white;
+}

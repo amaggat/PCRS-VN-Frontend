@@ -6,8 +6,8 @@ body {
 
 .card-wrapper {
   max-width: 250px;
-  margin: 0px 15px;
   height: fit-content;
+  margin: 0px 15px;
   align-items: center;
   flex-direction: column;
   background-color: white;
@@ -43,7 +43,7 @@ body {
   text-decoration: underline;
 }
 
-.card-images {
+.images {
   /* flex-grow: 0; */
   max-width: 200px;
   max-height: 100%;
@@ -74,16 +74,7 @@ body {
   padding: 10px 10px
 }
 
-.card-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-color: #191B2B;
-  color: white;
-  padding: 5px 5px;
-}
-
-.card-button:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
+/* .product-button {
+  width: 75px;
+  height: 100px;
+} */

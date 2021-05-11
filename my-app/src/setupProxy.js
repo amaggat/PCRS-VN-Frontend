@@ -8,4 +8,11 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+  app.use(
+    '/user',
+    createProxyMiddleware({
+      target: process.env.REACT_APP_API_PROXY_SERVER || 'http://localhost:8080',
+      changeOrigin: true,
+    })
+  );
 };

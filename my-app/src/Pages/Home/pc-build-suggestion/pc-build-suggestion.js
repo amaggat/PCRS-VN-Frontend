@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 
 import BuildTag from '../../Build/BuildTag';
 import ProfileService from '../../../Client/ProfileService';
@@ -7,15 +8,16 @@ import CategoryCard from '../category-card/category-card';
 import '../Home.css'
 import './pc-build-suggestion.css'
 
-import EntryLevelBackgroundImage from '../../../Components/Sources/Category-Background-Images/entry-level-gaming.jpg'
-import MainstreamBackgroundImage from '../../../Components/Sources/Category-Background-Images/mainstream-gaming.jpg'
-import HighEndBackgroundImage from '../../../Components/Sources/Category-Background-Images/high-end-gaming.jpg'
+import GamingPCImage from '../../../Components/Sources/Category-Background-Images/entry-level-gaming.jpg'
+import StreamingPCImage from '../../../Components/Sources/Category-Background-Images/mainstream-gaming.jpg'
 import OfficeBackgroundImage from '../../../Components/Sources/Category-Background-Images/office.jpg'
 import WorkstationBackgroundImage from '../../../Components/Sources/Category-Background-Images/workstation.jpg'
 import LaptopBackgroundImage from '../../../Components/Sources/Category-Background-Images/laptop.jpg'
+import MiniPCImage from '../../../Components/Sources/Category-Background-Images/mini-pc.jpg'
 
 const PCBuildSuggestion = () => {
   const [posts, setPosts] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     ProfileService.getProfiles({}).then((response) => {
@@ -60,32 +62,36 @@ const PCBuildSuggestion = () => {
         <Row style={{ marginBottom: '50px' }}>
           <Col md="4" className="build-category-column">
             <CategoryCard
-              title="Entry-level Gaming PC"
-              backgroundImg={EntryLevelBackgroundImage}
+              isCategoryCard={true}
+              title="Gaming PC"
+              backgroundImg={GamingPCImage}
               gradientOverlay="linear-gradient(90deg, rgba(87,90,84,0.5) 0%, rgba(183,0,38,0.5) 100%)"
               gradientShadow="linear-gradient(90deg, rgba(87,90,84,1) 0%, rgba(183,0,38,1) 100%)"
             />
           </Col>
           <Col md="4" className="build-category-column">
             <CategoryCard
-              title="Mainstream Gaming PC"
-              backgroundImg={MainstreamBackgroundImage}
+              isCategoryCard={true}
+              title="Streaming PC"
+              backgroundImg={StreamingPCImage}
               gradientOverlay="linear-gradient(90deg, rgba(226,164,111,0.5) 0%, rgba(122,226,138,0.5) 100%)"
               gradientShadow="linear-gradient(90deg, rgba(226,164,111,1) 0%, rgba(122,226,138,1) 100%)"
             />
           </Col>
           <Col md="4" className="build-category-column">
             <CategoryCard
-              title="High-end Gaming PC"
-              backgroundImg={HighEndBackgroundImage}
-              gradientOverlay="linear-gradient(90deg, rgba(255, 84, 255, 0.5) 0%, rgba(141, 1, 255, 0.5) 50%, rgba(15, 221, 255, 0.5) 100%)"
-              gradientShadow="linear-gradient(90deg, rgba(255, 84, 255, 1) 0%, rgba(141, 1, 255, 1) 50%, rgba(15, 221, 255, 1) 100%)"
+              isCategoryCard={true}
+              title="Workstation PC"
+              backgroundImg={WorkstationBackgroundImage}
+              gradientOverlay="linear-gradient(90deg, rgba(157,114,64,0.5) 0%, rgba(115,111,103,0.5) 100%)"
+              gradientShadow="linear-gradient(90deg, rgba(157,114,64,1) 0%, rgba(115,111,103,1) 100%)"
             />
           </Col>
         </Row>
         <Row>
           <Col md="4" className="build-category-column">
             <CategoryCard
+              isCategoryCard={true}
               title="Office PC"
               backgroundImg={OfficeBackgroundImage}
               gradientOverlay="linear-gradient(90deg, rgba(82,76,67,0.5) 0%, rgba(158,120,79,0.5) 100%)"
@@ -94,18 +100,20 @@ const PCBuildSuggestion = () => {
           </Col>
           <Col md="4" className="build-category-column">
             <CategoryCard
-              title="Workstation PC"
-              backgroundImg={WorkstationBackgroundImage}
-              gradientOverlay="linear-gradient(90deg, rgba(157,114,64,0.5) 0%, rgba(115,111,103,0.5) 100%)"
-              gradientShadow="linear-gradient(90deg, rgba(157,114,64,1) 0%, rgba(115,111,103,1) 100%)"
-            />
-          </Col>
-          <Col md="4" className="build-category-column">
-            <CategoryCard
+              isCategoryCard={true}
               title="Laptop"
               backgroundImg={LaptopBackgroundImage}
               gradientOverlay="linear-gradient(90deg, rgba(28,88,119,0.5) 0%, rgba(166,130,101,0.5) 100%)"
               gradientShadow="linear-gradient(90deg, rgba(28,88,119,1) 0%, rgba(166,130,101,1) 100%)"
+            />
+          </Col>
+          <Col md="4" className="build-category-column">
+            <CategoryCard
+              isCategoryCard={true}
+              title="Mini PC"
+              backgroundImg={MiniPCImage}
+              gradientOverlay="linear-gradient(90deg, rgba(49,131,1,0.5) 0%, rgba(72,50,46,0.5) 100%)"
+              gradientShadow="linear-gradient(90deg, rgba(49,131,1,1) 0%, rgba(72,50,46,1) 100%)"
             />
           </Col>
         </Row>

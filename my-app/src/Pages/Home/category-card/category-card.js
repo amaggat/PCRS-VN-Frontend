@@ -1,10 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 // No CSS imported, using styled-components instead
 
 const defaultImg = './background.jpg';
 
-const CategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradientShadow }) => {
+const CategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradientShadow, width = '300px', backgroundPosition = 'top', isCategoryCard = false }) => {
   const CardWrapper = styled.div`
     z-index: 9999;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
@@ -19,8 +20,11 @@ const CategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradientShad
   `;
 
   const CardGradientOverlay = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
-    width: 300px;
+    width: ${width};
     height: 150px;
     text-align: center;
     border-radius: 15px;
@@ -29,6 +33,7 @@ const CategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradientShad
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); 
     background-image: url(${backgroundImg || defaultImg});
     background-size: cover;
+    background-position: ${backgroundPosition};
     cursor: pointer;
 
     /* Gradient opacity background */
@@ -66,8 +71,8 @@ const CategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradientShad
     }
 
     &:hover::after {
-      transform: translateY(20px) scale(0.9);
-      filter: blur(20px);
+      transform: translateY(25px) scale(0.9);
+      filter: blur(15px);
     }
   `;
 
@@ -75,15 +80,23 @@ const CategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradientShad
     position: relative;
     z-index: 1;
     margin: 0 0;
-    padding: 59px 0;
+    /* padding: 59px 0; */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bolder;
     font-size: x-large;
     color: white;
   `;
 
+  const history = useHistory();
+
+  const handleClick = () => {
+    if (isCategoryCard) {
+      history.push('/builds');
+    }
+  }
+
   return (
-    <CardWrapper>
+    <CardWrapper onClick={() => handleClick()}>
       <CardGradientOverlay>
         <CardTitle>
           {title || 'Placebo title'}

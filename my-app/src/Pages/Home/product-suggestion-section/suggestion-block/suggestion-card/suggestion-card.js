@@ -1,8 +1,10 @@
+import { lightpink } from 'color-name';
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './suggestion-card.css';
 
-const ProductSuggestionCard = ({ name, img = '', seller, price, rating = 5.0, }) => {
+const ProductSuggestionCard = ({ name, img = '', seller, price, rating = 5.0, link }) => {
 
   //TODO: Save seller-image to local
   return (
@@ -18,9 +20,10 @@ const ProductSuggestionCard = ({ name, img = '', seller, price, rating = 5.0, })
       <div className="card-price">
         {price}
       </div>
-      <div className="card-buttons">
-        <Button color="primary">Add to build</Button>
-        <Button color="primary">Go to product</Button>
+      <div className="card-button">
+        <Link to={link} style={{textDecoration: 'none', color: 'white'}}>
+          Go to product
+        </Link>
       </div>
     </div>
   );

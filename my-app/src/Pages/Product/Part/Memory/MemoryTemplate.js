@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import StarRating from 'react-star-ratings';
+import { toast } from 'react-toastify';
+
 import Footer from '../../../../Components/Footer/Footer';
 import Header from '../../../../Components/Header/Header';
 import img from './memory-demo.jpeg';
@@ -9,126 +12,160 @@ import { useParams } from 'react-router-dom';
 import MemoryService from '../../../../Client/MemoryService';
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
 
-function MemoryTemplate () {
-    const {id} = useParams();
-    const [memory, setMemory] = useState({});
-    useEffect(() => {
-        MemoryService.getMemorybyID(id).then(response => {
-            setMemory(response.data)
-        })
-        .catch(console.log);
-    },[id])
+function MemoryTemplate() {
+  const { id } = useParams();
+  const [memory, setMemory] = useState({});
+  useEffect(() => {
+    MemoryService.getMemorybyID(id).then(response => {
+      setMemory(response.data)
+    })
+      .catch(console.log);
+  }, [id])
 
-    return (
-        <div className="product-detail white-back">
-            <Header />
-            <div className="banner text-center">
-                <p className="banner-title">PRODUCT DETAIL</p>
-                <p className="banner-name">{memory.fullname}</p>
+  const handleChangeRating = (newRating, name) => {
+    toast.dark(`Rating updated: ${newRating}/5 stars`)
+  }
+
+  return (
+    <div className="product-detail white-back">
+      <Header />
+      <div className="banner text-center">
+        <p className="banner-title">PRODUCT DETAIL</p>
+        <p className="banner-name">{memory.fullname}</p>
+      </div>
+
+      <div className="w-container">
+        <div className="row">
+          <div className="col-lg-4 left">
+            <div className="block img">
+              {/* <ImageSlider arr={memory.priceList?.map(element => { return (element) })} img={img} /> */}
+              <img src={memory.image} />
+            </div>
+            <div className="block action form-group row justify-content-md-center">
+              <div className="col-lg action-function">
+                <button type="button" className="btn btn-primary" onClick={() => MemoryService.setMemory2List(memory)}>Add to your Build</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-7 right">
+            <div className="block detail-text">
+              <div className="detail-title">Price</div>
+              <div className="detail-price row">
+                <table className="table table-hover detail-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Retailer</th>
+                      <th scope="col">Base</th>
+                      <th scope="col">Promo</th>
+                      <th scope="col">Total</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      memory.priceList?.map(element => {
+                        return (
+                          <tr>
+                            <td className="retailer-img vertical-container">
+                              <img className="" src={element.retailer.logo} alt="retailer" />
+                            </td>
+                            <td className="base vertical-container">
+                              <div className="vertical">
+                                {formatMoney(+element.price)} VND
+                              </div>
+                            </td>
+                            <td className="promo vertical-container">
+                              <div className="vertical text-center">
+                                {element.promo ? element.promo : "-"}
+                              </div>
+                            </td>
+                            <td className="total vertical-container">
+                              <div className="vertical">
+                                {element.promo ? formatMoney(+(element.promo * element.price)) : formatMoney(+element.price)}
+                              </div>
+                            </td>
+                            <td className="buy-button vertical-container">
+                              <a target="_blank" rel="noreferrer" className="btn btn-success vertical" href={element.link}>Buy</a>
+                            </td>
+                          </tr>
+                        )
+                      })
+                    }
+                  </tbody>
+                </table>
+              </div>
+
             </div>
 
-            <div className="w-container">
-                <div className="row">
-                    <div className="col-lg-4 left">
-                        <div className="block img">
-                            <ImageSlider arr={memory.priceList?.map(element => {return (element)})} img={img}/>
-                        </div>
-                        <div className="block action form-group row justify-content-md-center">
-                            <div className="col-lg action-function">
-                                <button type="button" className="btn btn-primary" onClick={()=>MemoryService.setMemory2List(memory)}>Add to your Build</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-7 right">
-                        <div className="block detail-text">
-                            <div className="detail-title">Price</div>
-                            <div className="detail-price row">
-                                <table className="table table-hover detail-table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Retailer</th>
-                                            <th scope="col">Base</th>
-                                            <th scope="col">Promo</th>
-                                            <th scope="col">Total</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {
-                                        memory.priceList?.map(element => {
-                                            return (
-                                                <tr>
-                                                    <td className="retailer-img vertical-container">
-                                                        <img className="" src={element.logo} alt="retailer"/>
-                                                    </td>
-                                                    <td className="base vertical-container">
-                                                        <div className="vertical">
-                                                            {formatMoney(+element.price)} VND
-                                                        </div>
-                                                    </td>
-                                                    <td className="promo vertical-container">
-                                                        <div className="vertical text-center">
-                                                            {element.promo ? element.promo : "-"}
-                                                        </div>
-                                                    </td>
-                                                    <td className="total vertical-container">
-                                                        <div className="vertical">
-                                                            {element.promo ? formatMoney(+(element.promo*element.price)) : formatMoney(+element.price) }
-                                                        </div>
-                                                    </td>
-                                                    <td className="buy-button vertical-container">
-                                                        <a target="_blank" rel="noreferrer" className="btn btn-success vertical" href={element.link}>Buy</a>
-                                                    </td>   
-                                                </tr>
-                                            )})
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-
-                        <div className="block detail-text">
-                            <ul>
-                                <div className="detail-title ">Specifications</div>
-                            </ul>
-                            <ul>
-                                <div className="detail-block border-bottom" id="manufaturer">
-                                    <p className="title">Manufaturer</p>
-                                    <p className="body">{memory.manufacturer}</p>
-                                </div>
-                            </ul>
-                            <ul>
-                                <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Serie Name</p>
-                                    <p className="body">{memory.serieName}</p>
-                                </div>
-                            </ul>
-                            <ul>
-                                <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Size</p>
-                                    <p className="body">{memory.sizeOfRam}</p>
-                                </div>
-                            </ul>
-                            <ul>
-                                <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Chipset</p>
-                                    <p className="body">{memory.chipset}</p>
-                                </div>
-                            </ul>
-                            <ul>
-                                <div className="detail-block border-bottom" id="serieName">
-                                    <p className="title">Clock speed</p>
-                                    <p className="body">{memory.clockSpeed}</p>
-                                </div>
-                            </ul>
-                        </div>
-                    </div>
+            <div className="block detail-text">
+              <ul>
+                <div className="detail-title ">Specifications</div>
+              </ul>
+              <ul>
+                <div className="detail-block border-bottom" id="manufaturer">
+                  <p className="title">Manufaturer</p>
+                  <p className="body">{memory.manufacturer}</p>
                 </div>
+              </ul>
+              <ul>
+                <div className="detail-block border-bottom" id="serieName">
+                  <p className="title">Serie Name</p>
+                  <p className="body">{memory.serieName}</p>
+                </div>
+              </ul>
+              <ul>
+                <div className="detail-block border-bottom" id="serieName">
+                  <p className="title">Size</p>
+                  <p className="body">{memory.sizeOfRam}</p>
+                </div>
+              </ul>
+              <ul>
+                <div className="detail-block border-bottom" id="serieName">
+                  <p className="title">Chipset</p>
+                  <p className="body">{memory.chipset}</p>
+                </div>
+              </ul>
+              <ul>
+                <div className="detail-block border-bottom" id="serieName">
+                  <p className="title">Clock speed</p>
+                  <p className="body">{memory.clockSpeed}</p>
+                </div>
+              </ul>
             </div>
-            <Footer />
+
+            <div className="block detail-text">
+              <ul>
+                <div className="detail-title">Ratings</div>
+              </ul>
+              <ul>
+                Your score: &nbsp;
+                <StarRating
+                  rating={4.2} //TODO: Add actual rating from response data
+                  changeRating={(rating) => handleChangeRating(rating)}
+                  starRatedColor="orange"
+                  numberOfStars={5}
+                  starDimension="20px"
+                  starSpacing="5px"
+                />
+              </ul>
+              <ul>
+                Average score: &nbsp;
+                <StarRating
+                  rating={4.2} //TODO: Add actual rating from response data
+                  starRatedColor="orange"
+                  numberOfStars={5}
+                  starDimension="20px"
+                  starSpacing="5px"
+                />
+              </ul>
+            </div>
+
+          </div>
         </div>
-    )
+      </div>
+      <Footer />
+    </div>
+  )
 }
 
 export default MemoryTemplate;

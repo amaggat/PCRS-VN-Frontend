@@ -96,7 +96,7 @@ class MemoryCard extends Component {
                         {
                             memory ?
                                 <Link className="contain-img" to={memory.link}>
-                                    <img className="product-img" src={memory.logo ? memory.logo : img} alt={memory.id}/>
+                                    <img className="product-img" src={memory.image || img} alt={memory.id}/>
                                 </Link>
                             : null
                         }

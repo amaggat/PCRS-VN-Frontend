@@ -33,7 +33,7 @@ class PowerCard extends Component {
                 <td>
                 { power ?
                     <Link className="wrap-product-img" to={`/products/power/${power.id}`}>
-                        <img className="product-img" src={power.img ? power.img : img} alt={power.id}/> 
+                        <img className="product-img" src={power.image || img} alt={power.id}/> 
                         <span>
                             {power.fullname}
                         </span>
