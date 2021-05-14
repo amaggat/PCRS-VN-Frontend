@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Pagination } from 'react-bootstrap';
 import TopFunctionProduct from '../TopFunctionProduct';
 import Header from '../../../../Components/Header/Header';
 import Footer from '../../../../Components/Footer/Footer';
@@ -77,8 +78,8 @@ class Power extends Component {
                                         <th></th>
                                         {/* <th scope="col" class="font-weight-bold"><input type="checkbox" value=""/></th> */}
                                         <th scope="col" class="font-weight-bold" id="name">Name</th>
-                                        <th scope="col" class="font-weight-bold" id="chipset">Chipset</th>
-                                        <th scope="col" class="font-weight-bold" id="power">Efficiency Rating</th>
+                                        <th scope="col" class="font-weight-bold" id="chipset">Standard</th>
+                                        <th scope="col" class="font-weight-bold" id="power">Chipset</th>
                                         <th scope="col" class="font-weight-bold" id="power">Wattage</th>
                                         <th scope="col" class="font-weight-bold" id="rating">Rating</th>
                                         <th scope="col" class="font-weight-bold" id="price">Price</th>
@@ -110,7 +111,10 @@ class Power extends Component {
                                     }
                                 </tbody>
                             </table>
-                            <PageNav totalPages={this.state.totalPages} setPageNumber={(pageNumber) => {this.setState({pageNumber})}} />
+                            {/* <PageNav totalPages={this.state.totalPages} setPageNumber={(pageNumber) => {this.setState({pageNumber})}} /> */}
+                            <Pagination>
+                                
+                            </Pagination>
                         </div>
                     </div>
                 </div>
