@@ -45,23 +45,23 @@ function MemoryFilter ({search}) {
                         <label className="form-check-label" for="size-all">All</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="sizeOfRam" value="2x8GB" onChange={handleChange} className="form-check-input" id="2x8GB"/>
+                        <input type="radio" name="sizeOfRam" value="2x8G" onChange={handleChange} className="form-check-input" id="2x8GB"/>
                         <label className="form-check-label" for="2x8GB">2x8GB</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="sizeOfRam" value="4x8GB" onChange={handleChange} className="form-check-input" id="4x8GB"/>
+                        <input type="radio" name="sizeOfRam" value="4x8G" onChange={handleChange} className="form-check-input" id="4x8GB"/>
                         <label className="form-check-label" for="4x8GB">4x8GB</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="sizeOfRam" value="1x16GB" onChange={handleChange} className="form-check-input" id="1x16GB"/>
+                        <input type="radio" name="sizeOfRam" value="1x16G" onChange={handleChange} className="form-check-input" id="1x16GB"/>
                         <label className="form-check-label" for="1x16GB">1x16GB</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="sizeOfRam" value="2x16GB" onChange={handleChange} className="form-check-input" id="2x16GB"/>
+                        <input type="radio" name="sizeOfRam" value="2x16G" onChange={handleChange} className="form-check-input" id="2x16GB"/>
                         <label className="form-check-label" for="2x16GB">2x16GB</label>
                     </div>
                     <div className="form-check">
-                        <input type="radio" name="sizeOfRam" value="2x32GB" onChange={handleChange} className="form-check-input" id="2x32GB"/>
+                        <input type="radio" name="sizeOfRam" value="2x32G" onChange={handleChange} className="form-check-input" id="2x32GB"/>
                         <label className="form-check-label" for="2x32GB">2x32GB</label>
                     </div>
                 </div>
