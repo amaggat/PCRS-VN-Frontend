@@ -43,7 +43,7 @@ function SSDTemplate() {
           <div className="col-lg-4 left">
             <div className="block img">
               {/* <ImageSlider arr={hdd.priceList?.map(element => { return (element) })} img={img} /> */}
-              <img src={hdd.image} />
+              <img src={hdd.image} style={{maxWidth: '350px'}} />
             </div>
             <div className="block action form-group row justify-content-md-center">
               <div className="col-lg action-function">

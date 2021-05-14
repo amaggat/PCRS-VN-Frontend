@@ -17,7 +17,7 @@ class Service {
             }
         })
 
-        delete minPower.priceList
+        // delete minPower.priceList
         console.log(minPower)
 
         localStorage.setItem('power', JSON.stringify(minPower));

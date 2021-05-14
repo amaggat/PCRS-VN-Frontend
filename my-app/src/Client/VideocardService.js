@@ -17,7 +17,7 @@ class Service {
             }
         })
 
-        delete minGPU.priceList
+        // delete minGPU.priceList
         console.log(minGPU)
 
         localStorage.setItem('video-card', JSON.stringify(minGPU));

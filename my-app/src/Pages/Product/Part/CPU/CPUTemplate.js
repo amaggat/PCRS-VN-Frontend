@@ -63,7 +63,7 @@ function CPUTemplate() {
         <div className="row">
           <div className="col-lg-4 left">
             {/* <ImageSlider arr={cpu.priceList?.map(element => { return (element) })} img={img} /> */}
-            <img src={cpu.image} style={{ maxWidth: '100%' }} />
+            <img src={cpu.image} style={{ maxWidth: '350px' }} />
             <div className="block action form-group row justify-content-md-center">
               <div className="col-lg action-function">
                 <button type="button" className="btn btn-primary" onClick={() => CPUService.setCPU2List(cpu)}>Add to your Build</button>

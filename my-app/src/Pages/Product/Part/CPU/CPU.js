@@ -118,7 +118,7 @@ class CPU extends Component {
                           <td className="card-text">{cpu.cores}</td>
                           <td className="card-text">{cpu.threads}</td>
                           <td className="card-text">{cpu.socket}</td>
-                          <td className="card-text">{cpu.averageRating || '-'}<i className="fa fa-star star-activate" /></td>
+                          <td className="card-text">{cpu.averageRating || '-'}<i className="fa fa-star" /></td>
                           <td className="card-text">{cpu.priceList?.length <= 0 ? "-" : formatMoney(cpu.priceList[0].price) + "VND"}</td>
                           <td>
                             <button type="button" className="btn btn-primary btn-sm" onClick={() => CPUService.setCPU2List(cpu)}>Add</button>

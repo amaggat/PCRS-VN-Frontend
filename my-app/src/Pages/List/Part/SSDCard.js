@@ -69,34 +69,19 @@ class SSDCard extends Component {
                 </td>
                 <td className="tax row-title">
                     <div className="vertical-center">{
-                        ssd ?
-                        ssd.tax ? 
-                            ssd.tax
-                            :
-                            null
-                        :
-                    null
+                        ssd
+                        ? (<>{ssd.averageRating} &nbsp; <i class="fas fa-star" /></>)
+                        : null
                     }</div>
                 </td>
                 <td className="price row-title">
-                    <div className="vertical-center">
-                        {
-                            ssd ?
-                                ssd.promo ? 
-                                    formatMoney(ssd.price * ssd.promo) + "VND"
-                                    :
-                                    formatMoney(ssd.price) + "VND"
-                                :
-                            null
-                        }
-                    </div>
                 </td>
                 <td className="where">
                 <div>
                         {
                             ssd ?
                                 <Link className="contain-img" to={ssd.link}>
-                                    <img className="product-img" src={ssd.logo ? ssd.logo : img} alt={ssd.id}/>
+                                    <img className="product-img" src={ssd.priceList[0].retailer.logo} alt={ssd.id}/>
                                 </Link>
                             : null
                         }

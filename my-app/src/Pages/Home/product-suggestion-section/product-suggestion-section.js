@@ -22,61 +22,6 @@ const ProductSuggestionSection = () => {
   }
 
   return (
-    // <div className="light-back home-product">
-    //     <div className="w-container">
-    //         <div className="row block-title">Browse Product</div>
-    //         <div className="row block small-container">
-    //             <div className="col text-center">
-    //                 <div className="col-img">
-    //                     <div className="suggestion" onClick={() => handleCategoryClick('cpu')}>
-    //                         <img src={cpu} alt="cpu" className="img" />
-    //                         <div className="product-title">CPU</div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //             <div className="col text-center">
-    //                 <div className="col-img">
-    //                     <div className="suggestion" onClick={() => handleCategoryClick('motherboard')}>
-    //                         <img src={motherboard} alt="motherboard" className="img" />
-    //                         <div className="product-title">Motherboard</div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //             <div className="col text-center">
-    //                 <div className="col-img">
-    //                     <div className="suggestion" onClick={() => handleCategoryClick('memory')}>
-    //                         <img src={memory} alt="memory" className="img" />
-    //                         <div className="product-title">Memory</div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //         <div className="row block small-container">
-    //             <div className="col text-center">
-    //                 <div className="col-img">
-    //                     <div className="suggestion" onClick={() => handleCategoryClick('ssd')}>
-    //                         <img src={ssd} alt="cpu" className="img" />
-    //                         <div className="product-title">Solid State Drive</div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //             <div className="col text-center">
-    //                 <div className="col-img">
-    //                     <div className="suggestion" onClick={() => handleCategoryClick('power')}>
-    //                         <img src={power} alt="cpu" className="img" />
-    //                         <div className="product-title">Power Supply</div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //             <div className="col text-center">
-    //                 <div className="col-img ">
-    //                     <div className="suggestion" onClick={() => handleCategoryClick('videocard')}>
-    //                         <img src={videocard} alt="cpu" className="img" />
-    //                         <div className="product-title">Video Card</div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
     <Container className="build-guide">
       <div className="row block-title">Browse Product</div>
       <Row style={{ marginBottom: '50px' }}>

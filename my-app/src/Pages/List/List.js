@@ -177,12 +177,12 @@ class List extends Component {
                                 <tr>
                                     <th scope="col">Component</th>
                                     <th scope="col">Selection</th>
-                                    <th scope="col">Base</th>
-                                    <th scope="col">Promo</th>
-                                    <th scope="col">Snipping</th>
-                                    <th scope="col">Tax</th>
-                                    <th scope="col-2">Price</th>
-                                    <th scope="col">Where</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">&nbsp;</th>
+                                    <th scope="col">&nbsp;</th>
+                                    <th scope="col">Rating</th>
+                                    <th scope="col-2">&nbsp;</th>
+                                    <th scope="col">Retailer</th>
                                 </tr>
                             </thead>
                             <tbody className="attribute">

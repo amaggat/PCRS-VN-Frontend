@@ -17,7 +17,7 @@ class MemoryService {
             }
         })
 
-        delete minRam.priceList
+        // delete minRam.priceList
         console.log(minRam)
 
         localStorage.setItem('memory', JSON.stringify(minRam));

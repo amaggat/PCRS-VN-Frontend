@@ -70,27 +70,16 @@ class CPUCard extends Component {
           }</div>
         </td>
         <td className="tax row-title">
-          <div className="vertical-center">{
-            cpu ?
-              cpu.tax ?
-                cpu.tax
-                :
-                null
-              :
-              null
-          }</div>
+          <div className="vertical-center">
+            {
+              cpu
+              ? (<>{cpu.averageRating || '-'} &nbsp; <i class="fas fa-star" /></>)
+                : null
+            }
+          </div>
         </td>
         <td className="price row-title">
           <div className="vertical-center">
-            {
-              cpu ?
-                cpu.promo ?
-                  formatMoney(cpu.price * cpu.promo) + "VND"
-                  :
-                  formatMoney(cpu.price) + "VND"
-                :
-                null
-            }
           </div>
         </td>
         <td className="where">
@@ -98,7 +87,7 @@ class CPUCard extends Component {
             {
               cpu ?
                 <a className="contain-img" target="_blank" rel="noreferrer" href={cpu.link}>
-                  <img className="product-img" src={cpu.logo ? cpu.logo : img} alt={cpu.id} />
+                  <img className="product-img" src={cpu.priceList[0].retailer.logo} alt={cpu.id} />
                 </a>
                 : null
             }

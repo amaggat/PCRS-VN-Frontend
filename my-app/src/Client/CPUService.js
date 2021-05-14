@@ -17,7 +17,7 @@ class Service {
             }
         })
 
-        delete minCPU.priceList
+        // delete minCPU.priceList
         // console.log(minCPU)
 
         localStorage.setItem('cpu', JSON.stringify(minCPU));

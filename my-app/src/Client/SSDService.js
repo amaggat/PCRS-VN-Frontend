@@ -17,7 +17,7 @@ class SSDService {
             }
         })
 
-        delete min.priceList
+        // delete min.priceList
         console.log(min)
 
         localStorage.setItem('ssd', JSON.stringify(min));

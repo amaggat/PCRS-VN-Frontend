@@ -17,7 +17,7 @@ class HDDService {
             }
         })
 
-        delete min.priceList
+        // delete min.priceList
         console.log(min)
 
         localStorage.setItem('hdd', JSON.stringify(min));

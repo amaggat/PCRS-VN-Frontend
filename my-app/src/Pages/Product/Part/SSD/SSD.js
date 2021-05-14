@@ -100,7 +100,7 @@ class VideoCard extends Component {
                                                 </td>
                                                 <td className="card-text">{ssd.chipset}</td>
                                                 <td className="card-text">{ssd.storage}</td>
-                                                <td className="card-text">{ssd.averageRating || '-'}<i className="fa fa-star star-activate"></i></td>
+                                                <td className="card-text">{ssd.averageRating || '-'}<i className="fa fa-star"></i></td>
                                                 <td className="card-text">{ssd.priceList?.length <= 0 ? "-" : formatMoney(ssd.priceList[0].price) + "VND"}</td>
                                                 <td>
                                                 <button type="button" className="btn btn-primary btn-sm" onClick={()=>SSDService.setSSD2List(ssd)}>Add</button>

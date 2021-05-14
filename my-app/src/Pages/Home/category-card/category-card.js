@@ -5,7 +5,16 @@ import styled from 'styled-components';
 
 const defaultImg = './background.jpg';
 
-const CategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradientShadow, width = '300px', backgroundPosition = 'top', isCategoryCard = false }) => {
+const CategoryCard = ({
+  title,
+  backgroundImg,
+  gradientOverlay = '',
+  gradientShadow,
+  width = '300px',
+  backgroundPosition = 'top',
+  isCategoryCard = false,
+  linkTo = ''
+}) => {
   const CardWrapper = styled.div`
     z-index: 9999;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
@@ -91,7 +100,7 @@ const CategoryCard = ({ title, backgroundImg, gradientOverlay = '', gradientShad
 
   const handleClick = () => {
     if (isCategoryCard) {
-      history.push('/builds');
+      history.push(linkTo);
     }
   }
 

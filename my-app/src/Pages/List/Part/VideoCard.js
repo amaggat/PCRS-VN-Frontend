@@ -72,32 +72,19 @@ class GPUCard extends Component {
                 </td>
                 <td className="tax row-title">
                     <div className="vertical-center">{
-                        videocard ?
-                        videocard.tax ? 
-                            videocard.tax
-                            :
-                            null
-                        :
-                    null
+                        videocard
+                        ? (<>{videocard.averageRating} &nbsp; <i class="fas fa-star" /></>)
+                        : null
                     }</div>
                 </td>
                 <td className="price row-title">
-                    <div className="vertical-center">{
-                        videocard ?
-                            videocard.promo ? 
-                                formatMoney(videocard.price * videocard.promo) + "VND"
-                                :
-                                formatMoney(videocard.price) + "VND"
-                            :
-                        null
-                    }</div>
                 </td>
                 <td className="where">
                     <div>
                         {
                             videocard ?
                                 <Link className="contain-img" to={videocard.link}>
-                                    <img className="product-img" src={videocard.logo ? videocard.logo : img} alt={videocard.id}/>
+                                    <img className="product-img" src={videocard.priceList[0].retailer.logo} alt={videocard.id}/>
                                 </Link>
                             : null
                         }

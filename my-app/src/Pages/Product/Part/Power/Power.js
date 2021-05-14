@@ -100,7 +100,7 @@ class Power extends Component {
                                                 <td className="card-text">{power.standard_80}</td>
                                                 <td className="card-text">{power.chipset}</td>
                                                 <td className="card-text">{power.power}</td>
-                                                <td className="card-text">{power.averageRating || '-'}<i className="fa fa-star star-activate" ></i></td>
+                                                <td className="card-text">{power.averageRating || '-'}<i className="fa fa-star" ></i></td>
                                                 <td className="card-text">{power.priceList?.length <= 0 ? "-" : formatMoney(power.priceList[0].price) + "VND"}</td>
                                                 <td>
                                                 <button type="button" className="btn btn-primary btn-sm" onClick={()=>PowerService.setPower2List(power)}>Add</button>

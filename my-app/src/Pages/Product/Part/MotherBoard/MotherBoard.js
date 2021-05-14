@@ -110,7 +110,7 @@ class MotherBoard extends Component {
                                                 <td className="card-text">{motherboard.formfactor}</td>
                                                 <td className="card-text">{motherboard.sizeofram}</td>
                                                 <td className="card-text">{motherboard.memory_slot}</td>
-                                                <td className="card-text">{motherboard.averageRating || '-'}<i className="fa fa-star star-activate" ></i></td>
+                                                <td className="card-text">{motherboard.averageRating || '-'}<i className="fa fa-star" ></i></td>
                                                 <td className="card-text">{motherboard.priceList?.length <= 0 ? "-" : formatMoney(motherboard.priceList[0].price) + "VND"}</td>
                                                 <td>
                                                     <button type="button" className="btn btn-primary btn-sm" onClick={()=>MotherboardService.setMotherboard2List(motherboard)}>Add</button>

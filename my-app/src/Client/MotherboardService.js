@@ -17,7 +17,7 @@ class Service {
             }
         })
 
-        delete minMotherboard.priceList
+        // delete minMotherboard.priceList
         console.log(minMotherboard)
 
         localStorage.setItem('motherboard', JSON.stringify(minMotherboard));

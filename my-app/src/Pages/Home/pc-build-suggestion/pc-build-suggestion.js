@@ -63,6 +63,7 @@ const PCBuildSuggestion = () => {
           <Col md="4" className="build-category-column">
             <CategoryCard
               isCategoryCard={true}
+              linkTo="/builds"
               title="Gaming PC"
               backgroundImg={GamingPCImage}
               gradientOverlay="linear-gradient(90deg, rgba(87,90,84,0.5) 0%, rgba(183,0,38,0.5) 100%)"
@@ -72,6 +73,7 @@ const PCBuildSuggestion = () => {
           <Col md="4" className="build-category-column">
             <CategoryCard
               isCategoryCard={true}
+              linkTo="/builds"
               title="Streaming PC"
               backgroundImg={StreamingPCImage}
               gradientOverlay="linear-gradient(90deg, rgba(226,164,111,0.5) 0%, rgba(122,226,138,0.5) 100%)"
@@ -81,6 +83,7 @@ const PCBuildSuggestion = () => {
           <Col md="4" className="build-category-column">
             <CategoryCard
               isCategoryCard={true}
+              linkTo="/builds"
               title="Workstation PC"
               backgroundImg={WorkstationBackgroundImage}
               gradientOverlay="linear-gradient(90deg, rgba(157,114,64,0.5) 0%, rgba(115,111,103,0.5) 100%)"
@@ -92,6 +95,7 @@ const PCBuildSuggestion = () => {
           <Col md="4" className="build-category-column">
             <CategoryCard
               isCategoryCard={true}
+              linkTo="/builds"
               title="Office PC"
               backgroundImg={OfficeBackgroundImage}
               gradientOverlay="linear-gradient(90deg, rgba(82,76,67,0.5) 0%, rgba(158,120,79,0.5) 100%)"
@@ -101,6 +105,7 @@ const PCBuildSuggestion = () => {
           <Col md="4" className="build-category-column">
             <CategoryCard
               isCategoryCard={true}
+              linkTo="/builds"
               title="Laptop"
               backgroundImg={LaptopBackgroundImage}
               gradientOverlay="linear-gradient(90deg, rgba(28,88,119,0.5) 0%, rgba(166,130,101,0.5) 100%)"
@@ -110,6 +115,7 @@ const PCBuildSuggestion = () => {
           <Col md="4" className="build-category-column">
             <CategoryCard
               isCategoryCard={true}
+              linkTo="/builds"
               title="Mini PC"
               backgroundImg={MiniPCImage}
               gradientOverlay="linear-gradient(90deg, rgba(49,131,1,0.5) 0%, rgba(72,50,46,0.5) 100%)"
