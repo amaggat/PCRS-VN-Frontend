@@ -111,10 +111,7 @@ class Power extends Component {
                                     }
                                 </tbody>
                             </table>
-                            {/* <PageNav totalPages={this.state.totalPages} setPageNumber={(pageNumber) => {this.setState({pageNumber})}} /> */}
-                            <Pagination>
-                                
-                            </Pagination>
+                            <PageNav totalPages={this.state.totalPages} setPageNumber={(pageNumber) => {this.setState({pageNumber})}} />
                         </div>
                     </div>
                 </div>

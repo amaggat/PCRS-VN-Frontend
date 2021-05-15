@@ -38,15 +38,17 @@ import CCoolerTemplate from './Product/Part/CCooler/Sample/CCoolerTemplate';
 import BuildTemplate from './Build/BuildTemplate';
 import CompletedBuilds from './CompletedBuilds/completed-builds';
 import RetailersPage from './Retailers-Page/retailers-page';
+import Dashboard from './Account/Dashboard';
 
 class Page extends Component {
     render() {
         return (
             <>
                 <Switch>
-                    {/* Login and Register Page */}
+                    {/* User Page */}
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
+                    <Route exact path="/dashboard" component={Dashboard} />
                     {/* Basic Page */}
                     <Route exact path="/" component={Home} />
                     <Route exact path="/about" component={About} />

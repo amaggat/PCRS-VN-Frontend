@@ -6,9 +6,11 @@ import GPUIcon from '../../Components/Sources/Icon/gpu-icon.png';
 import MainboardIcon from '../../Components/Sources/Icon/mainboard-icon.png';
 import PSUIcon from '../../Components/Sources/Icon/psu-icon.png';
 import RAMIcon from '../../Components/Sources/Icon/ram-icon.jpg';
-import StorageIcon from '../../Components/Sources/Icon/storage-icon.png';
+import HDDIcon from '../../Components/Sources/Icon/storage-icon.png';
+import SSDIcon from '../../Components/Sources/Icon/ssd-icon.png';
+import { toast } from 'react-toastify';
 
-const BuildCard = ({ maxWidth = '300px', name, image, pcProfile, price, style = {} }) => {
+const BuildCard = ({ maxWidth = '400px', width = '300px', name, image, pcProfile, price, style = {} }) => {
   const Wrapper = styled.div`
     max-width: ${maxWidth};
     /* margin: 0px 15px; */
@@ -64,7 +66,7 @@ const BuildCard = ({ maxWidth = '300px', name, image, pcProfile, price, style = 
 
   const BuildSpecs = styled.div`
     font-weight: 400;
-    height: 220px;
+    height: 275px;
     padding: 10px 10px;
     text-align: justify;
     align-self: flex-end;
@@ -78,7 +80,7 @@ const BuildCard = ({ maxWidth = '300px', name, image, pcProfile, price, style = 
 `;
 
   const ComponentImage = styled.img`
-    max-width: 7%;
+    max-width: 9%;
     max-height: fit-content;
     padding: 2px 2px;
 `;
@@ -112,6 +114,33 @@ const BuildCard = ({ maxWidth = '300px', name, image, pcProfile, price, style = 
     }
   `;
 
+  const onClickAddToBuild = () => {
+    localStorage.clear();
+    // Add price and link attribute to EACH component......
+    delete pcProfile.id;
+    delete pcProfile.name;
+    delete pcProfile.user;
+    delete pcProfile.category;
+
+    for (const component in pcProfile) {
+      if (pcProfile[component][0]) {
+        pcProfile[component][0].price = pcProfile[component][0].priceList[0].price || 0;
+        pcProfile[component][0].link = pcProfile[component][0].priceList[0].link || 0;
+        console.log(pcProfile[component])
+      }
+    }
+    localStorage.setItem('cpu', JSON.stringify(pcProfile.cpu[0]) || null);
+    localStorage.setItem('socket', JSON.stringify(pcProfile.cpu[0].socket) || null);
+    localStorage.setItem('video-card', JSON.stringify(pcProfile.gpu[0]) || null);
+    localStorage.setItem('memory', JSON.stringify(pcProfile.ram[0]) || null);
+    // localStorage.setItem('motherboard', JSON.stringify(pcProfile.main[0]) || null);
+    localStorage.setItem('ssd', JSON.stringify(pcProfile.ssd[0]) || null);
+    localStorage.setItem('hdd', JSON.stringify(pcProfile.hdd[0]) || null);
+    localStorage.setItem('power', JSON.stringify(pcProfile.psu[0]) || null);
+    toast.dark('Added to System Builder!')
+    console.log('Toast rendered')
+  }
+
   return (
     <Wrapper style={style}>
       <Header>
@@ -125,28 +154,31 @@ const BuildCard = ({ maxWidth = '300px', name, image, pcProfile, price, style = 
       </BuildImage>
       <BuildSpecs>
         <BuildComponent>
-          <ComponentImage src={CPUIcon} /> &nbsp; {pcProfile.cpu}
+          <ComponentImage src={CPUIcon} /> &nbsp; {pcProfile.cpu[0] ? pcProfile.cpu[0].fullname : 'No CPU (how?)'}
         </BuildComponent>
         <BuildComponent>
-          <ComponentImage src={GPUIcon} /> &nbsp; {pcProfile.gpu}
+          <ComponentImage src={GPUIcon} /> &nbsp; {pcProfile.gpu[0] ? pcProfile.gpu[0].fullname : 'No GPU'}
         </BuildComponent>
         <BuildComponent>
-          <ComponentImage src={RAMIcon} /> &nbsp; {pcProfile.ram}
+          <ComponentImage src={RAMIcon} /> &nbsp; {pcProfile.ram[0] ? pcProfile.ram[0].fullname : 'No RAM (why?)'}
         </BuildComponent>
         <BuildComponent>
-          <ComponentImage src={MainboardIcon} /> &nbsp; {pcProfile.motherboard}
+          <ComponentImage src={MainboardIcon} /> &nbsp; {pcProfile.main[0]? pcProfile.main[0].fullname : 'No motherboard (Are you The Verge or smt?)'}
         </BuildComponent>
         <BuildComponent>
-          <ComponentImage src={StorageIcon} /> &nbsp; {pcProfile.storage}
+          <ComponentImage src={HDDIcon} /> &nbsp; {pcProfile.hdd[0] ? pcProfile.hdd[0].fullname : 'No HDD'}
         </BuildComponent>
         <BuildComponent>
-          <ComponentImage src={PSUIcon} /> &nbsp; {pcProfile.psu}
+          <ComponentImage src={SSDIcon} /> &nbsp; {pcProfile.ssd[0] ? pcProfile.ssd[0].fullname : 'No SSD'}
+        </BuildComponent>
+        <BuildComponent>
+          <ComponentImage src={PSUIcon} /> &nbsp; {pcProfile.psu[0] ? pcProfile.psu[0].fullname : 'No PSU (lmao good luck trying to turn on PC)'}
         </BuildComponent>
       </BuildSpecs>
       <BuildPrice>
-        Price: &nbsp; {price}
+        Price: &nbsp; {price + ' VND'}
       </BuildPrice>
-      <BuildButton>
+      <BuildButton onClick={() => onClickAddToBuild()}>
         <i class="fas fa-plus" />
         Add To System Builder
       </BuildButton>

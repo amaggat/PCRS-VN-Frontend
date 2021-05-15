@@ -3,8 +3,8 @@ import axios from 'axios';
 const PROFILE_REST_API_URL = '/api/post';
 
 class Service {
-    static getProfiles() {
-        return axios.get(PROFILE_REST_API_URL);
+    static getProfiles(type = '') {
+        return axios.get(`${PROFILE_REST_API_URL}?type=${type}`);
     }
 
     static getProfilebyID(id) {

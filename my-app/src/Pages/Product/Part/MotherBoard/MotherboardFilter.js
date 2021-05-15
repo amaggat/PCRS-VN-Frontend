@@ -13,9 +13,9 @@ function MotherboardFilter ({search}) {
     }
 
     function handleChange(e) {
-        if (socket !== null && e.target.value.toUpperCase() !== socket.toUpperCase()) {
-            return
-        }
+        // if (socket !== null && e.target.value.toUpperCase() !== socket.toUpperCase()) {
+        //     return
+        // }
 
         setFilters({
             [e.target.name]: e.target.value

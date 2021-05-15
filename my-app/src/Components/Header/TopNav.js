@@ -1,11 +1,12 @@
 import { React, Component } from 'react';
 import Cookies from 'js-cookie';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from '../Sources/Icon/logo_final2.png';
 import './Header.css';
 
 const TopNav = () => {
+    const history = useHistory();
 
     const handleLogout = () => {
         Cookies.remove('username');
@@ -14,6 +15,10 @@ const TopNav = () => {
         toast('Logged out!', {
             autoClose: 1000
         });
+    }
+
+    const handleDirectToDashboard = () => {
+        history.push('/dashboard');
     }
     return (
         <div className="top-nav">
@@ -32,12 +37,16 @@ const TopNav = () => {
                             <li className="nav-item">
                                 {
                                     Cookies.get('jwt') !== '' && Cookies.get('jwt') != null
-                                        ? <Link className="nav-link" onClick={() => handleLogout()}>{Cookies.get('username')}</Link>
+                                        ? <Link className="nav-link" onClick={() => handleDirectToDashboard()}>{Cookies.get('username')}</Link>
                                         : <Link className="nav-link" to="/login">Login</Link>
                                 }
                             </li>
+                            {
+                                Cookies.get('jwt') !== '' && Cookies.get('jwt') != null
+                                ? <Link className="nav-link" onClick={() => handleLogout()}>Logout</Link>
+                                : <></>
+                            }
                             <li className="nav-item">
-                                <a target="_blank" rel="noreferrer" className="nav-link" href="https://github.com/amaggat/PCRS-VN-Frontend">Github</a>
                             </li>
                         </nav>
                     </div>
