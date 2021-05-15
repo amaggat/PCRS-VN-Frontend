@@ -12,25 +12,32 @@ import { Link, useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 import CPUService from '../../../../Client/CPUService';
+import ProductSuggestionCard from '../../../Home/product-suggestion-section/suggestion-block/suggestion-card/suggestion-card';
 
 import ImageSlider from '../../../../Components/Page/ImageSlider'
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
 import { RatingService } from '../../../../Client/RatingService';
+import { getRecommendation } from '../../../../Client/RecommendService';
 
 function CPUTemplate() {
   const [cpu, setCPU] = useState({});
+  const [recommendations, setRecommendations] = useState({});
   const [rating, setRating] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
   const { id } = useParams();
   useEffect(() => {
     CPUService.getCPUbyID(id).then(response => {
       setCPU(response.data);
-      setRating(response.data.cpuRating.rating);
-      setAverageRating(response.data.averageRating);
-      // console.info(response.data);
+      setRating(response.data.cpuRating ? response.data.cpuRating.rating : 0);
+      setAverageRating(response.data.averageRating || 0);
+      console.info(response.data);
     })
       .catch(console.log);
-  }, [id])
+    
+    getRecommendation('cpu', id).then(response => {
+      setRecommendations(response.data);
+    }).catch(console.log)
+  }, [])
 
   const handleChangeRating = async (newRating, name) => {
     const result = await RatingService({
@@ -176,8 +183,26 @@ function CPUTemplate() {
                   numberOfStars={5}
                   starDimension="20px"
                   starSpacing="5px"
+                  changeRating={(rating) => handleChangeRating(rating)}
                 />
                 {` - voted by ${cpu.numberOfRating} users`}
+              </ul>
+            </div>
+            <div className="block detail-text">
+              <ul>
+                <div className="detail-title">You may also like...</div>
+              </ul>
+              <ul>
+                {
+                  recommendations.content.map((product) => (
+                    <ProductSuggestionCard
+                      name={product.fullname}
+                      link={`/products/cpu/${product.id}`}
+                      img={product.image}
+                      price={product.price}
+                    />
+                  ))
+                }
               </ul>
             </div>
           </div>
