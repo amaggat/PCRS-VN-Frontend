@@ -55,7 +55,7 @@ class List extends Component {
             }]
         }
         if (motherboard !== null) {
-            data.mainboard = [{
+            data.main = [{
                 id: motherboard.id
             }]
         }
@@ -117,35 +117,6 @@ class List extends Component {
             parts => parts[1]?.price ? total += parts[1].price : null
         )
 
-        const noIssue = (
-            <div className="row">
-                <div className="col-lg-9 no-issue">
-                    <i class="tick far fa-check-circle"></i>
-                    <span className="title">Compatibility: </span>
-                    <span className="text">Dunno.</span>
-                </div>
-                <div className="col-lg-3 wattage">
-                    <i class="lightning fas fa-bolt"></i>
-                    <span className="title">Estimate Wattage: </span>
-                    <span className="text">... W</span>
-                </div>
-            </div>
-        )
-
-        const Issue = (
-            <div className="row">
-                <div className="issue">
-                    <i class="untick far fa-times-circle"></i>
-                    <span className="title">Compatibility: </span>
-                    <span className="warning-text">Dunno.</span>
-                </div>
-                <div className="col-lg-3 wattage">
-                    <i class="lightning fas fa-bolt"></i>
-                    <span className="title">Estimate Wattage: </span>
-                    <span className="text">220 W</span>
-                </div>
-            </div>
-        )
         return (
             <div className="system-build white-back">
                 <Header />
@@ -156,10 +127,8 @@ class List extends Component {
                 <div className="warn w-container block">
                     <div className="row list-link">
                         <i class="fas fa-link"></i>
-                        <Link className="list-link-url" url="/list/">https://localhost:3000/list/</Link>
+                        <div className="list-link-url">Build your own PC</div>
                     </div>
-                    {/* if noIssue, the background will be set to green. Else "Issue" will return red. */}
-                    {noIssue}
                 </div>
 
                 <div className="tab-content sb-table w-container block" id="pills-tabContent">
