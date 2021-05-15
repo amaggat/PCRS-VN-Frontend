@@ -19,7 +19,7 @@ class SubNav extends Component {
                         </li>
                         <li className="nav-item">
                             <img className="item-img" src={guide} alt="" />
-                            <Link className="nav-link" to="/builds">Builds Guide</Link>
+                            <Link className="nav-link" to="/builds?type=">Builds Guide</Link>
                         </li>
                         <li className="nav-item dropdown">
                             <img className="item-img" src={product} alt="" />

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import formatCurrency from '../../Components/Page/CurrencyFormat';
 import CPUIcon from '../../Components/Sources/Icon/cpu-icon.svg';
 import GPUIcon from '../../Components/Sources/Icon/gpu-icon.png';
 import MainboardIcon from '../../Components/Sources/Icon/mainboard-icon.png';
@@ -10,7 +11,7 @@ import HDDIcon from '../../Components/Sources/Icon/storage-icon.png';
 import SSDIcon from '../../Components/Sources/Icon/ssd-icon.png';
 import { toast } from 'react-toastify';
 
-const BuildCard = ({ maxWidth = '400px', width = '300px', name, image, pcProfile, price, style = {} }) => {
+const BuildCard = ({ maxWidth = '400px', width = '300px', name, image, pcProfile, style = {} }) => {
   const Wrapper = styled.div`
     max-width: ${maxWidth};
     /* margin: 0px 15px; */
@@ -176,7 +177,7 @@ const BuildCard = ({ maxWidth = '400px', width = '300px', name, image, pcProfile
         </BuildComponent>
       </BuildSpecs>
       <BuildPrice>
-        Price: &nbsp; {price + ' VND'}
+        Price: &nbsp; {formatCurrency(pcProfile.price) + '+ VND'}
       </BuildPrice>
       <BuildButton onClick={() => onClickAddToBuild()}>
         <i class="fas fa-plus" />
