@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import StarRating from 'react-star-ratings';
+import ScrollableMenu from 'react-horizontal-scrolling-menu';
+import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 
 import Footer from '../../../../Components/Footer/Footer';
@@ -9,24 +11,67 @@ import img from './ssd-demo.jpeg';
 import '../ProductSample.css';
 
 import { useParams } from 'react-router-dom';
+import ProductSuggestionCard from '../../../Home/product-suggestion-section/suggestion-block/suggestion-card/suggestion-card';
 import SSDService from '../../../../Client/SSDService';
 
 import ImageSlider from '../../../../Components/Page/ImageSlider'
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
+import { RatingService } from '../../../../Client/RatingService';
+import { getRecommendation } from '../../../../Client/RecommendService';
 
 function SSDTemplate() {
   const { id } = useParams();
+  const [recommendations, setRecommendations] = useState({});
+  const [rating, setRating] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
   const [ssd, setSSD] = useState({});
+
   useEffect(() => {
-    SSDService.getSSDbyID(id).then(response => {
-      setSSD(response.data)
-    })
-      .catch(console.log);
+    const fetch = async () => {
+      try {
+        const ssdResult = await SSDService.getSSDbyID(id);
+        const recommendationResult = await getRecommendation('ssd', id);
+        if (ssdResult.data) {
+          setSSD(ssdResult.data);
+          setRating(ssdResult.data.ssdRating ? ssdResult.data.ssdRating.rating : 0);
+          setAverageRating(ssdResult.data.averageRating || 0);
+        }
+        if (recommendationResult.data) {
+          setRecommendations(recommendationResult.data);
+        }
+      } catch (error) {
+        toast.error(`Error: ${error}`);
+      }
+    }
+
+    fetch();
   }, [id])
 
-  const handleChangeRating = (newRating, name) => {
-    toast.dark(`Rating updated: ${newRating}/5 stars`)
+  const handleChangeRating = async (newRating, name) => {
+    const result = await RatingService({
+      type: 'ssd',
+      productId: id,
+      jwt: Cookies.get('jwt'),
+      userId: Cookies.get('userId'),
+      rating: newRating,
+      favorite: true
+    });
+    if (result.data.success) {
+      toast.dark(`Rating updated: ${newRating}/5 stars`);
+      setRating(newRating)
+    } else {
+      toast.error('Error occured. Check console log for more details');
+      console.error('RATING ERROR: ', result);
+    }
+    console.log(result);
   }
+
+  const Arrow = (text) => (
+    <div style={{ cursor: 'pointer' }}>
+      {text}
+    </div>
+  )
+
 
   return (
     <div className="product-detail white-back">
@@ -41,7 +86,7 @@ function SSDTemplate() {
           <div className="col-lg-4 left">
             <div className="block img">
               {/* <ImageSlider arr={ssd.priceList?.map(element => { return (element) })} img={img} /> */}
-              <img src={ssd.image} style={{maxWidth: '350px'}} />
+              <img src={ssd.image} style={{ maxWidth: '350px' }} />
             </div>
             <div className="block action form-group row justify-content-md-center">
               <div className="col-lg action-function">
@@ -133,7 +178,7 @@ function SSDTemplate() {
               <ul>
                 Your score: &nbsp;
                 <StarRating
-                  rating={4.2} //TODO: Add actual rating from response data
+                  rating={rating}
                   changeRating={(rating) => handleChangeRating(rating)}
                   starRatedColor="orange"
                   numberOfStars={5}
@@ -144,7 +189,7 @@ function SSDTemplate() {
               <ul>
                 Average score: &nbsp;
                 <StarRating
-                  rating={4.2} //TODO: Add actual rating from response data
+                  rating={averageRating}
                   starRatedColor="orange"
                   numberOfStars={5}
                   starDimension="20px"
@@ -153,6 +198,39 @@ function SSDTemplate() {
               </ul>
             </div>
           </div>
+        </div>
+        <div className="block detail-text">
+          <ul>
+            <div className="detail-title">You may also like...</div>
+          </ul>
+          <ul>
+            {
+              (() => {
+                if (recommendations.content) {
+                  const recommendationRender = [];
+                  recommendations.content.forEach((product) => {
+                    recommendationRender.push(
+                      <ProductSuggestionCard
+                        key={product.id}
+                        name={product.fullname}
+                        link={`/products/ssd/${product.id}`}
+                        img={product.image}
+                        price={product.minPrice}
+                      />
+                    )
+                  })
+                  return (
+                    <ScrollableMenu
+                      wheel={false}
+                      data={recommendationRender}
+                      arrowLeft={Arrow('<')}
+                      arrowRight={Arrow('>')}
+                    />
+                  )
+                } else return null;
+              })()
+            }
+          </ul>
         </div>
       </div>
       <Footer />

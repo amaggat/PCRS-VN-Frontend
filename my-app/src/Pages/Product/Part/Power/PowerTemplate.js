@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import StarRating from 'react-star-ratings';
+import ScrollableMenu from 'react-horizontal-scrolling-menu';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie'
 
 import Footer from '../../../../Components/Footer/Footer';
 import Header from '../../../../Components/Header/Header';
@@ -13,20 +15,62 @@ import PowerService from '../../../../Client/PowerService';
 
 import ImageSlider from '../../../../Components/Page/ImageSlider'
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
+import ProductSuggestionCard from '../../../Home/product-suggestion-section/suggestion-block/suggestion-card/suggestion-card';
+import { RatingService } from '../../../../Client/RatingService';
+import { getRecommendation } from '../../../../Client/RecommendService';
 
 function PowerTemplate() {
   const { id } = useParams();
+  const [recommendations, setRecommendations] = useState({});
+  const [rating, setRating] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
   const [power, setPower] = useState({});
+
   useEffect(() => {
-    PowerService.getPowerbyID(id).then(response => {
-      setPower(response.data)
-    })
-      .catch(console.log);
+    const fetch = async () => {
+      try {
+        const psuResult = await PowerService.getPowerbyID(id);
+        const recommendationResult = await getRecommendation('psu', id);
+        if (psuResult.data) {
+          setPower(psuResult.data);
+          setRating(psuResult.data.psuRating ? psuResult.data.psuRating.rating : 0);
+          setAverageRating(psuResult.data.averageRating || 0);
+        }
+        if (recommendationResult.data) {
+          setRecommendations(recommendationResult.data);
+        }
+      } catch (error) {
+        toast.error(`Error: ${error}`);
+      }
+    }
+
+    fetch();
   }, [id])
 
-  const handleChangeRating = (newRating, name) => {
-    toast.dark(`Rating updated: ${newRating}/5 stars`)
+  const handleChangeRating = async (newRating, name) => {
+    const result = await RatingService({
+      type: 'psu',
+      productId: id,
+      jwt: Cookies.get('jwt'),
+      userId: Cookies.get('userId'),
+      rating: newRating,
+      favorite: true
+    });
+    if (result.data.success) {
+      toast.dark(`Rating updated: ${newRating}/5 stars`);
+      setRating(newRating)
+    } else {
+      toast.error('Error occured. Check console log for more details');
+      console.error('RATING ERROR: ', result);
+    }
+    console.log(result);
   }
+
+  const Arrow = (text) => (
+    <div style={{ cursor: 'pointer' }}>
+      {text}
+    </div>
+  )
 
   return (
     <div className="product-detail white-back">
@@ -41,7 +85,7 @@ function PowerTemplate() {
           <div className="col-lg-4 left">
             <div className="block img">
               {/* <ImageSlider arr={power.priceList?.map(element => { return (element) })} img={img} /> */}
-              <img src={power.image} style={{maxWidth: '350px'}} />
+              <img src={power.image} style={{ maxWidth: '350px' }} />
             </div>
             <div className="block action form-group row justify-content-md-center">
               <div className="col-lg action-function">
@@ -138,7 +182,7 @@ function PowerTemplate() {
               <ul>
                 Your score: &nbsp;
                 <StarRating
-                  rating={4.2} //TODO: Add actual rating from response data
+                  rating={rating}
                   changeRating={(rating) => handleChangeRating(rating)}
                   starRatedColor="orange"
                   numberOfStars={5}
@@ -149,7 +193,7 @@ function PowerTemplate() {
               <ul>
                 Average score: &nbsp;
                 <StarRating
-                  rating={4.2} //TODO: Add actual rating from response data
+                  rating={averageRating}
                   starRatedColor="orange"
                   numberOfStars={5}
                   starDimension="20px"
@@ -158,6 +202,39 @@ function PowerTemplate() {
               </ul>
             </div>
           </div>
+        </div>
+        <div className="block detail-text">
+          <ul>
+            <div className="detail-title">You may also like...</div>
+          </ul>
+          <ul>
+            {
+              (() => {
+                if (recommendations.content) {
+                  const recommendationRender = [];
+                  recommendations.content.forEach((product) => {
+                    recommendationRender.push(
+                      <ProductSuggestionCard
+                        key={product.id}
+                        name={product.fullname}
+                        link={`/products/Power/${product.id}`}
+                        img={product.image}
+                        price={product.minPrice}
+                      />
+                    )
+                  })
+                  return (
+                    <ScrollableMenu
+                      wheel={false}
+                      data={recommendationRender}
+                      arrowLeft={Arrow('<')}
+                      arrowRight={Arrow('>')}
+                    />
+                  )
+                } else return null;
+              })()
+            }
+          </ul>
         </div>
       </div>
       <Footer />

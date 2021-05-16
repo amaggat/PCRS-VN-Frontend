@@ -1,30 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from 'react-star-ratings';
+import ScrollableMenu from 'react-horizontal-scrolling-menu';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 import Footer from '../../../../Components/Footer/Footer';
 import Header from '../../../../Components/Header/Header';
 import img from './memory-demo.jpeg';
+import ProductSuggestionCard from '../../../Home/product-suggestion-section/suggestion-block/suggestion-card/suggestion-card';
 
 import '../ProductSample.css';
 import ImageSlider from '../../../../Components/Page/ImageSlider';
 import { useParams } from 'react-router-dom';
 import MemoryService from '../../../../Client/MemoryService';
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
+import { RatingService } from '../../../../Client/RatingService';
+import { getRecommendation } from '../../../../Client/RecommendService';
 
 function MemoryTemplate() {
   const { id } = useParams();
+  const [recommendations, setRecommendations] = useState({});
+  const [rating, setRating] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
   const [memory, setMemory] = useState({});
+
   useEffect(() => {
-    MemoryService.getMemorybyID(id).then(response => {
-      setMemory(response.data)
-    })
-      .catch(console.log);
+    const fetch = async () => {
+      try {
+        const ramResult = await MemoryService.getMemorybyID(id);
+        const recommendationResult = await getRecommendation('ram', id);
+        if (ramResult.data) {
+          setMemory(ramResult.data);
+          setRating(ramResult.data.ramRating ? ramResult.data.ramRating.rating : 0);
+          setAverageRating(ramResult.data.averageRating || 0);
+        }
+        if (recommendationResult.data) {
+          setRecommendations(recommendationResult.data);
+        }
+      } catch (error) {
+        toast.error(`Error: ${error}`);
+      }
+    }
+
+    fetch();
   }, [id])
 
-  const handleChangeRating = (newRating, name) => {
-    toast.dark(`Rating updated: ${newRating}/5 stars`)
+  const handleChangeRating = async (newRating, name) => {
+    const result = await RatingService({
+      type: 'ram',
+      productId: id,
+      jwt: Cookies.get('jwt'),
+      userId: Cookies.get('userId'),
+      rating: newRating,
+      favorite: true
+    });
+    if (result.data.success) {
+      toast.dark(`Rating updated: ${newRating}/5 stars`);
+      setRating(newRating)
+    } else {
+      toast.error('Error occured. Check console log for more details');
+      console.error('RATING ERROR: ', result);
+    }
+    console.log(result);
   }
+
+  const Arrow = (text) => (
+    <div style={{ cursor: 'pointer' }}>
+      {text}
+    </div>
+  )
 
   return (
     <div className="product-detail white-back">
@@ -39,7 +83,7 @@ function MemoryTemplate() {
           <div className="col-lg-4 left">
             <div className="block img">
               {/* <ImageSlider arr={memory.priceList?.map(element => { return (element) })} img={img} /> */}
-              <img src={memory.image} style={{maxWidth: '350px'}} />
+              <img src={memory.image} style={{ maxWidth: '350px' }} />
             </div>
             <div className="block action form-group row justify-content-md-center">
               <div className="col-lg action-function">
@@ -140,7 +184,7 @@ function MemoryTemplate() {
               <ul>
                 Your score: &nbsp;
                 <StarRating
-                  rating={4.2} //TODO: Add actual rating from response data
+                  rating={rating}
                   changeRating={(rating) => handleChangeRating(rating)}
                   starRatedColor="orange"
                   numberOfStars={5}
@@ -151,7 +195,7 @@ function MemoryTemplate() {
               <ul>
                 Average score: &nbsp;
                 <StarRating
-                  rating={4.2} //TODO: Add actual rating from response data
+                  rating={averageRating}
                   starRatedColor="orange"
                   numberOfStars={5}
                   starDimension="20px"
@@ -161,6 +205,40 @@ function MemoryTemplate() {
             </div>
 
           </div>
+
+        </div>
+        <div className="block detail-text">
+          <ul>
+            <div className="detail-title">You may also like...</div>
+          </ul>
+          <ul>
+            {
+              (() => {
+                if (recommendations.content) {
+                  const recommendationRender = [];
+                  recommendations.content.forEach((product) => {
+                    recommendationRender.push(
+                      <ProductSuggestionCard
+                        key={product.id}
+                        name={product.fullname}
+                        link={`/products/cpu/${product.id}`}
+                        img={product.image}
+                        price={product.minPrice}
+                      />
+                    )
+                  })
+                  return (
+                    <ScrollableMenu
+                      wheel={false}
+                      data={recommendationRender}
+                      arrowLeft={Arrow('<')}
+                      arrowRight={Arrow('>')}
+                    />
+                  )
+                } else return null;
+              })()
+            }
+          </ul>
         </div>
       </div>
       <Footer />

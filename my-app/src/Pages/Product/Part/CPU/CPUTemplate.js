@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StarRating from 'react-star-ratings';
+import ScrollableMenu from 'react-horizontal-scrolling-menu';
 import Footer from '../../../../Components/Footer/Footer';
 import Header from '../../../../Components/Header/Header';
 import { toast } from 'react-toastify';
@@ -25,19 +26,27 @@ function CPUTemplate() {
   const [rating, setRating] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
   const { id } = useParams();
+
   useEffect(() => {
-    CPUService.getCPUbyID(id).then(response => {
-      setCPU(response.data);
-      setRating(response.data.cpuRating ? response.data.cpuRating.rating : 0);
-      setAverageRating(response.data.averageRating || 0);
-      console.info(response.data);
-    })
-      .catch(console.log);
-    
-    getRecommendation('cpu', id).then(response => {
-      setRecommendations(response.data);
-    }).catch(console.log)
-  }, [])
+    const fetch = async () => {
+      try {
+        const cpuResult = await CPUService.getCPUbyID(id);
+        const recommendationResult = await getRecommendation('cpu', id);
+        if (cpuResult.data) {
+          setCPU(cpuResult.data);
+          setRating(cpuResult.data.cpuRating ? cpuResult.data.cpuRating.rating : 0);
+          setAverageRating(cpuResult.data.averageRating || 0);
+        }
+        if (recommendationResult.data) {
+          setRecommendations(recommendationResult.data);
+        }
+      } catch (error) {
+        toast.error(`Error: ${error}`);
+      }
+    }
+
+    fetch();
+  }, [id])
 
   const handleChangeRating = async (newRating, name) => {
     const result = await RatingService({
@@ -53,10 +62,17 @@ function CPUTemplate() {
       setRating(newRating)
     } else {
       toast.error('Error occured. Check console log for more details');
-      console.error('RATING ERROR: ', result)
+      console.error('RATING ERROR: ', result);
     }
-    console.log(result)
+    console.log(result);
   }
+
+  const Arrow = (text) => (
+    <div style={{ cursor: 'pointer' }}>
+      {text}
+    </div>
+  )
+
 
   return (
     <div className="product-detail white-back">
@@ -188,26 +204,43 @@ function CPUTemplate() {
                 {` - voted by ${cpu.numberOfRating} users`}
               </ul>
             </div>
-            <div className="block detail-text">
-              <ul>
-                <div className="detail-title">You may also like...</div>
-              </ul>
-              <ul>
-                {
-                  recommendations.content.map((product) => (
-                    <ProductSuggestionCard
-                      name={product.fullname}
-                      link={`/products/cpu/${product.id}`}
-                      img={product.image}
-                      price={product.price}
-                    />
-                  ))
-                }
-              </ul>
-            </div>
           </div>
         </div>
+        <div className="block detail-text">
+          <ul>
+            <div className="detail-title">You may also like...</div>
+          </ul>
+          <ul>
+            {
+              (() => {
+                if (recommendations.content) {
+                  const recommendationRender = [];
+                  recommendations.content.forEach((product) => {
+                    recommendationRender.push(
+                      <ProductSuggestionCard
+                        key={product.id}
+                        name={product.fullname}
+                        link={`/products/cpu/${product.id}`}
+                        img={product.image}
+                        price={product.minPrice}
+                      />
+                    )
+                  })
+                  return (
+                    <ScrollableMenu
+                      wheel={false}
+                      data={recommendationRender}
+                      arrowLeft={Arrow('<')}
+                      arrowRight={Arrow('>')}
+                    />
+                  )
+                } else return null;
+              })()
+            }
+          </ul>
+        </div>
       </div>
+
       <Footer />
     </div>
   )

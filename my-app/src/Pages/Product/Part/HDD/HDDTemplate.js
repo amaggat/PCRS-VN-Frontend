@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import StarRating from 'react-star-ratings';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
+import { useParams } from 'react-router-dom';
 
 import Footer from '../../../../Components/Footer/Footer';
 import Header from '../../../../Components/Header/Header';
 import img from './hdd-demo.jpeg';
+import { RatingService } from '../../../../Client/RatingService';
+import { getRecommendation } from '../../../../Client/RecommendService';
+import ScrollableMenu from 'react-horizontal-scrolling-menu';
+import ProductSuggestionCard from '../../../Home/product-suggestion-section/suggestion-block/suggestion-card/suggestion-card';
 
 import '../ProductSample.css';
 
-import { useParams } from 'react-router-dom';
 import HDDService from '../../../../Client/HDDService';
 
 import ImageSlider from '../../../../Components/Page/ImageSlider'
@@ -17,18 +22,55 @@ import formatMoney from '../../../../Components/Page/CurrencyFormat';
 function SSDTemplate() {
   const { id } = useParams();
   const [hdd, setHDD] = useState({});
+  const [recommendations, setRecommendations] = useState({});
+  const [rating, setRating] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
+
   useEffect(() => {
-    HDDService.getHDDbyID(id).then(response => {
-      setHDD(response.data)
-    })
-    .catch(console.log);
+    const fetch = async () => {
+      try {
+        const hddResult = await HDDService.getHDDbyID(id);
+        const recommendationResult = await getRecommendation('hdd', id);
+        if (hddResult.data) {
+          setHDD(hddResult.data);
+          setRating(hddResult.data.hddRating ? hddResult.data.hddRating.rating : 0);
+          setAverageRating(hddResult.data.averageRating || 0);
+        }
+        if (recommendationResult.data) {
+          setRecommendations(recommendationResult.data);
+        }
+      } catch (error) {
+        toast.error(`Error: ${error}`);
+      }
+    }
+
+    fetch();
   }, [id])
 
-  console.log(hdd);
-  
-  const handleChangeRating = (newRating, name) => {
-    toast.dark(`Rating updated: ${newRating}/5 stars`)
+  const handleChangeRating = async (newRating, name) => {
+    const result = await RatingService({
+      type: 'hdd',
+      productId: id,
+      jwt: Cookies.get('jwt'),
+      userId: Cookies.get('userId'),
+      rating: newRating,
+      favorite: true
+    });
+    if (result.data.success) {
+      toast.dark(`Rating updated: ${newRating}/5 stars`);
+      setRating(newRating)
+    } else {
+      toast.error('Error occured. Check console log for more details');
+      console.error('RATING ERROR: ', result);
+    }
+    console.log(result);
   }
+
+  const Arrow = (text) => (
+    <div style={{ cursor: 'pointer' }}>
+      {text}
+    </div>
+  )
 
   return (
     <div className="product-detail white-back">
@@ -43,7 +85,7 @@ function SSDTemplate() {
           <div className="col-lg-4 left">
             <div className="block img">
               {/* <ImageSlider arr={hdd.priceList?.map(element => { return (element) })} img={img} /> */}
-              <img src={hdd.image} style={{maxWidth: '350px'}} />
+              <img src={hdd.image} style={{ maxWidth: '350px' }} />
             </div>
             <div className="block action form-group row justify-content-md-center">
               <div className="col-lg action-function">
@@ -135,7 +177,7 @@ function SSDTemplate() {
               <ul>
                 Your score: &nbsp;
                 <StarRating
-                  rating={4.2} //TODO: Add actual rating from response data
+                  rating={rating} //TODO: Add actual rating from response data
                   changeRating={(rating) => handleChangeRating(rating)}
                   starRatedColor="orange"
                   numberOfStars={5}
@@ -146,7 +188,7 @@ function SSDTemplate() {
               <ul>
                 Average score: &nbsp;
                 <StarRating
-                  rating={4.2} //TODO: Add actual rating from response data
+                  rating={averageRating} //TODO: Add actual rating from response data
                   starRatedColor="orange"
                   numberOfStars={5}
                   starDimension="20px"
@@ -155,6 +197,39 @@ function SSDTemplate() {
               </ul>
             </div>
           </div>
+        </div>
+        <div className="block detail-text">
+          <ul>
+            <div className="detail-title">You may also like...</div>
+          </ul>
+          <ul>
+            {
+              (() => {
+                if (recommendations.content) {
+                  const recommendationRender = [];
+                  recommendations.content.forEach((product) => {
+                    recommendationRender.push(
+                      <ProductSuggestionCard
+                        key={product.id}
+                        name={product.fullname}
+                        link={`/products/hdd/${product.id}`}
+                        img={product.image}
+                        price={product.minPrice}
+                      />
+                    )
+                  })
+                  return (
+                    <ScrollableMenu
+                      wheel={false}
+                      data={recommendationRender}
+                      arrowLeft={Arrow('<')}
+                      arrowRight={Arrow('>')}
+                    />
+                  )
+                } else return null;
+              })()
+            }
+          </ul>
         </div>
       </div>
       <Footer />
