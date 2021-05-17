@@ -233,6 +233,7 @@ function MotherboardTemplate() {
 										wheel={false}
 										data={recommendationRender}
 										arrowLeft={Arrow('<')}
+										translate="-200"
 										arrowRight={Arrow('>')}
 									/>
 								)
@@ -255,8 +256,8 @@ function MotherboardTemplate() {
 			<div className="w-container">
 				{
 					loading
-					? <LoadingBars />
-					: componentRender
+						? <LoadingBars />
+						: componentRender
 				}
 			</div>
 			<Footer />

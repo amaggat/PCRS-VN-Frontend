@@ -78,7 +78,7 @@ const ProductSuggestionCard = ({ name, img = '', price, rating = 5.0, link }) =>
       </CardPrice>
       <CardButton>
         <Link to={link} style={{ textDecoration: 'none', color: 'white' }} onClick={() => handleScrollToTop()}>
-          Go to product
+        <i class="fas fa-external-link-alt" /> &nbsp; Go to product
         </Link>
       </CardButton>
     </Wrapper>

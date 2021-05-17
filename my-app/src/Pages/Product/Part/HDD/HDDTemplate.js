@@ -221,6 +221,7 @@ function SSDTemplate() {
                     data={recommendationRender}
                     arrowLeft={Arrow('<')}
                     arrowRight={Arrow('>')}
+                    translate="-200"
                   />
                 )
               } else return null;

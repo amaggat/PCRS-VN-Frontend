@@ -7,12 +7,15 @@ import Footer from '../../Components/Footer/Footer';
 
 import ProductSuggestion from './product-suggestion-section/product-suggestion-section';
 import PCBuildSuggestion from './pc-build-suggestion/pc-build-suggestion';
+import BuildYourOwnPC from './build-your-own-pc-section/build-your-own-pc-section';
 
 function Home() {
     return (
         <>
             <Header />
             <PCBuildSuggestion />
+            <BuildYourOwnPC />
+            <br />
             <ProductSuggestion />
             <Footer />
         </>

@@ -61,7 +61,7 @@ class VideoCard extends Component {
             <div className="product white-back">
                 <Header />
                 <div className="product-banner">
-                    <h1 className="text-center">Choose A Video Card</h1>
+                    <h1 className="text-center">Choose A GPU</h1>
                 </div>
 
                 <div class="tab-pane w-container" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">

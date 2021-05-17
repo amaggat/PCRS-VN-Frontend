@@ -62,7 +62,7 @@ class Memory extends Component {
             <div className="product white-back">
                 <Header />
                 <div className="product-banner">
-                    <h1 className="text-center">Choose A Memory</h1>
+                    <h1 className="text-center">Choose RAMs</h1>
                 </div>
 
                 <div className="tab-pane w-container" id="pills-product" role="tabpanel" aria-labelledby="pills-contact-tab">

@@ -39,6 +39,7 @@ function CPUTemplate() {
           setCPU(cpuResult.data);
           setRating(cpuResult.data.cpuRating ? cpuResult.data.cpuRating.rating : 0);
           setAverageRating(cpuResult.data.averageRating || 0);
+          console.info('AvgRating type: ', typeof cpuResult.data.averageRating)
         }
         if (recommendationResult.data) {
           setRecommendations(recommendationResult.data);
@@ -81,8 +82,10 @@ function CPUTemplate() {
     <>
       <div className="row">
         <div className="col-lg-4 left">
+          <div className="block img">
+            <img src={cpu.image} style={{ maxWidth: '350px' }} />
+          </div>
           {/* <ImageSlider arr={cpu.priceList?.map(element => { return (element) })} img={img} /> */}
-          <img src={cpu.image} style={{ maxWidth: '350px' }} />
           <div className="block action form-group row justify-content-md-center">
             <div className="col-lg action-function">
               <button type="button" className="btn btn-primary" onClick={() => CPUService.setCPU2List(cpu)}>Add to your Build</button>
@@ -227,6 +230,7 @@ function CPUTemplate() {
                     data={recommendationRender}
                     arrowLeft={Arrow('<')}
                     arrowRight={Arrow('>')}
+                    translate="-200"
                   />
                 )
               } else return null;
@@ -247,11 +251,11 @@ function CPUTemplate() {
       </div>
 
       <div className="w-container">
-      {
-        loading
-        ? <LoadingBars />
-        : componentRender
-      }
+        {
+          loading
+            ? <LoadingBars />
+            : componentRender
+        }
       </div>
 
       <Footer />

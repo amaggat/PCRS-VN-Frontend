@@ -37,7 +37,7 @@ const ProductSuggestionSection = () => {
           </div>
         </Col>
         <Col md="2" className="build-category-column">
-          <div onClick={() => handleCategoryClick('motherboard')}>
+          <div onClick={() => handleCategoryClick('mainboard')}>
             <CategoryCard
               width="160px"
               title="Motherboard"
@@ -48,7 +48,7 @@ const ProductSuggestionSection = () => {
           </div>
         </Col>
         <Col md="2" className="build-category-column">
-          <div onClick={() => handleCategoryClick('memory')}>
+          <div onClick={() => handleCategoryClick('ram')}>
             <CategoryCard
               width="160px"
               title="Memory"
@@ -70,7 +70,7 @@ const ProductSuggestionSection = () => {
           </div>
         </Col>
         <Col md="2" className="build-category-column">
-          <div onClick={() => handleCategoryClick('power')}>
+          <div onClick={() => handleCategoryClick('psu')}>
             <CategoryCard
               width="160px"
               title="Power Supply"
@@ -81,7 +81,7 @@ const ProductSuggestionSection = () => {
           </div>
         </Col>
         <Col md="2" className="build-category-column">
-          <div onClick={() => handleCategoryClick('videocard')}>
+          <div onClick={() => handleCategoryClick('gpu')}>
             <CategoryCard
               width="160px"
               title="Graphics Card"
@@ -99,6 +99,7 @@ const ProductSuggestionSection = () => {
           ? <SuggestionBlock product_type={selected_product_type} />
           : null
       }
+
     </Container >
   )
 }

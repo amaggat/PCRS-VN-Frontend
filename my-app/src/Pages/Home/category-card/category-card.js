@@ -11,12 +11,14 @@ const CategoryCard = ({
   gradientOverlay = '',
   gradientShadow,
   width = '300px',
+  height = '150px',
+  fontSize = 'x-large',
   backgroundPosition = 'top',
   isCategoryCard = false,
   linkTo = ''
 }) => {
   const CardWrapper = styled.div`
-    z-index: 9999;
+    /* z-index: 9999; */
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 
     &:hover {
@@ -34,7 +36,7 @@ const CategoryCard = ({
     justify-content: center;
     position: relative;
     width: ${width};
-    height: 150px;
+    height: ${height};
     text-align: center;
     border-radius: 15px;
     /* Background stuff */
@@ -92,7 +94,7 @@ const CategoryCard = ({
     /* padding: 59px 0; */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bolder;
-    font-size: x-large;
+    font-size: ${fontSize};
     color: white;
   `;
 
@@ -108,7 +110,7 @@ const CategoryCard = ({
     <CardWrapper onClick={() => handleClick()}>
       <CardGradientOverlay>
         <CardTitle>
-          {title || 'Placebo title'}
+          {title || ''}
         </CardTitle>
       </CardGradientOverlay>
     </CardWrapper>

@@ -218,6 +218,7 @@ function VidecardTemplate() {
                     wheel={false}
                     data={recommendationRender}
                     arrowLeft={Arrow('<')}
+                    translate="-200"
                     arrowRight={Arrow('>')}
                   />
                 )

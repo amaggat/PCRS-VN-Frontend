@@ -3,8 +3,8 @@ import Cookies from 'js-cookie';
 
 const LOGIN_API_URL = '/api/login'
 const REGISTER_API_URL = '/api/register'
-const LOGOUT_API_URL = '/api/logout'
 const ADDPC_API_URL = '/user/addPc'
+const BUILD_COLLECTION_API_URL = '/api/user'
 
 
 export const LoginService = async ({ username, password }) => {
@@ -64,6 +64,20 @@ export const AddPCProfileService = async ({
       'Content-Type': 'application/json'
     },
     data
+  });
+
+  return result;
+}
+
+export const getUserBuilds = async () => {
+  const userId = Cookies.get('userId');
+  const result = await axios({
+    method: 'GET',
+    url: `${BUILD_COLLECTION_API_URL}/${userId}/pcprofile`,
+    headers: {
+      // 'Authorization': `Bearer ${jwt}`,
+      'Content-Type': 'application/json'
+    }
   });
 
   return result;

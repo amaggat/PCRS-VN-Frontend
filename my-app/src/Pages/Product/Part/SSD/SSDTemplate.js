@@ -211,6 +211,7 @@ function SSDTemplate() {
                       name={product.fullname}
                       link={`/products/ssd/${product.id}`}
                       img={product.image}
+                      translate="-200"
                       price={product.minPrice}
                     />
                   )
@@ -243,8 +244,8 @@ function SSDTemplate() {
       <div className="w-container">
         {
           loading
-          ? <LoadingBars />
-          : componentRender
+            ? <LoadingBars />
+            : componentRender
         }
       </div>
       <Footer />

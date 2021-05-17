@@ -67,7 +67,7 @@ const BuildCard = ({ maxWidth = '400px', width = '300px', name, image, pcProfile
 
   const BuildSpecs = styled.div`
     font-weight: 400;
-    height: 275px;
+    height: 300px;
     padding: 10px 10px;
     text-align: justify;
     align-self: flex-end;
@@ -134,7 +134,7 @@ const BuildCard = ({ maxWidth = '400px', width = '300px', name, image, pcProfile
     localStorage.setItem('socket', JSON.stringify(pcProfile.cpu[0].socket) || null);
     localStorage.setItem('video-card', JSON.stringify(pcProfile.gpu[0]) || null);
     localStorage.setItem('memory', JSON.stringify(pcProfile.ram[0]) || null);
-    // localStorage.setItem('motherboard', JSON.stringify(pcProfile.main[0]) || null);
+    localStorage.setItem('motherboard', JSON.stringify(pcProfile.main[0]) || null);
     localStorage.setItem('ssd', JSON.stringify(pcProfile.ssd[0]) || null);
     localStorage.setItem('hdd', JSON.stringify(pcProfile.hdd[0]) || null);
     localStorage.setItem('power', JSON.stringify(pcProfile.psu[0]) || null);
