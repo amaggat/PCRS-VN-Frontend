@@ -16,6 +16,7 @@ import MotherboardService from '../../../../Client/MotherboardService';
 import formatMoney from '../../../../Components/Page/CurrencyFormat';
 import { RatingService } from '../../../../Client/RatingService';
 import { getRecommendation } from '../../../../Client/RecommendService';
+import LoadingBars from '../../../../Components/Page/LoadingBars';
 
 function MotherboardTemplate() {
 	const { id } = useParams();
@@ -23,15 +24,11 @@ function MotherboardTemplate() {
 	const [recommendations, setRecommendations] = useState({});
 	const [rating, setRating] = useState(0);
 	const [averageRating, setAverageRating] = useState(0);
-	useEffect(() => {
-		MotherboardService.getMotherboardbyID(id).then(response => {
-			setMotherboard(response.data)
-		})
-			.catch(console.log);
-	}, [id])
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		const fetch = async () => {
+			setLoading(true);
 			try {
 				const mainboardResult = await MotherboardService.getMotherboardbyID(id);
 				const recommendationResult = await getRecommendation('mainboard', id);
@@ -46,6 +43,7 @@ function MotherboardTemplate() {
 			} catch (error) {
 				toast.error(`Error: ${error}`);
 			}
+			setLoading(false);
 		}
 
 		fetch();
@@ -77,6 +75,175 @@ function MotherboardTemplate() {
 		</div>
 	)
 
+	const componentRender = (
+		<>
+			<div className="row">
+				<div className="col-lg-4 left">
+					<div className="block img">
+						{/* <ImageSlider arr={motherboard.priceList?.map(element => { return (element) })} img={img} /> */}
+						<img src={motherboard.image} style={{ maxWidth: '350px' }} />
+					</div>
+					<div className="block action form-group row justify-content-md-center">
+						<div className="col-lg action-function">
+							<button type="button" className="btn btn-primary" onClick={() => MotherboardService.setMotherboard2List(motherboard)}>Add to your Build</button>
+						</div>
+					</div>
+				</div>
+				<div className="col-lg-7 right">
+					<div className="block detail-text">
+						<div className="detail-title">Price</div>
+						<div className="detail-price row">
+							<table className="table table-hover detail-table">
+								<thead>
+									<tr>
+										<th scope="col">Retailer</th>
+										<th scope="col">Base</th>
+										<th scope="col">Promo</th>
+										<th scope="col">Total</th>
+										<th scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+									{
+										motherboard.priceList?.map(element => {
+											return (
+												<tr>
+													<td className="retailer-img vertical-container">
+														<img className="" src={element.retailer.logo} alt="retailer" />
+													</td>
+													<td className="base vertical-container">
+														<div className="vertical">
+															{formatMoney(+element.price)} VND
+														</div>
+													</td>
+													<td className="promo vertical-container">
+														<div className="vertical text-center">
+															{element.promo ? element.promo : "-"}
+														</div>
+													</td>
+													<td className="total vertical-container">
+														<div className="vertical">
+															{element.promo ? formatMoney(+(element.promo * element.price)) : formatMoney(+element.price)}
+														</div>
+													</td>
+													<td className="buy-button vertical-container">
+														<a target="_blank" rel="noreferrer" className="btn btn-success vertical" href={element.link}>Buy</a>
+													</td>
+												</tr>
+											)
+										})
+									}
+								</tbody>
+							</table>
+						</div>
+
+						<div className="block detail-text">
+							<ul>
+								<div className="detail-title ">Specifications</div>
+							</ul>
+							<ul>
+								<div className="detail-block border-bottom" id="manufaturer">
+									<p className="title">Manufacturer</p>
+									<p className="body">{motherboard.manufacturer}</p>
+								</div>
+							</ul>
+							<ul>
+								<div className="detail-block border-bottom" id="serieName">
+									<p className="title">Serie Name</p>
+									<p className="body">{motherboard.serieName}</p>
+								</div>
+							</ul>
+							<ul>
+								<div className="detail-block border-bottom" id="serieName">
+									<p className="title">Memory Max</p>
+									<p className="body">{motherboard.sizeofram}</p>
+								</div>
+							</ul>
+							<ul>
+								<div className="detail-block border-bottom" id="serieName">
+									<p className="title">Memory Slot</p>
+									<p className="body">{motherboard.memory_slot}</p>
+								</div>
+							</ul>
+							<ul>
+								<div className="detail-block border-bottom" id="serieName">
+									<p className="title">Chipset</p>
+									<p className="body">{motherboard.chipset}</p>
+								</div>
+							</ul>
+							<ul>
+								<div className="detail-block border-bottom" id="serieName">
+									<p className="title">Socket</p>
+									<p className="body">{motherboard.socket}</p>
+								</div>
+							</ul>
+						</div>
+
+						<div className="block detail-text">
+							<ul>
+								<div className="detail-title">Ratings</div>
+							</ul>
+							<ul>
+								Your score: &nbsp;
+								<StarRating
+									rating={rating}
+									changeRating={(rating) => handleChangeRating(rating)}
+									starRatedColor="orange"
+									numberOfStars={5}
+									starDimension="20px"
+									starSpacing="5px"
+								/>
+							</ul>
+							<ul>
+								Average score: &nbsp;
+								<StarRating
+									rating={averageRating}
+									starRatedColor="orange"
+									numberOfStars={5}
+									starDimension="20px"
+									starSpacing="5px"
+								/>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="block detail-text">
+				<ul>
+					<div className="detail-title">You may also like...</div>
+				</ul>
+				<ul>
+					{
+						(() => {
+							if (recommendations.content) {
+								const recommendationRender = [];
+								recommendations.content.forEach((product) => {
+									recommendationRender.push(
+										<ProductSuggestionCard
+											key={product.id}
+											name={product.fullname}
+											link={`/products/motherboard/${product.id}`}
+											img={product.image}
+											price={product.minPrice}
+										/>
+									)
+								})
+								return (
+									<ScrollableMenu
+										wheel={false}
+										data={recommendationRender}
+										arrowLeft={Arrow('<')}
+										arrowRight={Arrow('>')}
+									/>
+								)
+							} else return null;
+						})()
+					}
+				</ul>
+			</div>
+		</>
+	)
+
 	return (
 		<div className="product-detail white-back">
 			<Header />
@@ -86,170 +253,11 @@ function MotherboardTemplate() {
 			</div>
 
 			<div className="w-container">
-				<div className="row">
-					<div className="col-lg-4 left">
-						<div className="block img">
-							{/* <ImageSlider arr={motherboard.priceList?.map(element => { return (element) })} img={img} /> */}
-							<img src={motherboard.image} style={{ maxWidth: '350px' }} />
-						</div>
-						<div className="block action form-group row justify-content-md-center">
-							<div className="col-lg action-function">
-								<button type="button" className="btn btn-primary" onClick={() => MotherboardService.setMotherboard2List(motherboard)}>Add to your Build</button>
-							</div>
-						</div>
-					</div>
-					<div className="col-lg-7 right">
-						<div className="block detail-text">
-							<div className="detail-title">Price</div>
-							<div className="detail-price row">
-								<table className="table table-hover detail-table">
-									<thead>
-										<tr>
-											<th scope="col">Retailer</th>
-											<th scope="col">Base</th>
-											<th scope="col">Promo</th>
-											<th scope="col">Total</th>
-											<th scope="col"></th>
-										</tr>
-									</thead>
-									<tbody>
-										{
-											motherboard.priceList?.map(element => {
-												return (
-													<tr>
-														<td className="retailer-img vertical-container">
-															<img className="" src={element.retailer.logo} alt="retailer" />
-														</td>
-														<td className="base vertical-container">
-															<div className="vertical">
-																{formatMoney(+element.price)} VND
-															</div>
-														</td>
-														<td className="promo vertical-container">
-															<div className="vertical text-center">
-																{element.promo ? element.promo : "-"}
-															</div>
-														</td>
-														<td className="total vertical-container">
-															<div className="vertical">
-																{element.promo ? formatMoney(+(element.promo * element.price)) : formatMoney(+element.price)}
-															</div>
-														</td>
-														<td className="buy-button vertical-container">
-															<a target="_blank" rel="noreferrer" className="btn btn-success vertical" href={element.link}>Buy</a>
-														</td>
-													</tr>
-												)
-											})
-										}
-									</tbody>
-								</table>
-							</div>
-
-							<div className="block detail-text">
-								<ul>
-									<div className="detail-title ">Specifications</div>
-								</ul>
-								<ul>
-									<div className="detail-block border-bottom" id="manufaturer">
-										<p className="title">Manufacturer</p>
-										<p className="body">{motherboard.manufacturer}</p>
-									</div>
-								</ul>
-								<ul>
-									<div className="detail-block border-bottom" id="serieName">
-										<p className="title">Serie Name</p>
-										<p className="body">{motherboard.serieName}</p>
-									</div>
-								</ul>
-								<ul>
-									<div className="detail-block border-bottom" id="serieName">
-										<p className="title">Memory Max</p>
-										<p className="body">{motherboard.sizeofram}</p>
-									</div>
-								</ul>
-								<ul>
-									<div className="detail-block border-bottom" id="serieName">
-										<p className="title">Memory Slot</p>
-										<p className="body">{motherboard.memory_slot}</p>
-									</div>
-								</ul>
-								<ul>
-									<div className="detail-block border-bottom" id="serieName">
-										<p className="title">Chipset</p>
-										<p className="body">{motherboard.chipset}</p>
-									</div>
-								</ul>
-								<ul>
-									<div className="detail-block border-bottom" id="serieName">
-										<p className="title">Socket</p>
-										<p className="body">{motherboard.socket}</p>
-									</div>
-								</ul>
-							</div>
-
-							<div className="block detail-text">
-								<ul>
-									<div className="detail-title">Ratings</div>
-								</ul>
-								<ul>
-									Your score: &nbsp;
-									<StarRating
-										rating={rating}
-										changeRating={(rating) => handleChangeRating(rating)}
-										starRatedColor="orange"
-										numberOfStars={5}
-										starDimension="20px"
-										starSpacing="5px"
-									/>
-								</ul>
-								<ul>
-									Average score: &nbsp;
-									<StarRating
-										rating={averageRating}
-										starRatedColor="orange"
-										numberOfStars={5}
-										starDimension="20px"
-										starSpacing="5px"
-									/>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div className="block detail-text">
-					<ul>
-						<div className="detail-title">You may also like...</div>
-					</ul>
-					<ul>
-						{
-							(() => {
-								if (recommendations.content) {
-									const recommendationRender = [];
-									recommendations.content.forEach((product) => {
-										recommendationRender.push(
-											<ProductSuggestionCard
-												key={product.id}
-												name={product.fullname}
-												link={`/products/motherboard/${product.id}`}
-												img={product.image}
-												price={product.minPrice}
-											/>
-										)
-									})
-									return (
-										<ScrollableMenu
-											wheel={false}
-											data={recommendationRender}
-											arrowLeft={Arrow('<')}
-											arrowRight={Arrow('>')}
-										/>
-									)
-								} else return null;
-							})()
-						}
-					</ul>
-				</div>
+				{
+					loading
+					? <LoadingBars />
+					: componentRender
+				}
 			</div>
 			<Footer />
 		</div>
