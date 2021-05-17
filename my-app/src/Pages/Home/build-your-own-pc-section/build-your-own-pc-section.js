@@ -11,13 +11,14 @@ const BuildYourOwnPC = () => {
             <Container className="build-guide">
                 <div className="block-title">Build your own PC</div>
                 <CategoryCard
+                    isCategoryCard
                     width="100%"
                     height="440px"
                     title=""
                     fontSize="xxx-large"
                     linkTo="/list"
                     backgroundImg={CardBackground}
-                    gradientShadow="linear-gradient(90deg, rgba(187,30,30,1) 0%, rgba(15,167,7,1) 50%, rgba(0,69,255,1) 100%);"
+                    gradientShadow="linear-gradient(90deg, rgba(131,0,0,1) 0%, rgba(3,130,0,1) 50%, rgba(5,0,102,1) 100%);"
                 />
             </Container>
         </>

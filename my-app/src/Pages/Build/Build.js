@@ -14,16 +14,19 @@ import WorkstationBackgroundImage from '../../Components/Sources/Category-Backgr
 import LaptopBackgroundImage from '../../Components/Sources/Category-Background-Images/laptop.jpg'
 import MiniPCImage from '../../Components/Sources/Category-Background-Images/mini-pc.jpg'
 import BuildCard from './build-card';
+import LoadingBars from '../../Components/Page/LoadingBars';
 class Build extends Component {
     constructor(props) {
         super(props)
         this.state = {
             posts: [],
-            type: new URLSearchParams(window.location.search)
+            type: new URLSearchParams(window.location.search),
+            loading: false
         }
     }
 
     getPosts(type) {
+        this.setState({ loading: true })
         ProfileService.getProfiles(type).then((response) => {
             this.setState({
                 posts: response.data.content,
@@ -31,6 +34,7 @@ class Build extends Component {
         }).catch(err => {
             console.log(err);
         });
+        this.setState({ loading: false })
     }
 
     componentDidMount() {
@@ -39,8 +43,28 @@ class Build extends Component {
     }
 
     render() {
-        const { posts } = this.state;
+        const { posts, loading } = this.state;
         console.log('Posts: ', posts);
+        const componentRender = (
+            <>
+                <div className="block-title">Builds</div>
+                <Row>
+                    {
+                        posts.map((post) => (
+                            <Col style={{ paddingBottom: '30px', display: 'flex', justifyContent: 'center' }}>
+                                <BuildCard
+                                    name={post.details}
+                                    pcProfile={post.pcProfile}
+                                    image="https://www.nzxt.com/images/experimental-homepage/bld-pod.png"
+                                    type={post.type}
+                                    price={post.price}
+                                />
+                            </Col>
+                        ))
+                    }
+                </Row>
+            </>
+        );
 
         return (
             <div className="build white-back">
@@ -120,22 +144,12 @@ class Build extends Component {
                             </Col>
                         </Row>
                     </div>
-                    <div className="block-title">Builds</div>
-                    <Row>
-                        {
-                            posts.map((post) => (
-                                <Col style={{ paddingBottom: '30px', display: 'flex', justifyContent: 'center' }}>
-                                    <BuildCard
-                                        name={post.details}
-                                        pcProfile={post.pcProfile}
-                                        image="https://www.nzxt.com/images/experimental-homepage/bld-pod.png"
-                                        type={post.type}
-                                        price={post.price}
-                                    />
-                                </Col>
-                            ))
-                        }
-                    </Row>
+                    {
+                        loading
+                        ? <LoadingBars />
+                        : componentRender
+                    }
+                
                 </Container>
                 <Footer />
             </div>
