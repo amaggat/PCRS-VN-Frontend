@@ -14,15 +14,6 @@ import WorkstationBackgroundImage from '../../Components/Sources/Category-Backgr
 import LaptopBackgroundImage from '../../Components/Sources/Category-Background-Images/laptop.jpg'
 import MiniPCImage from '../../Components/Sources/Category-Background-Images/mini-pc.jpg'
 import BuildCard from './build-card';
-
-const sample_data = {
-    cpu: 'Intel i9 - 10900K',
-    gpu: 'NVIDIA RTX 3080',
-    ram: 'Gskill 16GB 3200MHz RGB',
-    motherboard: 'MSI Z490',
-    storage: '1TB HDD + 512GB SSD',
-    psu: 'Cooler Master 1000W'
-}
 class Build extends Component {
     constructor(props) {
         super(props)

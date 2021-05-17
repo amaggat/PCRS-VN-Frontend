@@ -15,6 +15,7 @@ const BuildYourOwnPC = () => {
                     height="440px"
                     title=""
                     fontSize="xxx-large"
+                    linkTo="/list"
                     backgroundImg={CardBackground}
                     gradientShadow="linear-gradient(90deg, rgba(187,30,30,1) 0%, rgba(15,167,7,1) 50%, rgba(0,69,255,1) 100%);"
                 />
