@@ -199,7 +199,6 @@ function CPUTemplate() {
                   numberOfStars={5}
                   starDimension="20px"
                   starSpacing="5px"
-                  changeRating={(rating) => handleChangeRating(rating)}
                 />
                 {` - voted by ${cpu.numberOfRating} users`}
               </ul>

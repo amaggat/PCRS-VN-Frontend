@@ -109,7 +109,7 @@ const RetailersPage = () => {
                   link={retailer.shop}
                   facebook={retailer.facebook}
                   logo={retailer.logo}
-                  rating={retailer.rating || 4.3}
+                  rating={retailer.avgRetailerRating || 4.3}
                 />
               </Col>
             ))
