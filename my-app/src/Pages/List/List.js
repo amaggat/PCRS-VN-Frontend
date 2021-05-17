@@ -121,7 +121,7 @@ class List extends Component {
             <div className="system-build white-back">
                 <Header />
                 <div className="banner">
-                    <h1 className="text-center">SYSTEM BUILD</h1>
+                    <h1 className="text-center">SYSTEM BUILDER</h1>
                 </div>
 
                 <div className="warn w-container block">
