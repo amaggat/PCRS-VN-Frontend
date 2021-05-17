@@ -183,7 +183,7 @@ function CPUTemplate() {
               <ul>
                 Your score: &nbsp;
                 <StarRating
-                  rating={rating} //TODO: Add actual rating from response data
+                  rating={rating}
                   changeRating={(rating) => handleChangeRating(rating)}
                   starRatedColor="orange"
                   numberOfStars={5}
@@ -194,7 +194,7 @@ function CPUTemplate() {
               <ul>
                 Average score: &nbsp;
                 <StarRating
-                  rating={averageRating} //TODO: Add actual rating from response data
+                  rating={averageRating}
                   starRatedColor="orange"
                   numberOfStars={5}
                   starDimension="20px"
