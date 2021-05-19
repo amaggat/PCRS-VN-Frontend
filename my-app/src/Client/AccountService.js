@@ -4,8 +4,10 @@ import Cookies from 'js-cookie';
 const LOGIN_API_URL = '/api/login'
 const REGISTER_API_URL = '/api/register'
 const ADDPC_API_URL = '/user/addPc'
-const BUILD_COLLECTION_API_URL = '/api/user'
-
+const BUILD_COLLECTION_API_URL = '/api/user';
+const MESSAGE_API = '/user/chatbot';
+const jwt = Cookies.get('jwt') || '';
+const userId = Cookies.get('userId') || '';
 
 export const LoginService = async ({ username, password }) => {
   const result = await axios({
@@ -42,8 +44,6 @@ export const AddPCProfileService = async ({
   name,
   payload
 }) => {
-  const jwt = Cookies.get('jwt') || '';
-  const userId = Cookies.get('userId') || '';
 
   const data = {
     category: {
@@ -77,6 +77,22 @@ export const getUserBuilds = async () => {
     headers: {
       // 'Authorization': `Bearer ${jwt}`,
       'Content-Type': 'application/json'
+    }
+  });
+
+  return result;
+}
+
+export const sendMessage = async (message) => {
+  const result = await axios({
+    method: 'POST',
+    url: MESSAGE_API,
+    headers: {
+      'Authorization': `Bearer ${jwt}`,
+      'Content-Type': 'application/json'
+    },
+    data: {
+      content: message
     }
   });
 

@@ -27,7 +27,8 @@ const Login = () => {
       })
       setTimeout(() => {
         history.go(-1);
-      }, 1000)
+      }, 2000)
+      window.location.reload();
     } else {
       toast.error('Invalid username or password!');
     }

@@ -15,6 +15,7 @@ const TopNav = () => {
         toast('Logged out!', {
             autoClose: 1000
         });
+        window.location.reload()
     }
 
     const handleDirectToDashboard = () => {
