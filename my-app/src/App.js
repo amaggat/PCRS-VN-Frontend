@@ -1,4 +1,3 @@
-import './App.css';
 import Page from "./Pages/Page";
 import { Widget, addResponseMessage, addLinkSnippet } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
@@ -7,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router } from "react-router-dom";
 import { sendMessage } from './Client/AccountService';
+import './App.css';
 
 function App() {
     const handleMessage = async (newMessage) => {
@@ -46,6 +46,7 @@ function App() {
                                 subtitle=":)"
                                 senderPlaceHolder="Type something..."
                                 handleNewUserMessage={handleMessage}
+                                
                             />
                         )
                         : null

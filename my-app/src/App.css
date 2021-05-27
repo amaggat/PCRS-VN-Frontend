@@ -31,3 +31,11 @@ html, body {
   background-color: #191b2b;
   border-color: #191b2b;
 }
+
+.rcw-response .rcw-message-text {
+  padding: 8px;
+}
+
+.rcw-client .rcw-message-text {
+  padding: 8px;
+}
