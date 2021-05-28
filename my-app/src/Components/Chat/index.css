@@ -1,0 +1,43 @@
+.chat-frame {
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+  border: 1px solid #e5e7eb;
+  width: 300px;
+}
+
+.chat-header {
+  background-color: aqua;
+  padding: 4px;
+}
+.chat-body {
+  background-color: white;
+  height: 350px;
+  overflow-y: auto;
+}
+.chat-footer {
+  display: flex;
+}
+.msg-left {
+    background-color: black;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: left;
+}
+.msg-right {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: right;
+}
+.msg-me {
+  background-color: aqua;
+  display: inline-block;
+  padding: 4px;
+}
+.msg-bot {
+  background-color: beige;
+  display: inline-block;
+  padding: 4px;
+}

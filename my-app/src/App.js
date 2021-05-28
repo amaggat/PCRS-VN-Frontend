@@ -1,12 +1,13 @@
 import './App.css';
 import Page from "./Pages/Page";
-import { Widget, addResponseMessage, addLinkSnippet } from 'react-chat-widget';
-import 'react-chat-widget/lib/styles.css';
+import { Widget, addResponseMessage, addLinkSnippet } from 'react-chat-widget-mic';
+import 'react-chat-widget/lib/styles.css'
 import Cookies from 'js-cookie';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router } from "react-router-dom";
 import { sendMessage } from './Client/AccountService';
+import { Chat } from './Components/Chat';
 
 function App() {
     const handleMessage = async (newMessage) => {
@@ -41,12 +42,7 @@ function App() {
                 {
                     Cookies.get('jwt')
                         ? (
-                            <Widget
-                                title="Partz"
-                                subtitle=":)"
-                                senderPlaceHolder="Type something..."
-                                handleNewUserMessage={handleMessage}
-                            />
+                            <Chat/>
                         )
                         : null
                 }
