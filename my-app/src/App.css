@@ -39,3 +39,8 @@ html, body {
 .rcw-client .rcw-message-text {
   padding: 8px;
 }
+
+.audio-react-recorder {
+  visibility: hidden;
+  position: fixed;
+}

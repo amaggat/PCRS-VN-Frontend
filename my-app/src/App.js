@@ -3,13 +3,13 @@ import { useState } from "react";
 import styled from "styled-components";
 import AudioReactRecorder, { RecordState } from 'audio-react-recorder'
 
-import { Widget, addResponseMessage, addLinkSnippet, toggleWidget } from 'react-chat-widget';
+import { Widget, addResponseMessage, addLinkSnippet, toggleWidget, addUserMessage} from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 import Cookies from 'js-cookie';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router } from "react-router-dom";
-import { sendMessage } from './Client/AccountService';
+import { sendMessage, sendRecording } from './Client/AccountService';
 import './App.css';
 
 const RecordButtonWrapper = styled.div`
@@ -53,7 +53,7 @@ const RecordButton = styled.div`
 function App() {
     const [showRecordButton, setShowRecordButton] = useState(false);
     const [recordState, setRecordState] = useState(null);
-    const handleMessage = async (newMessage) => {
+    const handleSendMessage = async (newMessage) => {
         const result = await sendMessage(newMessage);
         if (result.data) {
             addResponseMessage(result.data.response);
@@ -73,9 +73,21 @@ function App() {
         else setRecordState(RecordState.START);
     }
 
+    const handleSendRecording = async (recording) => {
+        try {
+            const result = await sendRecording(recording);
+            if (result.data) {
+                addUserMessage(result.data.response || "");
+                handleSendMessage(result.data.response || "");
+            }
+        } catch (error) {
+            toast.error("Error: ", error)
+        }
+    }
+
     const onRecordStop = (audioData) => {
         console.log('Record: ', audioData);
-        //TODO: API Pending...
+        handleSendRecording(audioData.blob);
     }
 
     const handleChatWidgetClick = () => {
@@ -88,8 +100,8 @@ function App() {
             <RecordButton onClick={handleRecordClick}>
                 {
                     recordState === RecordState.STOP || recordState === null
-                    ? <i class="fas fa-microphone" />
-                    : <i class="fas fa-square" />
+                        ? <i class="fas fa-microphone" />
+                        : <i class="fas fa-square" />
                 }
             </RecordButton>
         </RecordButtonWrapper>
@@ -126,7 +138,7 @@ function App() {
                                 title="Partz"
                                 subtitle=":)"
                                 senderPlaceHolder="Type something..."
-                                handleNewUserMessage={handleMessage}
+                                handleNewUserMessage={handleSendMessage}
                             />
                         )
                         : null

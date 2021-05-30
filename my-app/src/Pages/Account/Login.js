@@ -23,12 +23,14 @@ const Login = () => {
       cookies.set('username', result.data.username);
       cookies.set('userId', result.data.id);
       toast.dark('Logged in! Returning to previous page...', {
-        autoClose: 3000,
+        autoClose: 2000,
       })
       setTimeout(() => {
         history.go(-1);
-      }, 3000)
-      // window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 2)
+      }, 2000)
     } else {
       toast.error('Invalid username or password!');
     }

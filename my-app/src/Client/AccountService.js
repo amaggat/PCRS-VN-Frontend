@@ -98,3 +98,19 @@ export const sendMessage = async (message) => {
 
   return result;
 }
+
+export const sendRecording = async (recording) => {
+  const formData = new FormData();
+  formData.append("file", recording);
+  const result = await axios({
+    method: 'POST',
+    url: `${MESSAGE_API}/voice`,
+    headers: {
+      'Authorization': `Bearer ${jwt}`,
+      'Content-Type': 'multipart/form-data'
+    },
+    data: formData
+  });
+
+  return result;
+}
