@@ -23,12 +23,12 @@ const Login = () => {
       cookies.set('username', result.data.username);
       cookies.set('userId', result.data.id);
       toast.dark('Logged in! Returning to previous page...', {
-        autoClose: 1000,
+        autoClose: 3000,
       })
       setTimeout(() => {
         history.go(-1);
-      }, 2000)
-      window.location.reload();
+      }, 3000)
+      // window.location.reload();
     } else {
       toast.error('Invalid username or password!');
     }
@@ -90,10 +90,6 @@ const Login = () => {
                     Submit
                   </button>
                 </div>
-              </div>
-
-              <div className="border-top text-center block">
-                <Link className="reset-password" to="/forgot">Forgot password?</Link>
               </div>
 
               <div className="block">

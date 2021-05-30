@@ -28,7 +28,6 @@ const Register = () => {
           name,
           email
         });
-        console.log('this ran')
         
         if (result.data.success) {
           const loginResult = await LoginService({username, password});

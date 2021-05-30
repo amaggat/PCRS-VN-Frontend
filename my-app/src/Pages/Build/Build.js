@@ -15,6 +15,7 @@ import LaptopBackgroundImage from '../../Components/Sources/Category-Background-
 import MiniPCImage from '../../Components/Sources/Category-Background-Images/mini-pc.jpg'
 import BuildCard from './build-card';
 import LoadingBars from '../../Components/Page/LoadingBars';
+import PCImage from '../../Components/Sources/Category-Background-Images/build-card-image.png';
 import { toast } from 'react-toastify';
 
 const Build = () => {
@@ -54,7 +55,7 @@ const Build = () => {
                             <BuildCard
                                 name={post.details}
                                 pcProfile={post.pcProfile}
-                                image="https://www.nzxt.com/images/experimental-homepage/bld-pod.png"
+                                image={PCImage}
                                 type={post.type}
                                 price={post.price}
                             />
