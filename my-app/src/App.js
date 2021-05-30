@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import AudioReactRecorder, { RecordState } from 'audio-react-recorder'
 
-import { Widget, addResponseMessage, addLinkSnippet, toggleWidget, addUserMessage} from 'react-chat-widget';
+import { Widget, addResponseMessage, addLinkSnippet, toggleWidget, addUserMessage, renderCustomComponent, deleteMessages, toggleMsgLoader} from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 import Cookies from 'js-cookie';
 import { toast, ToastContainer } from 'react-toastify';
@@ -69,8 +69,14 @@ function App() {
     }
 
     const handleRecordClick = () => {
-        if (recordState === RecordState.START) setRecordState(RecordState.STOP);
-        else setRecordState(RecordState.START);
+        if (recordState === RecordState.START){
+            deleteMessages(0);
+            setRecordState(RecordState.STOP);
+        }
+        else {
+            renderCustomComponent("div", {className: 'dot-typing'});
+            setRecordState(RecordState.START);
+        }
     }
 
     const handleSendRecording = async (recording) => {
