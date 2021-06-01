@@ -6,16 +6,18 @@ We were inspired by [PcPartPicker](http://pcpartpicker.com), a website that allo
 
 ## [Demo](demo)
 
-1. The dashboard:
+1. The homescreen:
 ![Dashboard](images/dashboard.png)
-2. The main area which allows user to build their PC:
+2. The System Builder:
 ![Main area](images/build-pc.png)
-3. Browsing PC item:
+3. Browsing PC components:
 ![Browsing](images/browse-product.png)
-4. We already create some finised build which user can use immediately.
-![Guild](images/guild.png)
-5. All the products were crawled from different retail stores. We want to create a website where user can easly check for their items for their wishlist with its price, promo from retailer ...
-![Product-detail](images/view-product.png)
+4. We have compiled a list of multi-purpose PCs, with filters for users to narrow down their choice:
+![Build Guide](images/build-guide.png)
+5. Product details with ratings and similar products:
+![Product details](images/product-details.png)
+6. All products were crawled from different retail stores. We want to create a website where user can easly check for their items for their wishlist with its price, promo from retailer ...
+![Product-detail](images/retailers.png)
 
 ## [Database](data)
 We crawl product, price, promo, ... from many retail stores such as [PhongVu](https://phongvu.vn/), [AnPhat](https://www.anphatpc.com.vn/), [HanoiComputer](https://www.hanoicomputer.vn/), ... that users can access easly.
