@@ -79,7 +79,7 @@ file.upload-dir=(Directory)/PCRS-Chatbot/voice/audio
 3. Run ```BackEndApplication.java``` and you ready to go.
 
 
-*For more detail, please checkout our Back-end service [here](https://github.com/amaggat/PcPartPickerVN_BackEndService)*
+*For more detail, please checkout our Back-end service [here](https://github.com/amaggat/PCRS-VN-Backend)*
 
 
 ## Recommender
@@ -97,6 +97,8 @@ file.upload-dir=(Directory)/PCRS-Chatbot/voice/audio
 ## Chatbot
 1. Install all requirements
 2. Run ```application.py``` and you ready to go.
+
+*For more detail, please checkout our Chatbot service [here](https://github.com/amaggat/PCRS-VN-Chatbot)*
 
 ## [Our team](team)
 - Dung M. Nguyen
