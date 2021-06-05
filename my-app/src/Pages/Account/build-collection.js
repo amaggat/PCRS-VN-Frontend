@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import { getUserBuilds } from '../../Client/AccountService';
 import LoadingBars from '../../Components/Page/LoadingBars';
 import BuildCard from '../Build/build-card';
+import BuildImage from '../../Components/Sources/Category-Background-Images/build-card-image.png'
 
 const BuildCollection = () => {
     const [builds, setBuilds] = useState({});
@@ -30,7 +31,7 @@ const BuildCollection = () => {
                             <BuildCard
                                 name={build.name}
                                 pcProfile={build}
-                                image="https://www.nzxt.com/images/experimental-homepage/bld-pod.png"
+                                image={BuildImage}
                                 type={''}
                                 price={build.price}
                             />
