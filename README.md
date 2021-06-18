@@ -98,6 +98,11 @@ file.upload-dir=(Directory)/PCRS-Chatbot/voice/audio
 
 *For more detail, please checkout our Chatbot service [here](https://github.com/amaggat/PCRS-VN-Chatbot)*
 
+## Reports
+- For [PCRS-VN-Recommender](https://drive.google.com/file/d/1FF7BnB3xGzwmwUg_lM3AqHw3QOUW7_Uh/view?usp=sharing)
+- For [PCRS-VN-Chatbot](https://drive.google.com/file/d/1xkb2A-W0y1YMv8oYvhhVtV7a5a1koHwZ/view?usp=sharing)
+
+
 ## [Our team](team)
 - Dung M. Nguyen
   [Contact: [GitHub](https://github.com/manhdung20112000) [Facebook](https://www.facebook.com/nmd2000)]
